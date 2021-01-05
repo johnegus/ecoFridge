@@ -1,4 +1,4 @@
-# ECOFridge Backend Routes
+# ECOFridge Frontend Routes
 
 - /  => the user's 'fridge' or dashboard
 - /search => stretch goal search based on ingredients

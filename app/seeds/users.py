@@ -1,5 +1,5 @@
 from werkzeug.security import generate_password_hash
-from app.models import db, User, Activity, Kudos, Comment
+from app.models import db, User
 
 # Adds a demo user, you can add other users here if you want
 def seed_users():
@@ -50,101 +50,101 @@ def seed_users():
 
     db.session.commit()
 
-def seed_activities():
+# def seed_activities():
 
-    activity = [
-        Activity(title='Running in the park', 
-            description='It was really nice outside.',
-            distance=5.1, time=56.3,
-            user_id=1,
-            gpx_file='https://www.google.com/maps/d/embed?mid=1h7p1CpCc43ClTdEIH61VpAr3Mbfh-9Ly'),
-        Activity(title='Running along the river.', 
-            description='I ran along the river, my feet hurt, but it was good.',
-            distance=10.1, time=70.3,
-            user_id=2,
-            gpx_file='https://www.google.com/maps/d/embed?mid=1sFWFcmleZGX5E9kuWAEAg0UPpSd2O7ON'),
-        Activity(title='Running downtown', 
-            description='Tough run, the concrete was hard.',
-            distance=2.1, time=20,
-            user_id=3,
-            gpx_file='https://www.google.com/maps/d/embed?mid=1gP16ZGuGQMG3UGCivwtXsdrWGXi2m-pE'),
-        Activity(title='Walked.', 
-            description='I was really tired, so I walked.',
-            distance=3, time=50.3,
-            user_id=3,
-            gpx_file='https://www.google.com/maps/d/embed?mid=1M9l3uERqL7DnB8ID89bVfPnQZAgC6vRN'),
-        Activity(title='Beach run', 
-            description='It was HOT',
-            distance=4.5, time=55,
-            user_id=4,
-            gpx_file='https://www.google.com/maps/d/embed?mid=1M9l3uERqL7DnB8ID89bVfPnQZAgC6vRN'),
-        Activity(title='Running on the sidewalk.', 
-            description='I ran fast today.',
-            distance=2, time=20,
-            user_id=4),
-        Activity(title='Berlin Marathon', 
-            description='Not bad for my first marathon',
-            distance=26.4, time=243,
-            user_id=5,
-            gpx_file='https://www.google.com/maps/d/embed?mid=1e5LgIAckPl9KcTMT2Z-8BL64NEryO6k-'),
-    ]
+#     activity = [
+#         Activity(title='Running in the park', 
+#             description='It was really nice outside.',
+#             distance=5.1, time=56.3,
+#             user_id=1,
+#             gpx_file='https://www.google.com/maps/d/embed?mid=1h7p1CpCc43ClTdEIH61VpAr3Mbfh-9Ly'),
+#         Activity(title='Running along the river.', 
+#             description='I ran along the river, my feet hurt, but it was good.',
+#             distance=10.1, time=70.3,
+#             user_id=2,
+#             gpx_file='https://www.google.com/maps/d/embed?mid=1sFWFcmleZGX5E9kuWAEAg0UPpSd2O7ON'),
+#         Activity(title='Running downtown', 
+#             description='Tough run, the concrete was hard.',
+#             distance=2.1, time=20,
+#             user_id=3,
+#             gpx_file='https://www.google.com/maps/d/embed?mid=1gP16ZGuGQMG3UGCivwtXsdrWGXi2m-pE'),
+#         Activity(title='Walked.', 
+#             description='I was really tired, so I walked.',
+#             distance=3, time=50.3,
+#             user_id=3,
+#             gpx_file='https://www.google.com/maps/d/embed?mid=1M9l3uERqL7DnB8ID89bVfPnQZAgC6vRN'),
+#         Activity(title='Beach run', 
+#             description='It was HOT',
+#             distance=4.5, time=55,
+#             user_id=4,
+#             gpx_file='https://www.google.com/maps/d/embed?mid=1M9l3uERqL7DnB8ID89bVfPnQZAgC6vRN'),
+#         Activity(title='Running on the sidewalk.', 
+#             description='I ran fast today.',
+#             distance=2, time=20,
+#             user_id=4),
+#         Activity(title='Berlin Marathon', 
+#             description='Not bad for my first marathon',
+#             distance=26.4, time=243,
+#             user_id=5,
+#             gpx_file='https://www.google.com/maps/d/embed?mid=1e5LgIAckPl9KcTMT2Z-8BL64NEryO6k-'),
+#     ]
 
-    db.session.add_all(activity)
+#     db.session.add_all(activity)
 
-    db.session.commit()
+#     db.session.commit()
 
-def seed_kudos():
+# def seed_kudos():
 
-    kudos = [
-        Kudos(user_id=1, activity_id=1), 
-        Kudos(user_id=1, activity_id=2), 
-        Kudos(user_id=1, activity_id=3), 
-        Kudos(user_id=1, activity_id=4), 
-        Kudos(user_id=2, activity_id=1), 
-        Kudos(user_id=2, activity_id=2), 
-        Kudos(user_id=2, activity_id=3), 
-        Kudos(user_id=2, activity_id=4), 
-        Kudos(user_id=1, activity_id=7), 
-        Kudos(user_id=2, activity_id=7), 
-        Kudos(user_id=3, activity_id=7), 
-        Kudos(user_id=4, activity_id=7), 
-        Kudos(user_id=5, activity_id=3), 
-        Kudos(user_id=5, activity_id=4), 
-        Kudos(user_id=5, activity_id=5), 
-        Kudos(user_id=5, activity_id=6), 
-        Kudos(user_id=4, activity_id=3), 
-        Kudos(user_id=4, activity_id=4), 
-        Kudos(user_id=4, activity_id=5), 
-        Kudos(user_id=4, activity_id=6), 
-        Kudos(user_id=3, activity_id=1), 
-        Kudos(user_id=3, activity_id=2), 
-        Kudos(user_id=3, activity_id=3), 
-        Kudos(user_id=3, activity_id=4), 
-    ]
+#     kudos = [
+#         Kudos(user_id=1, activity_id=1), 
+#         Kudos(user_id=1, activity_id=2), 
+#         Kudos(user_id=1, activity_id=3), 
+#         Kudos(user_id=1, activity_id=4), 
+#         Kudos(user_id=2, activity_id=1), 
+#         Kudos(user_id=2, activity_id=2), 
+#         Kudos(user_id=2, activity_id=3), 
+#         Kudos(user_id=2, activity_id=4), 
+#         Kudos(user_id=1, activity_id=7), 
+#         Kudos(user_id=2, activity_id=7), 
+#         Kudos(user_id=3, activity_id=7), 
+#         Kudos(user_id=4, activity_id=7), 
+#         Kudos(user_id=5, activity_id=3), 
+#         Kudos(user_id=5, activity_id=4), 
+#         Kudos(user_id=5, activity_id=5), 
+#         Kudos(user_id=5, activity_id=6), 
+#         Kudos(user_id=4, activity_id=3), 
+#         Kudos(user_id=4, activity_id=4), 
+#         Kudos(user_id=4, activity_id=5), 
+#         Kudos(user_id=4, activity_id=6), 
+#         Kudos(user_id=3, activity_id=1), 
+#         Kudos(user_id=3, activity_id=2), 
+#         Kudos(user_id=3, activity_id=3), 
+#         Kudos(user_id=3, activity_id=4), 
+#     ]
 
-    db.session.add_all(kudos)
+#     db.session.add_all(kudos)
 
-    db.session.commit()
+#     db.session.commit()
 
-def seed_comments():
+# def seed_comments():
 
-    comment = [
-        Comment(text='Wow! You did a really great job.', user_id=1, activity_id=2),
-        Comment(text='Wow! You did a really great job.', user_id=1, activity_id=3),
-        Comment(text='Wow! You did a really great job.', user_id=1, activity_id=4),
-        Comment(text='Wow! You did a really great job.', user_id=1, activity_id=5),
-        Comment(text='Wow! You did a really great job.', user_id=1, activity_id=6),
-        Comment(text='Wow! You did a really great job.', user_id=1, activity_id=7),
-        Comment(text='Wow! Really impressive time.', user_id=2, activity_id=7),
-        Comment(text='I knew you could do it!', user_id=3, activity_id=7),
-        Comment(text='Great Job!', user_id=4, activity_id=7),
-        Comment(text='Way to go!', user_id=5, activity_id=3),
-        Comment(text='Yayy! You did it', user_id=4, activity_id=1),
-    ]
+#     comment = [
+#         Comment(text='Wow! You did a really great job.', user_id=1, activity_id=2),
+#         Comment(text='Wow! You did a really great job.', user_id=1, activity_id=3),
+#         Comment(text='Wow! You did a really great job.', user_id=1, activity_id=4),
+#         Comment(text='Wow! You did a really great job.', user_id=1, activity_id=5),
+#         Comment(text='Wow! You did a really great job.', user_id=1, activity_id=6),
+#         Comment(text='Wow! You did a really great job.', user_id=1, activity_id=7),
+#         Comment(text='Wow! Really impressive time.', user_id=2, activity_id=7),
+#         Comment(text='I knew you could do it!', user_id=3, activity_id=7),
+#         Comment(text='Great Job!', user_id=4, activity_id=7),
+#         Comment(text='Way to go!', user_id=5, activity_id=3),
+#         Comment(text='Yayy! You did it', user_id=4, activity_id=1),
+#     ]
 
-    db.session.add_all(comment)
+#     db.session.add_all(comment)
 
-    db.session.commit()
+#     db.session.commit()
 
 # Uses a raw SQL query to TRUNCATE the users table.
 # SQLAlchemy doesn't have a built in function to do this
@@ -154,14 +154,14 @@ def undo_users():
     db.session.execute('TRUNCATE users;')
     db.session.commit()
 
-def undo_activities():
-    db.session.execute('TRUNCATE activities;')
-    db.session.commit()
+# def undo_activities():
+#     db.session.execute('TRUNCATE activities;')
+#     db.session.commit()
 
-def undo_kudos():
-    db.session.execute('TRUNCATE kudos;')
-    db.session.commit()
+# def undo_kudos():
+#     db.session.execute('TRUNCATE kudos;')
+#     db.session.commit()
 
-def undo_comments():
-    db.session.execute('TRUNCATE comments;')
-    db.session.commit()
+# def undo_comments():
+#     db.session.execute('TRUNCATE comments;')
+#     db.session.commit()
