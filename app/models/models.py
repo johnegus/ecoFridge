@@ -19,7 +19,13 @@ class GroceryType(db.Model):
     image = db.Column(db.String(255))
     days_to_expiry = db.Column(db.Integer, nullable=False)
 
-
+    def to_dict(self):
+        return {
+          "id": self.id,
+          "type": self.type,
+          "image": self.image,
+          "days_to_expiry": self.days_to_expiry,
+        }
 
 class Grocery(db.Model):
     __tablename__ = "groceries"
@@ -28,10 +34,18 @@ class Grocery(db.Model):
     item_name = db.Column(db.String(50), nullable=False)
     grocery_types_id = db.Column(db.Integer, db.ForeignKey("grocery_types.id"), nullable=True)
     createdAt = db.Column(db.DateTime, server_default=db.func.now())
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable = False)
 
     type = db.relationship("GroceryType")
     users = db.relationship("User", secondary=grocery_users, back_populates="groceries")
 
+    def to_dict(self):
+        return {
+          "id": self.id,
+          "item_name": self.item_name,
+          "grocery_types_id": self.grocery_types_id,
+          "createdAt": self.createdAt,
+        }
 
 class User(db.Model, UserMixin):
     __tablename__ = "users"
