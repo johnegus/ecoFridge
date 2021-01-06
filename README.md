@@ -1,5 +1,5 @@
-# ECOFridge
-![ERD](/react-app/public/ecofridge.png)
+# ECOFridge ![ERD](/react-app/public/ecofridge.png)
+
 
 ECOFridge is a sustainability minded dashboard for users to reduce wasted grocery items. ECOFridge visually prioritizes items that will parish first in the user’s refrigerator or pantry, and help users to make informed decisions when creating a grocery list to utilizes items that could otherwise be wasted. 
 
