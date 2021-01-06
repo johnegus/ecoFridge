@@ -1,5 +1,5 @@
 from werkzeug.security import generate_password_hash
-from app.models import db, User
+from app.models import db, User, GroceryType, Grocery
 
 # Adds a demo user, you can add other users here if you want
 def seed_users():
@@ -93,38 +93,42 @@ def seed_users():
 
 #     db.session.commit()
 
-# def seed_kudos():
+def seed_grocery_types():
 
-#     kudos = [
-#         Kudos(user_id=1, activity_id=1), 
-#         Kudos(user_id=1, activity_id=2), 
-#         Kudos(user_id=1, activity_id=3), 
-#         Kudos(user_id=1, activity_id=4), 
-#         Kudos(user_id=2, activity_id=1), 
-#         Kudos(user_id=2, activity_id=2), 
-#         Kudos(user_id=2, activity_id=3), 
-#         Kudos(user_id=2, activity_id=4), 
-#         Kudos(user_id=1, activity_id=7), 
-#         Kudos(user_id=2, activity_id=7), 
-#         Kudos(user_id=3, activity_id=7), 
-#         Kudos(user_id=4, activity_id=7), 
-#         Kudos(user_id=5, activity_id=3), 
-#         Kudos(user_id=5, activity_id=4), 
-#         Kudos(user_id=5, activity_id=5), 
-#         Kudos(user_id=5, activity_id=6), 
-#         Kudos(user_id=4, activity_id=3), 
-#         Kudos(user_id=4, activity_id=4), 
-#         Kudos(user_id=4, activity_id=5), 
-#         Kudos(user_id=4, activity_id=6), 
-#         Kudos(user_id=3, activity_id=1), 
-#         Kudos(user_id=3, activity_id=2), 
-#         Kudos(user_id=3, activity_id=3), 
-#         Kudos(user_id=3, activity_id=4), 
-#     ]
+    grocery_type = [
+        GroceryType(type='Apples', days_to_expiry=28),
+        GroceryType(type='Avocados', days_to_expiry=21),
+        GroceryType(type='Bananas', days_to_expiry=21),
+        GroceryType(type='Blueberries', days_to_expiry=7), 
+        GroceryType(type='Citrus fruits - orange, grapefruit, clementines, etc.', days_to_expiry=10),
+        GroceryType(type='Dried fruit', days_to_expiry=180), 
+        GroceryType(type='Grapes', days_to_expiry=7),
+        GroceryType(type='Melons', days_to_expiry=14),
+        GroceryType(type='Peaches, nectarines, plums or pears', days_to_expiry=3), 
+        GroceryType(type='Pineapple', days_to_expiry=5),
+        GroceryType(type='Strawberries', days_to_expiry=2),
+        GroceryType(type='Asparagus', days_to_expiry=3), 
+        GroceryType(type='Bagged greens', days_to_expiry=3), 
+        GroceryType(type='Broccoli', days_to_expiry=3), 
+        GroceryType(type='Brussels sprouts', days_to_expiry=3), 
+        GroceryType(type='Cabbage', days_to_expiry=7), 
+        GroceryType(type='Carrots', days_to_expiry=14), 
+        GroceryType(type='Cauliflower', days_to_expiry=3), 
+        GroceryType(type='Celery', days_to_expiry=7), 
+        GroceryType(type='Corn on the cob', days_to_expiry=1), 
+        GroceryType(type='Cucumbers', days_to_expiry=4), 
+        GroceryType(type='Dried beans, lentils or split peas (cooked)', days_to_expiry=3),
+        GroceryType(type='Onions', days_to_expiry=60),
+        GroceryType(type='Potatoes', days_to_expiry=300),
+        GroceryType(type='Spinach or leaf lettuce', days_to_expiry=3),
+        GroceryType(type='Summer squash or zucchini', days_to_expiry=4), 
+        GroceryType(type='Tomatoes', days_to_expiry=1), 
+        GroceryType(type='Winter squash', days_to_expiry=7),   
+    ]
 
-#     db.session.add_all(kudos)
+    db.session.add_all(grocery_type)
 
-#     db.session.commit()
+    db.session.commit()
 
 # def seed_comments():
 
@@ -154,9 +158,9 @@ def undo_users():
     db.session.execute('TRUNCATE users;')
     db.session.commit()
 
-# def undo_activities():
-#     db.session.execute('TRUNCATE activities;')
-#     db.session.commit()
+def undo_grocery_types():
+    db.session.execute('TRUNCATE grocery_types;')
+    db.session.commit()
 
 # def undo_kudos():
 #     db.session.execute('TRUNCATE kudos;')

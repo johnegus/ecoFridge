@@ -12,7 +12,6 @@ import { authenticate, signUp } from "./services/auth";
 import { CreateActivityForm } from "./components/create-activity/CreateActivityForm";
 import HomePage from "./components/HomePage";
 import { Activity } from "./components/ActivityDetail/Activity";
-import { ActivityFeed } from "./components/activities-feed/Activities";
 
 
 function App() {
