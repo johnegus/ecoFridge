@@ -12,7 +12,7 @@ grocery_routes = Blueprint('groceries', __name__)
 def get_all_groceries():
     try:
         groceries = Grocery.query.order_by(Grocery.createdAt.desc()).all()
-        grocery_dicts = [grocery.to_user_dict() for grocery in groceries]
+        grocery_dicts = [grocery.to_dict() for grocery in groceries]
         # filter by following and date descending max 15 (.all().order_by(Activity.created_date.desc()))
         grocery_json = jsonify({'groceries': grocery_dicts})
         return grocery_json

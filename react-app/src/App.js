@@ -5,6 +5,7 @@ import SignInSide from "./components/sign-in-side/SignInSide";
 import SignUp from "./components/sign-up/SignUp";
 import NavBar from "./components/NavBar";
 import Dashboard from './components/dashboard/Dashboard'
+import Checkout from './components/checkout/Checkout'
 import ProtectedRoute from "./components/auth/ProtectedRoute";
 import UsersList from "./components/UsersList";
 import User from "./components/User/User";
@@ -54,8 +55,8 @@ function App() {
         <User />
       </ProtectedRoute>
       <Switch>
-      <ProtectedRoute path="/activities/new" exact={true} authenticated={authenticated}>
-        <CreateActivityForm />
+      <ProtectedRoute path="/groceries/new" exact={true} authenticated={authenticated}>
+        <Checkout />
       </ProtectedRoute>
       <ProtectedRoute path="/activities/:activityId" exact={true} authenticated={authenticated}>
         <Activity />

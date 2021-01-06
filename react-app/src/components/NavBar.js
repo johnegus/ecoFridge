@@ -102,9 +102,9 @@ const NavBar = ({ authenticated, setAuthenticated }) => {
             : "" }
           {authenticated ? 
           <>
-            <NavLink to="/activities/new" exact={true} activeClassName="active">
+            <NavLink to="/groceries/new" exact={true} activeClassName="active">
               <Buttons>
-                New Activity
+                Buy Groceries
               </Buttons>
             </NavLink>
             <NavLink to={`/users/${userId}`} exact={true} activeClassName="active">

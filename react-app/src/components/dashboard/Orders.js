@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, { useState, useEffect } from 'react';
 import Link from '@material-ui/core/Link';
 import { makeStyles } from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
@@ -6,7 +6,10 @@ import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
+import CircularProgress from '@material-ui/core/CircularProgress';
 import Title from './Title';
+import './mini-profile.css'
+
 
 // Generate Order Data
 function createData(id, date, name, shipTo, paymentMethod, amount) {
@@ -61,27 +64,57 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Orders() {
   const classes = useStyles();
+
+  const [loaded, setLoaded] = useState(false);
+    const [groceries, setGroceries] = useState({});
+
+  
+    useEffect(() => {
+      fetch('/api/groceries').then(res =>
+        res.json().then(data => {
+            setGroceries(data.groceries)
+            
+            setLoaded(true);
+        })
+        )
+    }, [])
+    
+    if (!loaded ) {
+      return (
+        <>
+        
+        <main className="centered middled">
+          <div><b>Fetching grocery data...</b></div>
+            
+          <CircularProgress />
+          
+          </main>
+    
+        </>
+        )
+      }
+
   return (
     <React.Fragment>
       <Title>Recent Orders</Title>
       <Table size="small">
         <TableHead>
           <TableRow>
-            <TableCell>Date</TableCell>
-            <TableCell>Name</TableCell>
-            <TableCell>Ship To</TableCell>
-            <TableCell>Payment Method</TableCell>
+            <TableCell>Date Purchased</TableCell>
+            <TableCell>Item Name</TableCell>
+            <TableCell>Type</TableCell>
+            <TableCell>Expires</TableCell>
             <TableCell align="right">Sale Amount</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
-          {rows.map((row) => (
-            <TableRow key={row.id}>
-              <TableCell>{row.date}</TableCell>
-              <TableCell>{row.name}</TableCell>
-              <TableCell>{row.shipTo}</TableCell>
-              <TableCell>{row.paymentMethod}</TableCell>
-              <TableCell align="right">{`$${row.amount}`}</TableCell>
+          {groceries.map((grocery) => (
+            <TableRow key={grocery.id}>
+              <TableCell>{grocery.createdAt}</TableCell>
+              <TableCell>{grocery.item_name}</TableCell>
+              <TableCell>{grocery.grocery_types_id}</TableCell>
+              <TableCell>{grocery.grocery_types_id}</TableCell>
+              <TableCell align="right">{`$????`}</TableCell>
             </TableRow>
           ))}
         </TableBody>
