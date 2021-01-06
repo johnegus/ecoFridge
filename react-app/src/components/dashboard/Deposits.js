@@ -22,9 +22,9 @@ export default function Deposits() {
   const classes = useStyles();
   const history = useHistory();
   const [user, setUser] = useState({})
-  // const [followingNum, setFollowingNum] = useState(0);
-  // const [followersNum, setFollowersNum] = useState(0);
-  // const [activities, setActivities] = useState(0);
+  const year = new Date().getFullYear();
+  const month =new Date().getMonth() + 1;
+  const date = new Date().getDate()
     
     useEffect(() => {
        let user = localStorage.getItem('userId');
@@ -54,20 +54,9 @@ export default function Deposits() {
                 <img src={profile} alt='stock profile' />
             )}
             <h2 id={user.id} onClick={handleClick}>{user.first_name} {user.last_name}</h2>
-            {/* <div className='miniInfo'>
-                <div>
-                    <h6>Following</h6>
-                    <h4>{followingNum}</h4>
-                </div>
-                <div>
-                    <h6>Followers</h6>
-                    <h4>{followersNum}</h4>
-                </div>
-                <div>
-                    <h6>Activities</h6>
-                    <h4>{activities}</h4>
-                </div>
-            </div> */}
+            <Typography color="textSecondary" className={classes.depositContext}>
+            Today is {month + '/' + date + '/' + year}
+            </Typography>
         </div>
     </React.Fragment>
   );

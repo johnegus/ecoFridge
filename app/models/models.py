@@ -47,6 +47,15 @@ class Grocery(db.Model):
           "createdAt": self.createdAt,
         }
 
+    def to_type_dict(self):
+        return {
+          "id": self.id,
+          "item_name": self.item_name,
+          "grocery_types_id": self.grocery_types_id,
+          "createdAt": self.createdAt,
+          "type": self.type.to_dict()
+        }
+
 class User(db.Model, UserMixin):
     __tablename__ = "users"
 

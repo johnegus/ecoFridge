@@ -98,6 +98,31 @@
     align-items: center;
   }
 
-  .centered {
+.centered {
     justify-content: center;
   }
+
+.dayslow {
+    color: red;
+}
+
+.oversevendays {
+    color: green;
+}
+
+.chart-spectrum {
+background: rgb(250,2,2);
+background: linear-gradient(90deg, rgba(250,2,2,1) 0%, rgba(10,121,158,1) 50%, rgba(0,255,139,1) 100%);
+}
+
+.spectrum-container {
+    display: flex;
+}
+
+.spectrum-image img {
+    width: 100px;
+    height: 100px;
+    background-color: white;
+    border-radius: 50%;
+    box-shadow: 0px 5px 3px 3px lightgray;
+}

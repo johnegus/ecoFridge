@@ -1,7 +1,10 @@
-import * as React from 'react';
+import React, { useState, useEffect } from 'react';
 import { useTheme } from '@material-ui/core/styles';
-import { LineChart, Line, XAxis, YAxis, Label, ResponsiveContainer } from 'recharts';
 import Title from './Title';
+import './mini-profile.css'
+import CircularProgress from '@material-ui/core/CircularProgress';
+import fridge from '../dashboard/fridge.png';
+
 
 // Generate Sales Data
 function createData(time, amount) {
@@ -22,41 +25,57 @@ const data = [
 
 export default function Chart() {
   const theme = useTheme();
+  const [loaded, setLoaded] = useState(false);
+  const [groceries, setGroceries] = useState({});
+  useEffect(() => {
+    fetch('/api/groceries').then(res =>
+      res.json().then(data => {
+          setGroceries(data.groceries)
+          
+          setLoaded(true);
+      })
+      )
+  }, [])
+  
+  if (!loaded ) {
+    return (
+      <>
+      
+      <main className="centered middled">
+        <div><b>Fetching grocery data...</b></div>
+          
+        <CircularProgress />
+        
+        </main>
+  
+      </>
+      )
+    }
 
   return (
     <React.Fragment>
-      <Title>Today</Title>
-      <ResponsiveContainer>
-        <LineChart
-          data={data}
-          margin={{
-            top: 16,
-            right: 16,
-            bottom: 0,
-            left: 24,
-          }}
-        >
-          <XAxis dataKey="time" stroke={theme.palette.text.secondary} />
-          <YAxis stroke={theme.palette.text.secondary}>
-            <Label
-              angle={270}
-              position="left"
-              style={{
-                textAnchor: 'middle',
-                fill: theme.palette.text.primary,
-              }}
-            >
-              Sales ($)
-            </Label>
-          </YAxis>
-          <Line
-            type="monotone"
-            dataKey="amount"
-            stroke={theme.palette.primary.main}
-            dot={false}
-          />
-        </LineChart>
-      </ResponsiveContainer>
+      <div className='spectrum-container'>
+      {groceries.map((grocery) => (
+            <div className='spectrum-children' key={grocery.id}>
+              
+              {grocery.item_name}
+              
+               
+                <div className={
+                grocery.type.days_to_expiry < 7 
+                ? 'dayslow' : 'oversevendays'
+              }>{grocery.type.days_to_expiry} days
+                </div>
+                <div className='spectrum-image'>
+                {grocery.type.image ? (
+                <img src={grocery.type.image} alt='grocery pic' />
+            ) : (
+                <img src={fridge} alt='stock fridge' />
+            )}
+            </div>
+            </div>
+          ))}
+          </div>
     </React.Fragment>
   );
 }
