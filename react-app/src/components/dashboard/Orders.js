@@ -9,6 +9,8 @@ import TableRow from '@material-ui/core/TableRow';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import Title from './Title';
 import './mini-profile.css'
+import { getGroceries } from '../../services/groceries';
+import { DeleteGrocery } from './delete/Delete';
 
 
 function preventDefault(event) {
@@ -26,17 +28,16 @@ export default function Orders() {
 
   const [loaded, setLoaded] = useState(false);
   const [groceries, setGroceries] = useState({});
+  const userId = localStorage.getItem('userId') 
 
-  
-    useEffect(() => {
-      fetch('/api/groceries').then(res =>
-        res.json().then(data => {
-            setGroceries(data.groceries)
-            
-            setLoaded(true);
-        })
-        )
-    }, [])
+  useEffect(() => {
+    (async () => {
+    const response = await getGroceries(userId)
+    setGroceries(response.groceries)
+    setLoaded(true);
+  })()
+  }, [])
+
     
     if (!loaded ) {
       return (
@@ -63,7 +64,7 @@ export default function Orders() {
             <TableCell>Item Name</TableCell>
             <TableCell>Type</TableCell>
             <TableCell>Expires</TableCell>
-            <TableCell align="right">Sale Amount</TableCell>
+            <TableCell align="right">Delete</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
@@ -79,7 +80,7 @@ export default function Orders() {
               }>{grocery.type.days_to_expiry} days
                 </div>
               </TableCell>
-              <TableCell align="right">{`$????`}</TableCell>
+              <TableCell align="right"><DeleteGrocery /></TableCell>
             </TableRow>
           ))}
         </TableBody>

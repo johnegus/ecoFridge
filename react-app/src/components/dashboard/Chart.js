@@ -27,15 +27,18 @@ export default function Chart() {
   const theme = useTheme();
   const [loaded, setLoaded] = useState(false);
   const [groceries, setGroceries] = useState({});
-  useEffect(() => {
-    fetch('/api/groceries').then(res =>
-      res.json().then(data => {
-          setGroceries(data.groceries)
-          
-          setLoaded(true);
-      })
-      )
-  }, [])
+  const userId = localStorage.getItem('userId') 
+
+  
+    useEffect(() => {
+      fetch(`/api/groceries/user/${userId}`).then(res =>
+        res.json().then(data => {
+            setGroceries(data.groceries)
+            
+            setLoaded(true);
+        })
+        )
+    }, [])
   
   if (!loaded ) {
     return (

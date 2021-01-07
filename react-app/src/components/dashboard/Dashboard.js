@@ -188,9 +188,9 @@ export default function Dashboard() {
           <Grid container spacing={3}>
             {/* Chart */}
             <Grid item xs={12} md={8} lg={9}>
-              <Paper className={fixedHeightPaper}>
+              {/* <Paper className={fixedHeightPaper}> */}
                 <Chart />
-              </Paper>
+              {/* </Paper> */}
             </Grid>
             {/* Recent Deposits */}
             <Grid item xs={12} md={4} lg={3}>

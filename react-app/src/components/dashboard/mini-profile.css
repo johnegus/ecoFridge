@@ -110,14 +110,17 @@
     color: green;
 }
 
-.chart-spectrum {
-background: rgb(250,2,2);
-background: linear-gradient(90deg, rgba(250,2,2,1) 0%, rgba(10,121,158,1) 50%, rgba(0,255,139,1) 100%);
-}
+
 
 .spectrum-container {
     display: flex;
+    margin: 10px;
+    padding: 20px;
+    border-radius: 5px;
+    background: rgb(250,2,2);
+    background: linear-gradient(90deg, rgba(250,2,2,1) 0%, rgba(10,121,158,1) 50%, rgba(0,255,139,1) 100%);
 }
+
 
 .spectrum-image img {
     width: 100px;
