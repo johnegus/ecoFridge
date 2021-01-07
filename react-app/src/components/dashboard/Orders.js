@@ -11,6 +11,7 @@ import Title from './Title';
 import './mini-profile.css'
 import { getGroceries } from '../../services/groceries';
 import { DeleteGrocery } from './delete/Delete';
+import { AddGrocery } from './addItem/Add';
 
 
 function preventDefault(event) {
@@ -34,7 +35,7 @@ export default function Orders() {
     (async () => {
     const response = await getGroceries(userId)
     setGroceries(response.groceries)
-    setLoaded(true);
+    setTimeout(function(){ setLoaded(true); }, 500);
   })()
   }, [])
 
@@ -80,9 +81,12 @@ export default function Orders() {
               }>{grocery.type.days_to_expiry} days
                 </div>
               </TableCell>
-              <TableCell align="right"><DeleteGrocery /></TableCell>
+              <TableCell align="right"><DeleteGrocery groceries={groceries} grocery={grocery} setGroceries={setGroceries} /></TableCell>
             </TableRow>
           ))}
+          <TableRow>
+            <AddGrocery />
+          </TableRow>
         </TableBody>
       </Table>
       <div className={classes.seeMore}>

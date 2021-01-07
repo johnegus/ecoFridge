@@ -67,7 +67,7 @@ def post_grocery(user_id):
 
 
 # DELETE an activity
-@grocery_routes.route('/activity/<int:grocery_id>', methods=['DELETE'])
+@grocery_routes.route('/delete/<int:grocery_id>', methods=['DELETE'])
 # @login_required
 def grocery(grocery_id):
     grocery = Grocery.query.filter(Grocery.id == grocery_id).first()
