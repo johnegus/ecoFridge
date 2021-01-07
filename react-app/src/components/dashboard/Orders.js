@@ -11,7 +11,7 @@ import Title from './Title';
 import './mini-profile.css'
 import { getGroceries } from '../../services/groceries';
 import { DeleteGrocery } from './delete/Delete';
-import { AddGrocery } from './addItem/Add';
+import AddGrocery from './addItem/Add';
 
 
 function preventDefault(event) {
@@ -84,16 +84,18 @@ export default function Orders() {
               <TableCell align="right"><DeleteGrocery groceries={groceries} grocery={grocery} setGroceries={setGroceries} /></TableCell>
             </TableRow>
           ))}
-          <TableRow>
-            <AddGrocery />
-          </TableRow>
+          
+            
+          
         </TableBody>
       </Table>
       <div className={classes.seeMore}>
-        <Link color="primary" href="#" onClick={preventDefault}>
-          See more orders
+        <Link color="primary" href="/add" onClick={<AddGrocery />}>
+          Add more Groceries
         </Link>
       </div>
+      <AddGrocery />
+      
     </React.Fragment>
   );
 }

@@ -13,6 +13,7 @@ import { authenticate, signUp } from "./services/auth";
 import { CreateActivityForm } from "./components/create-activity/CreateActivityForm";
 import HomePage from "./components/HomePage";
 import { Activity } from "./components/ActivityDetail/Activity";
+import AddGrocery from "./components/dashboard/addItem/Add";
 
 
 function App() {
@@ -50,6 +51,9 @@ function App() {
       </ProtectedRoute>
       <ProtectedRoute path="/" exact={true} authenticated={authenticated}>
         <Dashboard/>
+      </ProtectedRoute>
+      <ProtectedRoute path="/add" exact={true} authenticated={authenticated}>
+        <AddGrocery />
       </ProtectedRoute>
       <ProtectedRoute path="/users/:userId" exact={true} authenticated={authenticated}>
         <User />

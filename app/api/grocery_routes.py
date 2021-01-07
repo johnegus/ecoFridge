@@ -51,7 +51,7 @@ def get_grocery_item(grocery_id):
         return {'errors': ['An error occurred while retrieving the data']}, 500
 
 
-# POST a new activity for a specific user
+# POST a new grocery for a specific user
 @grocery_routes.route('/new/<int:user_id>', methods=['POST'])
 # @login_required
 def post_grocery(user_id):
