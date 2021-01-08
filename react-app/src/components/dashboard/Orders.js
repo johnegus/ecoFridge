@@ -14,6 +14,7 @@ import { DeleteGrocery } from './delete/Delete';
 import AddGrocery from './addItem/Add';
 import { DataGrid } from '@material-ui/data-grid';
 import { DateDiffInDays } from './dateDiffer/DateDiffInDays';
+import { ExpireCountdown } from './dateDiffer/ExpireCountdown';
 
 
 function preventDefault(event) {
@@ -108,16 +109,10 @@ export default function Orders() {
           {groceries.map((grocery) => (
             <TableRow key={grocery.id}>
               <TableCell>{grocery.createdAt}</TableCell>
-              <TableCell><DateDiffInDays grocery={grocery}/></TableCell>
+              <TableCell><DateDiffInDays grocery={grocery} /></TableCell>
               <TableCell>{grocery.item_name}</TableCell>
               <TableCell>{grocery.type.type}</TableCell>
-              <TableCell> 
-                <div className={
-                grocery.type.days_to_expiry  < 7 
-                ? 'dayslow' : 'oversevendays'
-              }>{grocery.type.days_to_expiry} days
-                </div>
-              </TableCell>
+              <TableCell><ExpireCountdown grocery={grocery} /> </TableCell>
               <TableCell align="right"><DeleteGrocery groceries={groceries} grocery={grocery} setGroceries={setGroceries} /></TableCell>
             </TableRow>
           ))}
