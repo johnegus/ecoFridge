@@ -1,4 +1,4 @@
-@media screen and (min-width: 601px) {
+
 
     .miniProfile {
         background-color: white;
@@ -15,8 +15,8 @@
     }
     
     .miniProfile img {
-        width: 150px;
-        height: 150px;
+        width: 120px;
+        height: 120px;
         background-color: white;
         border-radius: 50%;
         box-shadow: 0px 5px 3px 3px lightgray;
@@ -44,7 +44,7 @@
     .miniInfo h6 {
         font-size: 12px;
     }
-}
+
 
 /* different screen size */
 

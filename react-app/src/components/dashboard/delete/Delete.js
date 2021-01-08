@@ -6,13 +6,15 @@ import { useParams, useHistory } from "react-router-dom";
 
 export const DeleteGrocery = ({grocery, groceries, setGroceries})=> {
     const userId = localStorage.getItem('userId')
-    const history = useHistory()
+    
 
 
     return (
         <>
             <Button onClick={async ()=> {
                               await deleteGrocery(grocery.id)
+                              const response = await getGroceries(userId)
+                            setGroceries(response.groceries)
                               }}>Delete</Button>
         </>
     )

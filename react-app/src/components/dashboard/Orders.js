@@ -28,14 +28,15 @@ export default function Orders() {
   const classes = useStyles();
 
   const [loaded, setLoaded] = useState(false);
-  const [groceries, setGroceries] = useState({});
+  const [groceries, setGroceries] = useState([]);
   const userId = localStorage.getItem('userId') 
 
   useEffect(() => {
     (async () => {
     const response = await getGroceries(userId)
     setGroceries(response.groceries)
-    setTimeout(function(){ setLoaded(true); }, 500);
+    // setTimeout(function(){ setLoaded(true); }, 500);
+    setLoaded(true);
   })()
   }, [])
 
@@ -94,7 +95,7 @@ export default function Orders() {
           Add more Groceries
         </Link>
       </div>
-      <AddGrocery />
+      <AddGrocery groceries={groceries} setGroceries={setGroceries}/>
       
     </React.Fragment>
   );

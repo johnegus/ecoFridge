@@ -1,5 +1,5 @@
 import React, { useState, useEffect} from 'react'
-import { addGrocery } from '../../../services/groceries';
+import { addGrocery, getGroceries } from '../../../services/groceries';
 
 import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
@@ -15,16 +15,20 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function AddGrocery() {
+export default function AddGrocery({groceries, setGroceries}) {
   const classes = useStyles();
+  const newGroceries = [...groceries]
   const [itemName, setItemName] = useState("");
   const [itemType, setItemType] = useState(null);
   const user = localStorage.getItem('userId');
 
   const onAddGrocery = async (e) => {
-    e.preventDefault();
-      const groceryItem = await addGrocery(user, itemName, itemType);
-      return groceryItem
+    
+    
+      await addGrocery(user, itemName, itemType);
+      const response = await getGroceries(user)
+      setGroceries(response.groceries)
+    
     }
 
 
