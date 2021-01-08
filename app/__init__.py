@@ -9,7 +9,7 @@ from .models import db, User
 from .api.user_routes import user_routes
 from .api.auth_routes import auth_routes
 from .api.grocery_routes import grocery_routes
-# from .api.following_routes import following_routes
+from .api.type_routes import type_routes
 # from .api.kudos_routes import kudos_routes
 # from .api.comment_routes import comment_routes
 
@@ -36,7 +36,7 @@ app.config.from_object(Config)
 app.register_blueprint(user_routes, url_prefix='/api/users')
 app.register_blueprint(auth_routes, url_prefix='/api/auth')
 app.register_blueprint(grocery_routes, url_prefix='/api/groceries')
-# app.register_blueprint(following_routes, url_prefix='/api/following')
+app.register_blueprint(type_routes, url_prefix='/api/types')
 # app.register_blueprint(kudos_routes, url_prefix='/api/kudos')
 # app.register_blueprint(comment_routes, url_prefix='/api/comments')
 db.init_app(app)
