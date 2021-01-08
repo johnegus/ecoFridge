@@ -27,16 +27,19 @@ export default function Chart() {
   const theme = useTheme();
   const [loaded, setLoaded] = useState(false);
   const [groceries, setGroceries] = useState({});
+  console.log("Outside: ", localStorage.hasOwnProperty('userId'))
+
   const userId = localStorage.getItem('userId') 
 
-  
     useEffect(() => {
+      console.log("Inside: ", localStorage.hasOwnProperty('userId'))
+
       fetch(`/api/groceries/user/${userId}`).then(res =>
         res.json().then(data => {
             setGroceries(data.groceries)
             
-            setLoaded(true);
-        })
+            setTimeout(function(){ setLoaded(true); }, 500);
+          })
         )
     }, [])
   

@@ -29,22 +29,28 @@ export default function AddGrocery({groceries, setGroceries}) {
     (async () => {
     const response = await getTypes()
     setTypes(response.types)
-    // setTimeout(function(){ setLoaded(true); }, 500);
+    setTimeout(function(){ setLoaded(true); }, 500);
     setLoaded(true);
   })()
   }, [])
-  const defaultProps = {
-    options: types,
-    getOptionLabel: (option) => option.type,
-  };
+  console.log(types)
+  // const defaultProps = {
+  //   options: types,
+  //   getOptionLabel: (option) => option.type,
+  // };
 
   const onAddGrocery = async (e) => {
-      console.log('user: ' + user + 'itemName: ' + itemName + 'itemtype: '+ itemType)
+      console.log('user: ', user, 'itemName: ', itemName, 'itemtype: ', itemType)
     
-      await addGrocery(user, itemName, itemType);
+      await addGrocery(user, itemName, itemType.id);
       const response = await getGroceries(user)
       setGroceries(response.groceries)
     
+    }
+
+    const onUps = (e, newValue) => {
+      console.log('///', newValue);
+      setItemType(newValue);
     }
 
 
@@ -70,15 +76,17 @@ export default function AddGrocery({groceries, setGroceries}) {
           onChange={e => setItemType(e.target.value)}
         /> */}
         <Autocomplete
-        {...defaultProps}
+        options= {types}
+        getOptionLabel= {(option) => option.type}
         id="Item Type"
         debug
         renderInput={(params) => <TextField {...params} label="Item Type" margin="normal" />}
         value={itemType} 
-        onChange={e => setItemType(e.target.value)}
+        onChange={onUps}
       />
-        <Button type="submit">Add Grocery Item</Button>
+        
       </div>
+      <Button type="submit">Add Grocery Item</Button>
     </form>
   );
 }

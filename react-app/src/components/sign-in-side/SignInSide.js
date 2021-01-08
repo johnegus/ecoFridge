@@ -70,11 +70,16 @@ export default function SignInSide({ authenticated, setAuthenticated }) {
   const onLogin = async (e) => {
     e.preventDefault();
     const user = await login(email, password);
+    console.log('outside if', user)
     if (!user.errors) {
-      setAuthenticated(true);
+      
+      console.log('inside if', user)
       localStorage.setItem('userId', user.id);
+      console.log(localStorage.getItem('userId'))
+      setAuthenticated(true);
     } else {
       setErrors(user.errors);
+      console.log('errors', errors)
     }
   };
 

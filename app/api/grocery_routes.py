@@ -8,7 +8,7 @@ grocery_routes = Blueprint('groceries', __name__)
 
 # GET all groceries for a specific user 
 @grocery_routes.route('/user/<int:userId>')
-# @login_required
+@login_required
 def get_all_groceries(userId):
     try:
         groceries = Grocery.query.filter(Grocery.user_id == userId).order_by(Grocery.createdAt.desc()).all()
@@ -23,7 +23,7 @@ def get_all_groceries(userId):
 
 # GET all groceries for a specific user
 @grocery_routes.route('/users/<int:user_id>', methods=['GET'])
-# @login_required
+@login_required
 def get_user_groceries(user_id):
     try:
         groceries = Grocery.query.filter(Grocery.user_id == user_id).all()
@@ -53,7 +53,7 @@ def get_grocery_item(grocery_id):
 
 # POST a new grocery for a specific user
 @grocery_routes.route('/new/<int:user_id>', methods=['POST'])
-# @login_required
+@login_required
 def post_grocery(user_id):
     data = request.json
     grocery = Grocery(
@@ -68,7 +68,7 @@ def post_grocery(user_id):
 
 # DELETE an activity
 @grocery_routes.route('/delete/<int:grocery_id>', methods=['DELETE'])
-# @login_required
+@login_required
 def grocery(grocery_id):
     grocery = Grocery.query.filter(Grocery.id == grocery_id).first()
     db.session.delete(grocery)

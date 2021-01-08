@@ -35,8 +35,8 @@ export default function Orders() {
     (async () => {
     const response = await getGroceries(userId)
     setGroceries(response.groceries)
-    // setTimeout(function(){ setLoaded(true); }, 500);
-    setLoaded(true);
+    setTimeout(function(){ setLoaded(true); }, 500);
+    // setLoaded(true);
   })()
   }, [])
 

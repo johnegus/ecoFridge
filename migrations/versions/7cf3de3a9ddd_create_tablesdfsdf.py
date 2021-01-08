@@ -1,8 +1,8 @@
-"""added changed length of input
+"""create tablesdfsdf
 
-Revision ID: 90a7cb7d0e51
+Revision ID: 7cf3de3a9ddd
 Revises: 
-Create Date: 2021-01-06 10:01:09.350607
+Create Date: 2021-01-08 13:50:01.663798
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = '90a7cb7d0e51'
+revision = '7cf3de3a9ddd'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -43,7 +43,9 @@ def upgrade():
     sa.Column('item_name', sa.String(length=50), nullable=False),
     sa.Column('grocery_types_id', sa.Integer(), nullable=True),
     sa.Column('createdAt', sa.DateTime(), server_default=sa.text('now()'), nullable=True),
+    sa.Column('user_id', sa.Integer(), nullable=False),
     sa.ForeignKeyConstraint(['grocery_types_id'], ['grocery_types.id'], ),
+    sa.ForeignKeyConstraint(['user_id'], ['users.id'], ),
     sa.PrimaryKeyConstraint('id')
     )
     op.create_table('grocery_users',

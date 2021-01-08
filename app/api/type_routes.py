@@ -8,7 +8,7 @@ type_routes = Blueprint('types', __name__)
 
 # GET all grocery types 
 @type_routes.route('/')
-# @login_required
+@login_required
 def types():
     try:
         types = GroceryType.query.order_by(GroceryType.type.asc()).all()
