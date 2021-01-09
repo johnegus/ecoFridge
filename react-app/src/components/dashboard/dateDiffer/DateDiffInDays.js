@@ -21,7 +21,7 @@ export const DateDiffInDays = ({grocery})=> {
         difference = dateDiffInDays(a, b);
     return (
         <>
-            {difference}
+            {difference} days
         </>
     )
 }

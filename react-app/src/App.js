@@ -14,6 +14,7 @@ import { CreateActivityForm } from "./components/create-activity/CreateActivityF
 import HomePage from "./components/HomePage";
 import { Activity } from "./components/ActivityDetail/Activity";
 import AddGrocery from "./components/dashboard/addItem/Add";
+import RecipeSearch from "./components/recipe-search/RecipeSearch";
 
 
 function App() {
@@ -51,6 +52,9 @@ function App() {
       </ProtectedRoute>
       <ProtectedRoute path="/" exact={true} authenticated={authenticated}>
         <Dashboard/>
+      </ProtectedRoute>
+      <ProtectedRoute path="/recipes" exact={true} authenticated={authenticated}>
+        <RecipeSearch />
       </ProtectedRoute>
       <ProtectedRoute path="/add" exact={true} authenticated={authenticated}>
         <AddGrocery />
