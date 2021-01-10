@@ -67,10 +67,8 @@ export default function Chart() {
               {grocery.item_name}
               
                
-                <div className={
-                grocery.type.days_to_expiry < 7 
-                ? 'dayslow' : 'oversevendays'
-              }>{grocery.type.days_to_expiry} days
+                <div 
+              >{grocery.type.days_to_expiry} days
                 </div>
                 <div className='spectrum-image'>
                 {grocery.type.image ? (

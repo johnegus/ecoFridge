@@ -50,105 +50,102 @@ def seed_users():
 
     db.session.commit()
 
-# def seed_activities():
-
-#     activity = [
-#         Activity(title='Running in the park', 
-#             description='It was really nice outside.',
-#             distance=5.1, time=56.3,
-#             user_id=1,
-#             gpx_file='https://www.google.com/maps/d/embed?mid=1h7p1CpCc43ClTdEIH61VpAr3Mbfh-9Ly'),
-#         Activity(title='Running along the river.', 
-#             description='I ran along the river, my feet hurt, but it was good.',
-#             distance=10.1, time=70.3,
-#             user_id=2,
-#             gpx_file='https://www.google.com/maps/d/embed?mid=1sFWFcmleZGX5E9kuWAEAg0UPpSd2O7ON'),
-#         Activity(title='Running downtown', 
-#             description='Tough run, the concrete was hard.',
-#             distance=2.1, time=20,
-#             user_id=3,
-#             gpx_file='https://www.google.com/maps/d/embed?mid=1gP16ZGuGQMG3UGCivwtXsdrWGXi2m-pE'),
-#         Activity(title='Walked.', 
-#             description='I was really tired, so I walked.',
-#             distance=3, time=50.3,
-#             user_id=3,
-#             gpx_file='https://www.google.com/maps/d/embed?mid=1M9l3uERqL7DnB8ID89bVfPnQZAgC6vRN'),
-#         Activity(title='Beach run', 
-#             description='It was HOT',
-#             distance=4.5, time=55,
-#             user_id=4,
-#             gpx_file='https://www.google.com/maps/d/embed?mid=1M9l3uERqL7DnB8ID89bVfPnQZAgC6vRN'),
-#         Activity(title='Running on the sidewalk.', 
-#             description='I ran fast today.',
-#             distance=2, time=20,
-#             user_id=4),
-#         Activity(title='Berlin Marathon', 
-#             description='Not bad for my first marathon',
-#             distance=26.4, time=243,
-#             user_id=5,
-#             gpx_file='https://www.google.com/maps/d/embed?mid=1e5LgIAckPl9KcTMT2Z-8BL64NEryO6k-'),
-#     ]
-
-#     db.session.add_all(activity)
-
-#     db.session.commit()
-
 def seed_grocery_types():
 
     grocery_type = [
-        GroceryType(type='Apples', days_to_expiry=28),
-        GroceryType(type='Avocados', days_to_expiry=21),
-        GroceryType(type='Bananas', days_to_expiry=21),
-        GroceryType(type='Blueberries', days_to_expiry=7), 
-        GroceryType(type='Citrus fruits - orange, grapefruit, clementines, etc.', days_to_expiry=10),
-        GroceryType(type='Dried fruit', days_to_expiry=180), 
-        GroceryType(type='Grapes', days_to_expiry=7),
-        GroceryType(type='Melons', days_to_expiry=14),
-        GroceryType(type='Peaches, nectarines, plums or pears', days_to_expiry=3), 
-        GroceryType(type='Pineapple', days_to_expiry=5),
-        GroceryType(type='Strawberries', days_to_expiry=2),
-        GroceryType(type='Asparagus', days_to_expiry=3), 
-        GroceryType(type='Bagged greens', days_to_expiry=3), 
-        GroceryType(type='Broccoli', days_to_expiry=3), 
-        GroceryType(type='Brussels sprouts', days_to_expiry=3), 
-        GroceryType(type='Cabbage', days_to_expiry=7), 
-        GroceryType(type='Carrots', days_to_expiry=14), 
-        GroceryType(type='Cauliflower', days_to_expiry=3), 
-        GroceryType(type='Celery', days_to_expiry=7), 
-        GroceryType(type='Corn on the cob', days_to_expiry=1), 
-        GroceryType(type='Cucumbers', days_to_expiry=4), 
-        GroceryType(type='Dried beans, lentils or split peas (cooked)', days_to_expiry=3),
-        GroceryType(type='Onions', days_to_expiry=60),
-        GroceryType(type='Potatoes', days_to_expiry=300),
-        GroceryType(type='Spinach or leaf lettuce', days_to_expiry=3),
-        GroceryType(type='Summer squash or zucchini', days_to_expiry=4), 
-        GroceryType(type='Tomatoes', days_to_expiry=1), 
-        GroceryType(type='Winter squash', days_to_expiry=7),   
+        GroceryType(type='Apples', image='https://i.imgur.com/FVf9I61.jpg', days_to_expiry=28),
+        GroceryType(type='Avocados', image='https://i.imgur.com/xjimeYz.jpg', days_to_expiry=21),
+        GroceryType(type='Bananas', image='https://i.imgur.com/qAVaqDE.jpg', days_to_expiry=21),
+        GroceryType(type='Blueberries', image='https://i.imgur.com/sHMxtTP.jpg', days_to_expiry=7), 
+        GroceryType(type='Citrus fruits - orange, grapefruit, clementines, etc.', image='https://i.imgur.com/BaZbcWZ.jpg', days_to_expiry=10),
+        GroceryType(type='Dried fruit', image='https://i.imgur.com/zCtmoN7.jpg', days_to_expiry=180), 
+        GroceryType(type='Grapes', image='https://i.imgur.com/VnAIH5y.jpg', days_to_expiry=7),
+        GroceryType(type='Melons', image='https://i.imgur.com/ZKwZ23R.jpg', days_to_expiry=14),
+        GroceryType(type='Peaches, nectarines, plums or pears', image='https://i.imgur.com/Q0TbeAA.jpg', days_to_expiry=3), 
+        GroceryType(type='Pineapple', image='https://i.imgur.com/Yj0940Q.jpg', days_to_expiry=5),
+        GroceryType(type='Strawberries', image='https://i.imgur.com/OaEx0gn.jpg', days_to_expiry=2),
+        GroceryType(type='Asparagus', image='https://i.imgur.com/y8vfLyN.jpg', days_to_expiry=3), 
+        GroceryType(type='Bagged greens', image='https://i.imgur.com/KBIpQqb.jpg', days_to_expiry=3), 
+        GroceryType(type='Broccoli', image='https://i.imgur.com/bggYZTe.jpg', days_to_expiry=3), 
+        GroceryType(type='Brussels sprouts', image='https://i.imgur.com/qaENyle.jpg', days_to_expiry=3), 
+        GroceryType(type='Cabbage', image='https://i.imgur.com/hL3gJqV.jpg', days_to_expiry=7), 
+        GroceryType(type='Carrots', image='https://i.imgur.com/p5gSJPI.jpg', days_to_expiry=14), 
+        GroceryType(type='Cauliflower', image='https://i.imgur.com/4mH7X54.jpg', days_to_expiry=3), 
+        GroceryType(type='Celery', image='https://i.imgur.com/J1elfV9.jpg', days_to_expiry=7), 
+        GroceryType(type='Corn on the cob', image='https://i.imgur.com/YkOTg4M.jpg', days_to_expiry=1), 
+        GroceryType(type='Cucumbers', image='https://i.imgur.com/XR3S8Q0.jpg', days_to_expiry=4), 
+        GroceryType(type='Dried beans, lentils or split peas (cooked)', image='https://i.imgur.com/YGdwkaO.jpg', days_to_expiry=3),
+        GroceryType(type='Onions', image='https://i.imgur.com/bxCp4pa.jpg', days_to_expiry=60),
+        GroceryType(type='Potatoes', image='https://i.imgur.com/XHIFEmZ.jpg', days_to_expiry=300),
+        GroceryType(type='Spinach or leaf lettuce', image='https://i.imgur.com/Ixv3b6v.jpg', days_to_expiry=3),
+        GroceryType(type='Summer squash or zucchini', image='https://i.imgur.com/RKRRBFj.jpg', days_to_expiry=4), 
+        GroceryType(type='Tomatoes', image='https://i.imgur.com/dJ0Zk0E.jpg', days_to_expiry=1), 
+        GroceryType(type='Winter squash', image='https://i.imgur.com/heOHlqy.jpg', days_to_expiry=7), 
+        GroceryType(type='Butter', image='https://i.imgur.com/1cMcWdJ.jpg', days_to_expiry=31),
+        GroceryType(type='Cheese, hard - Cheddar, Swiss, block Parmesan, etc.', image='https://i.imgur.com/KNNx37B.jpg', days_to_expiry=28), 
+        GroceryType(type='Cheese, processed', image='https://i.imgur.com/cZz1Nl3.jpg', days_to_expiry=21),
+        GroceryType(type='Cheese, shredded - Cheddar, Mozzarella, etc.', image='https://i.imgur.com/L8z4MRr.jpg', days_to_expiry=31), 
+        GroceryType(type='Cheese, soft - Brie, Bel paese, etc.', image='https://i.imgur.com/2VIoLjm.jpg', days_to_expiry=7),
+        GroceryType(type='Cottage or ricotta cheese', image='https://i.imgur.com/ZYHnbJ3.jpg', days_to_expiry=7), 
+        GroceryType(type='Cream cheese', image='https://i.imgur.com/ZYHnbJ3.jpg', days_to_expiry=14),
+        GroceryType(type='Ice cream (freezer)', image='https://i.imgur.com/lK8QykQ.jpg', days_to_expiry=60), 
+        GroceryType(type='Margarine', image='https://i.imgur.com/1cMcWdJ.jpg', days_to_expiry=180),
+        GroceryType(type='Milk', image='https://i.imgur.com/BdzPlv3.jpg', days_to_expiry=7),  
+        GroceryType(type='Milk - canned evaporated or condensed', image='https://i.imgur.com/BdzPlv3.jpg', days_to_expiry=4), 
+        GroceryType(type='Non-dairy milk alternates - almond, soy, rice, etc.', image='https://i.imgur.com/BdzPlv3.jpg', days_to_expiry=7), 
+        GroceryType(type='Sour cream', image='https://i.imgur.com/ZYHnbJ3.jpg', days_to_expiry=7), 
+        GroceryType(type='Fresh beef, veal, lamb or pork (steaks, chops or roasts)', image='https://i.imgur.com/rt7BERZ.jpg', days_to_expiry=3), 
+        GroceryType(type='Ground beef, turkey, veal, pork or lamb, stew meat', image='https://i.imgur.com/rt7BERZ.jpg', days_to_expiry=1), 
+        GroceryType(type='Bacon', image='https://i.imgur.com/oL9teA8.jpg', days_to_expiry=7), 
+        GroceryType(type='Bacon, fully cooked and shelf stable', image='https://i.imgur.com/oL9teA8.jpg', days_to_expiry=5), 
+        GroceryType(type='Sausage, raw from chicken, turkey, pork or beef', image='https://i.imgur.com/Y69uwRB.jpg', days_to_expiry=1), 
+        GroceryType(type='Sausage, fully cooked, from chicken, turkey, pork or beef', image='https://i.imgur.com/Y69uwRB.jpg', days_to_expiry=7), 
+        GroceryType(type='Ham, canned, labeled "Keep Refrigerated"', image='https://i.imgur.com/hzRsvEl.jpg', days_to_expiry=3), 
+        GroceryType(type='Ham, fully cooked, store-wrapped, slices, half or spiral cut', image='https://i.imgur.com/hzRsvEl.jpg', days_to_expiry=3), 
+        GroceryType(type='Ham, fully cooked, store-wrapped, whole', image='https://i.imgur.com/hzRsvEl.jpg', days_to_expiry=7), 
+        GroceryType(type='Hot dogs', image='https://i.imgur.com/sOPIuql.jpg', days_to_expiry=7), 
+        GroceryType(type='Lunch meats; sliced at store or deli', image='https://i.imgur.com/qz1wFAK.jpg', days_to_expiry=3), 
+        GroceryType(type='Lunch meats; prepackaged', image='https://i.imgur.com/qz1wFAK.jpg', days_to_expiry=7), 
+        GroceryType(type='Venison', image='https://i.imgur.com/rt7BERZ.jpg', days_to_expiry=2), 
+        GroceryType(type='Chicken or turkey', image='https://i.imgur.com/V5yF8aX.jpg', days_to_expiry=1), 
+        GroceryType(type='Commercially canned meat, poultry or fish', image='https://i.imgur.com/V5yF8aX.jpg', days_to_expiry=3), 
+        GroceryType(type='Fresh fish or shellfish', image='https://i.imgur.com/cWS2n2V.jpg', days_to_expiry=1), 
+        GroceryType(type='Eggs, raw in shell', image='https://i.imgur.com/aDMneVr.jpg', days_to_expiry=21), 
+        GroceryType(type='Raw egg yolks, whites', image='https://i.imgur.com/aDMneVr.jpg', days_to_expiry=7), 
+        GroceryType(type='Hard cooked eggs', image='https://i.imgur.com/aDMneVr.jpg', days_to_expiry=2), 
+        GroceryType(type='Liquid pasteurized eggs or egg substitutes (unopened)', image='https://i.imgur.com/aDMneVr.jpg', days_to_expiry=10), 
+        GroceryType(type='Liquid pasteurized eggs or egg substitutes (opened)', image='https://i.imgur.com/aDMneVr.jpg', days_to_expiry=3), 
+        GroceryType(type='Leftovers with meat, fish, poultry or egg', image='https://i.imgur.com/V5yF8aX.jpg', days_to_expiry=3), 
+        GroceryType(type='Bread', image='https://i.imgur.com/pNyGInN.jpg', days_to_expiry=14), 
+        GroceryType(type='Cakes and muffins, baked commercially', image='https://i.imgur.com/pNyGInN.jpg', days_to_expiry=3), 
+        GroceryType(type='Tortillas, flour', image='https://i.imgur.com/i0W3PUM.jpg', days_to_expiry=7), 
+        GroceryType(type='Pickles', image='https://i.imgur.com/1W0nwbe.jpg', days_to_expiry=30), 
+        GroceryType(type='Spaghetti or pizza sauce in jars', image='https://i.imgur.com/TVpAKUq.jpg', days_to_expiry=4), 
+        GroceryType(type='Salsa, picante and taco sauces', image='https://i.imgur.com/TVpAKUq.jpg', days_to_expiry=30), 
+        GroceryType(type='Hummus (traditional - no preservatives, not pasteurized)', image='https://i.imgur.com/TVpAKUq.jpg', days_to_expiry=7), 
+        GroceryType(type='Mayonnaise (commercial)', image='https://i.imgur.com/TVpAKUq.jpg', days_to_expiry=60),
+        GroceryType(type='Salad dressings (commercial, bottled)', image='https://i.imgur.com/TVpAKUq.jpg', days_to_expiry=30),
+        
     ]
 
     db.session.add_all(grocery_type)
 
     db.session.commit()
 
-# def seed_comments():
+def seed_groceries():
 
-#     comment = [
-#         Comment(text='Wow! You did a really great job.', user_id=1, activity_id=2),
-#         Comment(text='Wow! You did a really great job.', user_id=1, activity_id=3),
-#         Comment(text='Wow! You did a really great job.', user_id=1, activity_id=4),
-#         Comment(text='Wow! You did a really great job.', user_id=1, activity_id=5),
-#         Comment(text='Wow! You did a really great job.', user_id=1, activity_id=6),
-#         Comment(text='Wow! You did a really great job.', user_id=1, activity_id=7),
-#         Comment(text='Wow! Really impressive time.', user_id=2, activity_id=7),
-#         Comment(text='I knew you could do it!', user_id=3, activity_id=7),
-#         Comment(text='Great Job!', user_id=4, activity_id=7),
-#         Comment(text='Way to go!', user_id=5, activity_id=3),
-#         Comment(text='Yayy! You did it', user_id=4, activity_id=1),
-#     ]
+    grocery = [
+        Grocery(user_id=1, item_name='Aparagus', grocery_types_id=12),
+        Grocery(user_id=1, item_name='Apples', grocery_types_id=1),
+        Grocery(user_id=1, item_name='Avocados', grocery_types_id=2),
+        Grocery(user_id=1, item_name='Bananas', grocery_types_id=3),
+        Grocery(user_id=1, item_name='Blueberries', grocery_types_id=4),
+   
+    ]
 
-#     db.session.add_all(comment)
+    db.session.add_all(grocery)
 
-#     db.session.commit()
+    db.session.commit()
 
 # Uses a raw SQL query to TRUNCATE the users table.
 # SQLAlchemy doesn't have a built in function to do this
@@ -162,10 +159,6 @@ def undo_grocery_types():
     db.session.execute('TRUNCATE grocery_types;')
     db.session.commit()
 
-# def undo_kudos():
-#     db.session.execute('TRUNCATE kudos;')
-#     db.session.commit()
-
-# def undo_comments():
-#     db.session.execute('TRUNCATE comments;')
-#     db.session.commit()
+def undo_groceries():
+    db.session.execute('TRUNCATE groceries;')
+    db.session.commit()
