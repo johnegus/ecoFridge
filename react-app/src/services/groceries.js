@@ -21,7 +21,6 @@ export const deleteGrocery = async (id) => {
 
 
 export const addGrocery = async (user_id, item_name, grocery_types_id) => {
-  console.log(user_id, item_name, grocery_types_id)
   const response = await fetch(`/api/groceries/new/${user_id}`, {
     method: "POST",
     headers: {

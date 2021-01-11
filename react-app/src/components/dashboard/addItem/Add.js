@@ -33,18 +33,15 @@ export default function AddGrocery({groceries, setGroceries}) {
     setLoaded(true);
   })()
   }, [])
-  console.log(types)
-  // const defaultProps = {
-  //   options: types,
-  //   getOptionLabel: (option) => option.type,
-  // };
 
-  const onAddGrocery = async (e) => {
-      console.log('user: ', user, 'itemName: ', itemName, 'itemtype: ', itemType)
-    
+  const onAddGrocery = async (e) => {  
+      // e.preventdefault()  
       await addGrocery(user, itemName, itemType.id);
+      
       const response = await getGroceries(user)
+      
       setGroceries(response.groceries)
+      
     
     }
 

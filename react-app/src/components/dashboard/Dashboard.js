@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, { useState, useEffect } from 'react';
 import clsx from 'clsx';
 import { makeStyles } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -22,6 +22,9 @@ import { mainListItems, secondaryListItems } from './listItems';
 import Deposits from './Deposits';
 import Orders from './Orders';
 import Chart from './Chart';
+import CircularProgress from '@material-ui/core/CircularProgress';
+import { getGroceries } from '../../services/groceries';
+
 
 function Copyright() {
   return (
@@ -127,44 +130,41 @@ const useStyles = makeStyles((theme) => ({
 export default function Dashboard() {
   const classes = useStyles();
   const [open, setOpen] = React.useState(true);
+  const [loaded, setLoaded] = useState(false);
+  const userId = localStorage.getItem('userId') 
+  const [groceries, setGroceries] = useState([]);
   const toggleDrawer = () => {
     setOpen(!open);
   };
   const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
 
+  useEffect(() => {
+    (async () => {
+    const response = await getGroceries(userId)
+    setGroceries(response.groceries)
+    setLoaded(true)  
+  })()
+  }, [])
+
+  if (!loaded ) {
+    return (
+      <>
+      
+      <main className="centered middled">
+        <div><b>Fetching grocery data...</b></div>
+          
+        <CircularProgress />
+        
+        </main>
+  
+      </>
+      )
+    }
+
   return (
     <div className={classes.root}>
       <CssBaseline />
-      {/* <AppBar
-        position="absolute"
-        className={clsx(classes.appBar, open && classes.appBarShift)}
-      >
-        <Toolbar className={classes.toolbar}>
-          <IconButton
-            edge="start"
-            color="inherit"
-            aria-label="open drawer"
-            onClick={toggleDrawer}
-            className={clsx(classes.menuButton, open && classes.menuButtonHidden)}
-          >
-            <MenuIcon />
-          </IconButton>
-          <Typography
-            component="h1"
-            variant="h6"
-            color="inherit"
-            noWrap
-            className={classes.title}
-          >
-            Dashboard
-          </Typography>
-          <IconButton color="inherit">
-            <Badge badgeContent={4} color="secondary">
-              <NotificationsIcon />
-            </Badge>
-          </IconButton>
-        </Toolbar>
-      </AppBar> */}
+  
       <Drawer
         variant="permanent"
         classes={{
@@ -189,7 +189,7 @@ export default function Dashboard() {
             {/* Chart */}
             <Grid item xs={12} md={8} lg={9}>
               {/* <Paper className={fixedHeightPaper}> */}
-                <Chart />
+                <Chart groceries={groceries} setGroceries={setGroceries}/>
               {/* </Paper> */}
             </Grid>
             {/* Recent Deposits */}
@@ -201,7 +201,7 @@ export default function Dashboard() {
             {/* Recent Orders */}
             <Grid item xs={12}>
               <Paper className={classes.paper}>
-                <Orders />
+                <Orders groceries={groceries} setGroceries={setGroceries}/>
               </Paper>
             </Grid>
           </Grid>

@@ -4,6 +4,7 @@ import Title from './Title';
 import './mini-profile.css'
 import CircularProgress from '@material-ui/core/CircularProgress';
 import fridge from '../dashboard/fridge.png';
+import { DeleteGrocery } from './delete/Delete';
 
 
 // Generate Sales Data
@@ -23,40 +24,10 @@ const data = [
   createData('24:00', undefined),
 ];
 
-export default function Chart() {
-  const theme = useTheme();
-  const [loaded, setLoaded] = useState(false);
-  const [groceries, setGroceries] = useState({});
-  console.log("Outside: ", localStorage.hasOwnProperty('userId'))
+export default function Chart({groceries, setGroceries}) {
 
-  const userId = localStorage.getItem('userId') 
 
-    useEffect(() => {
-      console.log("Inside: ", localStorage.hasOwnProperty('userId'))
 
-      fetch(`/api/groceries/user/${userId}`).then(res =>
-        res.json().then(data => {
-            setGroceries(data.groceries)
-            
-            setTimeout(function(){ setLoaded(true); }, 500);
-          })
-        )
-    }, [])
-  
-  if (!loaded ) {
-    return (
-      <>
-      
-      <main className="centered middled">
-        <div><b>Fetching grocery data...</b></div>
-          
-        <CircularProgress />
-        
-        </main>
-  
-      </>
-      )
-    }
 
   return (
     <React.Fragment>
@@ -77,6 +48,7 @@ export default function Chart() {
                 <img src={fridge} alt='stock fridge' />
             )}
             </div>
+            <DeleteGrocery groceries={groceries} grocery={grocery} setGroceries={setGroceries} />
             </div>
           ))}
           </div>

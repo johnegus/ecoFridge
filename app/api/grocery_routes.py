@@ -13,7 +13,7 @@ def get_all_groceries(userId):
     try:
         groceries = Grocery.query.filter(Grocery.user_id == userId).order_by(Grocery.createdAt.desc()).all()
         grocery_dicts = [grocery.to_type_dict() for grocery in groceries]
-        # filter by following and date descending max 15 (.all().order_by(Activity.created_date.desc()))
+        # grocery_dicts.sort(key=type.days_to_expiry)
         grocery_json = jsonify({'groceries': grocery_dicts})
         return grocery_json
     except SQLAlchemyError as e:
