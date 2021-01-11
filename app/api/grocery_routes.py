@@ -8,12 +8,12 @@ grocery_routes = Blueprint('groceries', __name__)
 
 # GET all groceries for a specific user 
 @grocery_routes.route('/user/<int:userId>')
-@login_required
+# @login_required
 def get_all_groceries(userId):
     try:
         groceries = Grocery.query.filter(Grocery.user_id == userId).order_by(Grocery.createdAt.desc()).all()
+
         grocery_dicts = [grocery.to_type_dict() for grocery in groceries]
-        # grocery_dicts.sort(key=type.days_to_expiry)
         grocery_json = jsonify({'groceries': grocery_dicts})
         return grocery_json
     except SQLAlchemyError as e:
@@ -43,7 +43,6 @@ def get_grocery_item(grocery_id):
     try:
         grocery = Grocery.query.filter(Grocery.id == grocery_id).first()
         activity_json = jsonify({'activities': grocery.to_dict()})
-        # pull kudos and comments
         return activity_json
     except SQLAlchemyError as e:
         error = str(e.__dict__['orig'])
@@ -62,7 +61,7 @@ def post_grocery(user_id):
         grocery_types_id=data['grocery_types_id'],)
     db.session.add(grocery)
     db.session.commit()
-    return 'Grocery item submitted successfully', 201
+    return grocery.to_type_dict(), 200
     
 
 

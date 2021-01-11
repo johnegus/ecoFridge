@@ -18,7 +18,7 @@ class GroceryType(db.Model):
     type = db.Column(db.String(255), nullable=False, unique=True)
     image = db.Column(db.String(255))
     days_to_expiry = db.Column(db.Integer, nullable=False)
-
+    # grocery = db.relationship("Grocery", back_populates="type")
     def to_dict(self):
         return {
           "id": self.id,

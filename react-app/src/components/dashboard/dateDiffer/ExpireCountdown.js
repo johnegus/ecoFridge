@@ -15,7 +15,7 @@ export const ExpireCountdown = ({grocery})=> {
       return Math.floor((utc2 - utc1) / _MS_PER_DAY);
     }
     
-    // test it
+   
     const a = new Date(grocery.createdAt),
         b = new Date(),
         difference = dateDiffInDays(a, b);

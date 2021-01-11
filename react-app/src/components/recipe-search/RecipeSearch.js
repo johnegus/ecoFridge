@@ -1,5 +1,6 @@
 import React,{useEffect, useState} from 'react';
 import Recipe from "./Recipe";
+import './index.css'
 const RecipeSearch = () => {
 
   const APP_ID = 'd52ce565';

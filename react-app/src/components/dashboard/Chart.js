@@ -5,6 +5,7 @@ import './mini-profile.css'
 import CircularProgress from '@material-ui/core/CircularProgress';
 import fridge from '../dashboard/fridge.png';
 import { DeleteGrocery } from './delete/Delete';
+import { ExpireCountdown } from './dateDiffer/ExpireCountdown';
 
 
 // Generate Sales Data
@@ -26,7 +27,13 @@ const data = [
 
 export default function Chart({groceries, setGroceries}) {
 
-
+  // const ordered = Object.keys(groceries).sort().reduce(
+  //   (obj, key) => { 
+  //     obj[key] = groceries[key]; 
+  //     return obj;
+  //   }, 
+  //   {}
+  // );
 
 
   return (
@@ -39,7 +46,7 @@ export default function Chart({groceries, setGroceries}) {
               
                
                 <div 
-              >{grocery.type.days_to_expiry} days
+              ><ExpireCountdown grocery={grocery} />
                 </div>
                 <div className='spectrum-image'>
                 {grocery.type.image ? (

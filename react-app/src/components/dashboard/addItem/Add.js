@@ -35,12 +35,13 @@ export default function AddGrocery({groceries, setGroceries}) {
   }, [])
 
   const onAddGrocery = async (e) => {  
-      // e.preventdefault()  
-      await addGrocery(user, itemName, itemType.id);
-      
-      const response = await getGroceries(user)
-      
-      setGroceries(response.groceries)
+      e.preventDefault()  
+      const newGrocery = await addGrocery(user, itemName, itemType.id);
+      const sortedGroceries = [...groceries, newGrocery].sort((a, b) => a.type.days_to_expiry - b.type.days_to_expiry)
+
+      setGroceries(sortedGroceries)
+      setItemName('')
+      setItemType(null)
       
     
     }

@@ -24,6 +24,7 @@ import Orders from './Orders';
 import Chart from './Chart';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import { getGroceries } from '../../services/groceries';
+import RecipeSearch from '../recipe-search/RecipeSearch';
 
 
 function Copyright() {
@@ -141,7 +142,9 @@ export default function Dashboard() {
   useEffect(() => {
     (async () => {
     const response = await getGroceries(userId)
-    setGroceries(response.groceries)
+   
+    const sortedGroceries = response.groceries.sort((a, b) => a.type.days_to_expiry - b.type.days_to_expiry)
+    setGroceries(sortedGroceries)
     setLoaded(true)  
   })()
   }, [])
@@ -195,15 +198,20 @@ export default function Dashboard() {
             {/* Recent Deposits */}
             <Grid item xs={12} md={4} lg={3}>
               <Paper className={fixedHeightPaper}>
+                
                 <Deposits />
+                
               </Paper>
             </Grid>
             {/* Recent Orders */}
             <Grid item xs={12}>
               <Paper className={classes.paper}>
+              <RecipeSearch />
                 <Orders groceries={groceries} setGroceries={setGroceries}/>
+                
               </Paper>
             </Grid>
+            
           </Grid>
           <Box sx={{ pt: 4 }}>
             <Copyright />

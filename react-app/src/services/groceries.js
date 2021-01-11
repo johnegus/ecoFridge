@@ -32,5 +32,6 @@ export const addGrocery = async (user_id, item_name, grocery_types_id) => {
       grocery_types_id
     }),
   });
+  console.log(response)
   return await response.json();
 }

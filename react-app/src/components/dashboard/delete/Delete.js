@@ -14,7 +14,8 @@ export const DeleteGrocery = ({grocery, groceries, setGroceries})=> {
             <Button onClick={async ()=> {
                               await deleteGrocery(grocery.id)
                               const response = await getGroceries(userId)
-                            setGroceries(response.groceries)
+                              const sortedGroceries = response.groceries.sort((a, b) => a.type.days_to_expiry - b.type.days_to_expiry)
+                                setGroceries(sortedGroceries)
                               }}>Delete</Button>
         </>
     )

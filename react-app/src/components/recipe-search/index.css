@@ -13,10 +13,9 @@ body{
 
 .search-bar{
     width: 50%;
-    border: none;
+    border: 3px black solid;
     padding: 10px;
-    border-top-left-radius: 10px;
-    border-bottom-left-radius: 10px;
+   border-radius: 5px;
 
 }
 
