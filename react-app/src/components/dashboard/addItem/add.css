@@ -1,0 +1,5 @@
+.addForm {
+    display: flex;
+    padding: 20px;
+    z-index: -5;
+}

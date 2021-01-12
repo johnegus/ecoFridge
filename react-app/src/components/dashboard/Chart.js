@@ -100,7 +100,7 @@ const handleClick = (grocery) => {
               border: '1px solid #ccc',
               overflow: 'auto',
               WebkitOverflowScrolling: 'touch',
-              borderRadius: '4px',
+              borderRadius: '5px',
               outline: 'none',
               padding: '20px'
             }

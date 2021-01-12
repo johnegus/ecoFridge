@@ -10,9 +10,6 @@
 2. Fridge
    * Users can see everything that they have logged in their fridge
    * Items are ordered by their due date
-   * Ability to leave responses on messages to create a thread
-   * Ability to leave emoji's on a message
-   * Ability to mention a user/users in a message
 3. Item Priority Chart
    * Items that are due soon will be indicated visually
 4. Buy Groceries

@@ -6,6 +6,7 @@ import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import Autocomplete from '@material-ui/lab/Autocomplete';
 import { getTypes } from '../../../services/types';
+import './add.css'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -54,7 +55,7 @@ export default function AddGrocery({groceries, setGroceries}) {
 
   return (
     <form onSubmit={onAddGrocery} className={classes.root} noValidate autoComplete="off">
-      <div>
+      <div className='addForm'>
       <TextField
           id="filled-textarea"
           label="Item Name"
@@ -82,9 +83,9 @@ export default function AddGrocery({groceries, setGroceries}) {
         value={itemType} 
         onChange={onUps}
       />
-        
+        <Button type="submit">Add Grocery Item</Button>
       </div>
-      <Button type="submit">Add Grocery Item</Button>
+      
     </form>
   );
 }
