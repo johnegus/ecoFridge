@@ -206,7 +206,7 @@ export default function Dashboard() {
             {/* Recent Orders */}
             <Grid item xs={12}>
               <Paper className={classes.paper}>
-              <RecipeSearch />
+              {/* <RecipeSearch /> */}
                 <Orders groceries={groceries} setGroceries={setGroceries}/>
                 
               </Paper>

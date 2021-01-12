@@ -15,6 +15,9 @@ import HomePage from "./components/HomePage";
 import { Activity } from "./components/ActivityDetail/Activity";
 import AddGrocery from "./components/dashboard/addItem/Add";
 import RecipeSearch from "./components/recipe-search/RecipeSearch";
+import Modal from 'react-modal'
+
+Modal.setAppElement('#root')
 
 
 function App() {

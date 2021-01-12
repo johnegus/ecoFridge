@@ -13,6 +13,7 @@
     "http-proxy-middleware": "^1.0.5",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
+    "react-modal": "^3.12.1",
     "react-router-dom": "^5.2.0",
     "react-scripts": "^4.0.1",
     "recharts": "^2.0.0",

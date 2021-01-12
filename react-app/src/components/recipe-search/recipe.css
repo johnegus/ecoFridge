@@ -11,6 +11,7 @@
     align-items: center;
     min-width: 40%;
     max-width: 420px;
+    padding: 50px;
 
 }
 
@@ -29,6 +30,11 @@
 .recipe ol{
     grid-column: 1/3;
     grid-row: 2/3;
+    padding-left: 20px;
+}
+
+.recipe li{
+    color: #31c6e8;
 }
 
 .recipe p{
