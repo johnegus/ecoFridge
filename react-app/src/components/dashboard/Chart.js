@@ -9,24 +9,62 @@ import { ExpireCountdown } from './dateDiffer/ExpireCountdown';
 import Modal from 'react-modal'
 import RecipeSearch from '../recipe-search/RecipeSearch';
 import CloseIcon from '@material-ui/icons/Close';
-import './mini-profile.css'
+import Slide from '@material-ui/core/Slide';
+import Paper from '@material-ui/core/Paper';
+import { makeStyles } from '@material-ui/core/styles';
 
+import './mini-profile.css'
+const useStyles = makeStyles((theme) => ({
+  root: {
+    height: 180,
+  },
+  wrapper: {
+    width: 100 + theme.spacing(2),
+  },
+  paper: {
+    background: 'white',
+    position: 'relative',
+    margin: theme.spacing(1),
+    borderRadius: '5px'
+  },
+  svg: {
+    width: 100,
+    height: 100,
+  },
+  polygon: {
+    fill: theme.palette.common.white,
+    stroke: theme.palette.divider,
+    strokeWidth: 1,
+  },
+}));
 
 export default function Chart({groceries, setGroceries}) {
+  const classes = useStyles();
 const [modalIsOpen, setModalIsOpen] = useState(false)
 const [currentGrocery, setCurrentGrocery] = useState('')
+const [checked, setChecked] = useState(false)
 
-const handleClick = async (grocery) => {
-  await setCurrentGrocery('tumeric');
-  console.log(currentGrocery)
-  await setModalIsOpen(true)   
+useEffect(() => {
+  (async () => {
+if (groceries) {
+  setChecked(true)
+}
+})()
+}, [groceries])
+
+const handleClick = (grocery) => {
+  console.log(grocery)
+  setCurrentGrocery(grocery.item_name);
+  setModalIsOpen(true)   
 }
 
   return (
     <React.Fragment>
       <div className='spectrum-container'>
       {groceries.map((grocery) => (
-            <div className='spectrum-children' key={grocery.id} onClick={handleClick}>
+        <Slide elevation={4} direction="up" in={checked} mountOnEnter unmountOnExit>
+         
+            <div className='spectrum-children' key={grocery.id} >
               
               {grocery.item_name}
               
@@ -34,7 +72,7 @@ const handleClick = async (grocery) => {
                 <div 
               ><ExpireCountdown grocery={grocery} />
                 </div>
-                <div className='spectrum-image'>
+                <div className='spectrum-image' onClick={() => handleClick(grocery)}>
                 {grocery.type.image ? (
                 <img src={grocery.type.image} alt='grocery pic' />
             ) : (
@@ -43,11 +81,13 @@ const handleClick = async (grocery) => {
             </div>
             <DeleteGrocery groceries={groceries} grocery={grocery} setGroceries={setGroceries} />
             </div>
-            
+        
+            </Slide>
           ))}
           <Modal 
           isOpen={modalIsOpen} 
           onRequestClose={() => setModalIsOpen(false)}
+          closeTimeoutMS={500}
           style={
             {
             content: {
