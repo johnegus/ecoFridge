@@ -16,6 +16,10 @@ import { DateDiffInDays } from './dateDiffer/DateDiffInDays';
 import { ExpireCountdown } from './dateDiffer/ExpireCountdown';
 import { Grid } from '@material-ui/core';
 import { GridMaker } from './data-grid/Grid';
+import Modal from 'react-modal'
+import RecipeSearch from '../recipe-search/RecipeSearch';
+import CloseIcon from '@material-ui/icons/Close';
+
 
 
 function preventDefault(event) {
@@ -33,8 +37,22 @@ export default function Orders({groceries, setGroceries}) {
   const year = new Date().getFullYear();
   const month =new Date().getMonth() + 1;
   const date = new Date().getDate()
+  const [modalIsOpen, setModalIsOpen] = useState(false)
+  const [currentGrocery, setCurrentGrocery] = useState('')
 
 
+  
+  const handleTypeClick = (grocery) => {
+    console.log(grocery)
+    setCurrentGrocery(grocery.type.type);
+    setModalIsOpen(true)   
+  }
+
+  const handleItemClick = (grocery) => {
+    console.log(grocery)
+    setCurrentGrocery(grocery.item_name);
+    setModalIsOpen(true)   
+  }
 
   return (
     <React.Fragment>
@@ -62,8 +80,8 @@ export default function Orders({groceries, setGroceries}) {
             <TableRow key={grocery.id}>
               <TableCell>{grocery.createdAt}</TableCell>
               <TableCell><DateDiffInDays grocery={grocery} /></TableCell>
-              <TableCell>{grocery.item_name}</TableCell>
-              <TableCell>{grocery.type.type}</TableCell>
+              <TableCell onClick={() => handleItemClick(grocery)}>{grocery.item_name}</TableCell>
+              <TableCell onClick={() => handleTypeClick(grocery)}>{grocery.type.type}</TableCell>
               <TableCell><ExpireCountdown grocery={grocery} /> </TableCell>
               <TableCell align="right"><DeleteGrocery groceries={groceries} grocery={grocery} setGroceries={setGroceries} /></TableCell>
             </TableRow>
@@ -76,6 +94,36 @@ export default function Orders({groceries, setGroceries}) {
             
       
       <GridMaker groceries={groceries} />
+      <Modal 
+          isOpen={modalIsOpen} 
+          onRequestClose={() => setModalIsOpen(false)}
+          closeTimeoutMS={500}
+          style={
+            {
+            content: {
+              background: 'linear-gradient(7deg, rgba(2,0,36,1) 0%, rgba(212,212,228,0.48921566917782733) 34%, rgba(0,212,255,1) 100%)', 
+              position: 'absolute',
+              top: '140px',
+              left: '340px',
+              right: '140px',
+              bottom: '140px',
+              border: '1px solid #ccc',
+              overflow: 'auto',
+              WebkitOverflowScrolling: 'touch',
+              borderRadius: '5px',
+              outline: 'none',
+              padding: '20px'
+            }
+          }
+          }
+          >
+            <div className='closeIcon'>
+              <CloseIcon onClick={() => setModalIsOpen(false)}>Close</CloseIcon>
+            </div>
+            <RecipeSearch currentGrocery={currentGrocery}/>
+            
+          </Modal>
+          
     </React.Fragment>
   );
 }

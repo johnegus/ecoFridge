@@ -7,12 +7,15 @@ import Button from '@material-ui/core/Button';
 import Autocomplete from '@material-ui/lab/Autocomplete';
 import { getTypes } from '../../../services/types';
 import './add.css'
+import fridge from "./ecofridge.png"
+
 
 const useStyles = makeStyles((theme) => ({
   root: {
     '& .MuiTextField-root': {
       margin: theme.spacing(1),
       width: '25ch',
+      zIndex: 0,
     },
   },
 }));
@@ -84,6 +87,7 @@ export default function AddGrocery({groceries, setGroceries}) {
         onChange={onUps}
       />
         <Button type="submit">Add Grocery Item</Button>
+        <img src={fridge} alt='ecofridge' />
       </div>
       
     </form>

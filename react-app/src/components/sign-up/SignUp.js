@@ -65,8 +65,9 @@ export default function SignUp({authenticated, setAuthenticated}) {
     if (password === repeatPassword) {
       const user = await signUp(firstName, lastName, city, country, email, password);
       if (!user.errors) {
-        setAuthenticated(true);
+        
         localStorage.setItem('userId', user.id);
+        setAuthenticated(true);
       }
     }
   };

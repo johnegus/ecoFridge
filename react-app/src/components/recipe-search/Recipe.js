@@ -1,6 +1,6 @@
 import React from 'react';
 import './recipe.css';
-const Recipe = ({title, calories, image, ingredients, source}) => {
+const Recipe = ({title, calories, image, ingredients, source, url}) => {
     return(
         <div className='recipe'>
             <h1>{title}</h1>
@@ -10,8 +10,12 @@ const Recipe = ({title, calories, image, ingredients, source}) => {
                 ))}
             </ol>
             <p>{calories.toFixed(0)} calories</p>
+            <a href={url} target="_blank">
             <p className='source'>Source: {source}</p>
+            </a>
+          
             <img className='image' src={image} alt=""/>
+       
         </div>
     );
 }

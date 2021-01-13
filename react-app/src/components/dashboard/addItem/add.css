@@ -3,3 +3,7 @@
     padding: 20px;
     z-index: -5;
 }
+
+.addForm img {
+    height: 100px;
+}
