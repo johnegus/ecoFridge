@@ -2,8 +2,18 @@
     display: flex;
     padding: 20px;
     z-index: -5;
+    
 }
 
 .addForm img {
     height: 100px;
+    display: block;
+        left: 0;
+        position: relative;
+        top: -2%;
+        z-index: 1;
 }
+
+/* .addForm Button {
+    position:relative;
+} */

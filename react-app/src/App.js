@@ -8,11 +8,9 @@ import Dashboard from './components/dashboard/Dashboard'
 import Checkout from './components/checkout/Checkout'
 import ProtectedRoute from "./components/auth/ProtectedRoute";
 import UsersList from "./components/UsersList";
-import User from "./components/User/User";
+import User from "./components/dashboard/User";
 import { authenticate, signUp } from "./services/auth";
-import { CreateActivityForm } from "./components/create-activity/CreateActivityForm";
 import HomePage from "./components/HomePage";
-import { Activity } from "./components/ActivityDetail/Activity";
 import AddGrocery from "./components/dashboard/addItem/Add";
 import RecipeSearch from "./components/recipe-search/RecipeSearch";
 import Modal from 'react-modal'
@@ -65,14 +63,11 @@ function App() {
       <ProtectedRoute path="/users/:userId" exact={true} authenticated={authenticated}>
         <User />
       </ProtectedRoute>
-      <Switch>
+  
       <ProtectedRoute path="/groceries/new" exact={true} authenticated={authenticated}>
         <Checkout />
       </ProtectedRoute>
-      <ProtectedRoute path="/activities/:activityId" exact={true} authenticated={authenticated}>
-        <Activity />
-      </ProtectedRoute>
-      </Switch>
+  
       
       <Route path="/" exact={true}  >
         <HomePage setAuthenticated={setAuthenticated} authenticated={authenticated}/>

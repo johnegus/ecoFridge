@@ -4,7 +4,7 @@ import Link from '@material-ui/core/Link';
 import { makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import Title from './Title';
-import profile from "../User/Profile.png"
+import profile from "./Profile.png"
 import './mini-profile.css'
 
 

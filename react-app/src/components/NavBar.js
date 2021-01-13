@@ -2,8 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { NavLink, useLocation, Redirect } from 'react-router-dom';
 import LogoutButton from './auth/LogoutButton';
 import styled from 'styled-components'
-import { CreateActivityForm } from './create-activity/CreateActivityForm';
-
+import Button from '@material-ui/core/Button';
 const Nav = styled.nav`
 max-height: 80px;
 border-bottom: solid 1px #f0f0f5;
@@ -25,34 +24,6 @@ text-decoration: none;
 margin: 0 auto;
 `
 
-const Buttons = styled.button`
-  text-decoration: none;
-  font-family: 'Fugaz One', cursive;
-  background: #222;
-  height: 28px;
-  min-width: 80px;
-  border: none;
-  border-radius: 10px;
-  color: #eee;
-  font-size: 15px;
-  /* font-family: 'Cookie', cursive; */
-  position: relative;
-  transition: 1s;
-  -webkit-tap-highlight-color: transparent;
-  cursor: pointer;
-  margin-bottom: 0px;
-  margin-left: 10px;
-  text-decoration: none;
-:hover{
-  background: black;
-  height: 28px;
-  min-width: 90px;
-  left: 0;
-  border-radius: 0;
-  border-bottom: 2px solid #eee;
-  text-decoration: none;
-}
-`
 
 
 const Logo = styled.img.attrs({
@@ -85,32 +56,32 @@ const NavBar = ({ authenticated, setAuthenticated }) => {
           {!authenticated && currentPage !== '/login' ? 
         <>
               <NavLink to="/login" exact={true} activeClassName="active">
-                <Buttons>
+                <Button variant="outlined" color="primary">
                   Login
-                </Buttons>
+                </Button>
             </NavLink>
         </>
             : ""}
           {!authenticated && currentPage !== '/sign-up' ? 
             <>
             <NavLink to="/sign-up" exact={true} activeClassName="active">
-                <Buttons>
+                <Button variant="outlined" color="primary">
                   Sign Up
-                </Buttons>
+                </Button>
             </NavLink>
             </>
             : "" }
           {authenticated ? 
           <>
-            <NavLink to="/groceries/new" exact={true} activeClassName="active">
+            {/* <NavLink to="/groceries/new" exact={true} activeClassName="active">
               <Buttons>
                 Buy Groceries
               </Buttons>
-            </NavLink>
+            </NavLink> */}
             <NavLink to={`/users/${userId}`} exact={true} activeClassName="active">
-              <Buttons>
+            <Button variant="outlined" color="primary">
                 Profile
-              </Buttons>
+              </Button>
             </NavLink>
             <LogoutButton setAuthenticated={setAuthenticated} />
           </>
