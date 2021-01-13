@@ -139,11 +139,31 @@ export default function Dashboard() {
   };
   const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
 
+  const _MS_PER_DAY = 1000 * 60 * 60 * 24;
+
+  // a and b are javascript Date objects
+  function dateDiffInDays(a, b) {
+    // Discard the time and time-zone information.
+    const utc1 = Date.UTC(a.getFullYear(), a.getMonth(), a.getDate());
+    const utc2 = Date.UTC(b.getFullYear(), b.getMonth(), b.getDate());
+    console.log(Math.floor((utc2 - utc1) / _MS_PER_DAY))
+    return Math.floor((utc2 - utc1) / _MS_PER_DAY);
+  }
+
   useEffect(() => {
     (async () => {
     const response = await getGroceries(userId)
    
-    const sortedGroceries = response.groceries.sort((a, b) => a.type.days_to_expiry - b.type.days_to_expiry)
+    const sortedGroceries = response.groceries.sort((groceryA, groceryB) => {
+      const a = new Date(groceryA.createdAt),
+      b = new Date(),
+      difference = dateDiffInDays(a, b);
+      const c = new Date(groceryB.createdAt),
+      d = new Date(),
+      difference2 = dateDiffInDays(c, d);
+
+      return (groceryA.type.days_to_expiry -difference) - (groceryB.type.days_to_expiry - difference2)
+    })
     setGroceries(sortedGroceries)
     setLoaded(true)  
   })()
@@ -151,7 +171,26 @@ export default function Dashboard() {
 
   if (!loaded ) {
     return (
-      <>
+      <div className={classes.root}>
+         <CssBaseline />
+  
+  <Drawer
+    variant="permanent"
+    classes={{
+      paper: clsx(classes.drawerPaper, !open && classes.drawerPaperClose),
+    }}
+    open={open}
+  >
+    <div className={classes.toolbarIcon}>
+      <IconButton onClick={toggleDrawer}>
+        <ChevronLeftIcon />
+      </IconButton>
+    </div>
+    <Divider />
+    <List>{mainListItems}</List>
+    <Divider />
+    <List>{secondaryListItems}</List>
+  </Drawer>
       
       <main className="centered middled">
         <div><b>Fetching grocery data...</b></div>
@@ -160,7 +199,7 @@ export default function Dashboard() {
         
         </main>
   
-      </>
+      </div>
       )
     }
 
