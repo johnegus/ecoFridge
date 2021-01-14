@@ -73,11 +73,11 @@ const NavBar = ({ authenticated, setAuthenticated }) => {
             : "" }
           {authenticated ? 
           <>
-            {/* <NavLink to="/groceries/new" exact={true} activeClassName="active">
-              <Buttons>
-                Buy Groceries
-              </Buttons>
-            </NavLink> */}
+            <NavLink to={`/`} exact={true} activeClassName="active">
+            <Button variant="outlined" color="primary">
+                Fridge
+              </Button>
+            </NavLink>
             <NavLink to={`/database`} exact={true} activeClassName="active">
             <Button variant="outlined" color="primary">
                 Database

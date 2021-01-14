@@ -123,6 +123,13 @@
     overflow-x: scroll;
 }
 
+.spectrum-container2 {
+    background: white;
+    border-radius: 5px;
+}
+
+
+
 
 .spectrum-image img {
     width: 100px;

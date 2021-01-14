@@ -26,6 +26,7 @@ import CircularProgress from '@material-ui/core/CircularProgress';
 import { getGroceries } from '../../services/groceries';
 import { getTypes } from '../../services/types';
 import { GridMaker } from './data-grid/Grid';
+import ChartDataBase from './ChartDataBase';
 
 
 function Copyright() {
@@ -153,29 +154,12 @@ export default function User() {
     return Math.floor((utc2 - utc1) / _MS_PER_DAY);
   }
 
-  useEffect(() => {
-    (async () => {
-    const response = await getGroceries(userId)
-   
-    const sortedGroceries = response.groceries.sort((groceryA, groceryB) => {
-      const a = new Date(groceryA.createdAt),
-      b = new Date(),
-      difference = dateDiffInDays(a, b);
-      const c = new Date(groceryB.createdAt),
-      d = new Date(),
-      difference2 = dateDiffInDays(c, d);
-
-      return (groceryA.type.days_to_expiry -difference) - (groceryB.type.days_to_expiry - difference2)
-    })
-    setGroceries(sortedGroceries)
-    setLoaded(true)  
-  })()
-  }, [])
 
   useEffect(() => {
     (async () => {
     const response = await getTypes()
     setTypes(response.types)
+    setLoaded(true) 
     
   })()
   }, [])
@@ -241,7 +225,7 @@ export default function User() {
             {/* Chart */}
             <Grid item xs={12} md={8} lg={9}>
               {/* <Paper className={fixedHeightPaper}> */}
-                <Chart groceries={groceries} setGroceries={setGroceries}/>
+                <ChartDataBase types={types}/>
               {/* </Paper> */}
             </Grid>
             {/* Recent Deposits */}

@@ -12,6 +12,7 @@ import CloseIcon from '@material-ui/icons/Close';
 import Slide from '@material-ui/core/Slide';
 import Paper from '@material-ui/core/Paper';
 import { makeStyles } from '@material-ui/core/styles';
+import {Bar} from 'react-chartjs-2';
 
 import './mini-profile.css'
 const useStyles = makeStyles((theme) => ({
@@ -38,84 +39,79 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function Chart({groceries, setGroceries}) {
+
+
+export default function ChartDataBase({types}) {
   const classes = useStyles();
-const [modalIsOpen, setModalIsOpen] = useState(false)
-const [currentGrocery, setCurrentGrocery] = useState('')
-const [checked, setChecked] = useState(false)
+  const [checked, setChecked] = useState(false)
+  const [stockChartXValues, setstockChartXValues] = useState([]);
+  const [stockChartYValues, setstockChartYValues] = useState([]);
 
+  useEffect(() => {
+    (async () => {
+        let stockChartXValuesFunction = [];
+    let stockChartYValuesFunction = [];
+  if (types) {
+    
+    setChecked(true)
+    types.map((type) => {
+        stockChartXValuesFunction.push(type.type)
+        stockChartYValuesFunction.push(type.days_to_expiry)
+    })
+  }
+  setstockChartXValues(stockChartXValuesFunction)
+  setstockChartYValues(stockChartYValuesFunction)
+  })()
+  }, [types])
 
-useEffect(() => {
-  (async () => {
-if (groceries) {
-  setChecked(true)
-}
-})()
-}, [groceries])
-
-
-
-const handleClick = (grocery) => {
-  console.log(grocery)
-  setCurrentGrocery(grocery.item_name);
-  setModalIsOpen(true)   
-}
-
+  const data = {
+    labels: stockChartXValues,
+    datasets: [
+      {
+        label: 'Item Types',
+        backgroundColor: 'white',
+        borderColor: 'rgba(255,99,132,1)',
+        borderWidth: 1,
+        hoverBackgroundColor: 'rgba(255,99,132,0.4)',
+        hoverBorderColor: 'rgba(255,99,132,1)',
+        data: stockChartYValues
+      }
+    ]
+  };
   return (
     <React.Fragment>
-      <div className='spectrum-container'>
-      {groceries.map((grocery) => (
+      <div className='spectrum-container2'>
+      {/* {types.map((type) => (
         <Slide elevation={4} direction="up" in={checked} mountOnEnter unmountOnExit>
          
-            <div className='spectrum-children' key={grocery.id} >
+            <div className='spectrum-children' key={type.id} >
               
-              {grocery.item_name}
+              {type.type}
               
                
-                <div 
-              ><ExpireCountdown grocery={grocery} />
-                </div>
-                <div className='spectrum-image' onClick={() => handleClick(grocery)}>
-                {grocery.type.image ? (
-                <img src={grocery.type.image} alt='grocery pic' />
+             
+                <div className='spectrum-image'>
+                {type.image ? (
+                <img src={type.image} alt='grocery pic' />
             ) : (
                 <img src={fridge} alt='stock fridge' />
             )}
             </div>
-            <DeleteGrocery groceries={groceries} grocery={grocery} setGroceries={setGroceries} />
+            
             </div>
         
             </Slide>
-          ))}
-          <Modal 
-          isOpen={modalIsOpen} 
-          onRequestClose={() => setModalIsOpen(false)}
-          closeTimeoutMS={500}
-          style={
-            {
-            content: {
-              background: 'linear-gradient(7deg, rgba(2,0,36,1) 0%, rgba(212,212,228,0.48921566917782733) 34%, rgba(0,212,255,1) 100%)', 
-              position: 'absolute',
-              top: '140px',
-              left: '340px',
-              right: '140px',
-              bottom: '140px',
-              border: '1px solid #ccc',
-              overflow: 'auto',
-              WebkitOverflowScrolling: 'touch',
-              borderRadius: '5px',
-              outline: 'none',
-              padding: '20px'
-            }
-          }
-          }
-          >
-            <div className='closeIcon'>
-              <CloseIcon onClick={() => setModalIsOpen(false)}>Close</CloseIcon>
-            </div>
-            <RecipeSearch currentGrocery={currentGrocery}/>
-            
-          </Modal>
+          ))} */}
+         <div>
+        
+        <Bar
+          data={data}
+         
+          options={{
+            maintainAspectRatio: false
+          }}
+        />
+      </div>
           </div>
           
     </React.Fragment>
