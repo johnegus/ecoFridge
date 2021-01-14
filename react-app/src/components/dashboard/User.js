@@ -24,7 +24,8 @@ import Orders from './Orders';
 import Chart from './Chart';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import { getGroceries } from '../../services/groceries';
-import RecipeSearch from '../recipe-search/RecipeSearch';
+import { getTypes } from '../../services/types';
+import { GridMaker } from './data-grid/Grid';
 
 
 function Copyright() {
@@ -134,6 +135,8 @@ export default function User() {
   const [loaded, setLoaded] = useState(false);
   const userId = localStorage.getItem('userId') 
   const [groceries, setGroceries] = useState([]);
+  const [types, setTypes] = useState([]);
+
   const toggleDrawer = () => {
     setOpen(!open);
   };
@@ -166,6 +169,14 @@ export default function User() {
     })
     setGroceries(sortedGroceries)
     setLoaded(true)  
+  })()
+  }, [])
+
+  useEffect(() => {
+    (async () => {
+    const response = await getTypes()
+    setTypes(response.types)
+    
   })()
   }, [])
 
@@ -245,7 +256,7 @@ export default function User() {
             <Grid item xs={12}>
               <Paper className={classes.paper}>
               {/* <RecipeSearch /> */}
-                <Orders groceries={groceries} setGroceries={setGroceries}/>
+              <GridMaker types={types} />
                 
               </Paper>
             </Grid>

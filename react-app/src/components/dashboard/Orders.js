@@ -102,7 +102,7 @@ export default function Orders({groceries, setGroceries}) {
       </Table>
             
       
-      <GridMaker groceries={groceries} />
+      
       <Modal 
           isOpen={modalIsOpen} 
           onRequestClose={() => setModalIsOpen(false)}

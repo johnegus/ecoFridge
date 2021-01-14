@@ -78,9 +78,9 @@ const NavBar = ({ authenticated, setAuthenticated }) => {
                 Buy Groceries
               </Buttons>
             </NavLink> */}
-            <NavLink to={`/users/${userId}`} exact={true} activeClassName="active">
+            <NavLink to={`/database`} exact={true} activeClassName="active">
             <Button variant="outlined" color="primary">
-                Profile
+                Database
               </Button>
             </NavLink>
             <LogoutButton setAuthenticated={setAuthenticated} />

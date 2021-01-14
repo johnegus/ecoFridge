@@ -60,7 +60,7 @@ function App() {
       <ProtectedRoute path="/add" exact={true} authenticated={authenticated}>
         <AddGrocery />
       </ProtectedRoute>
-      <ProtectedRoute path="/users/:userId" exact={true} authenticated={authenticated}>
+      <ProtectedRoute path="/database" exact={true} authenticated={authenticated}>
         <User />
       </ProtectedRoute>
   

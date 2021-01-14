@@ -8,7 +8,7 @@ import { ExpireCountdown } from '../dateDiffer/ExpireCountdown';
 import { DeleteGrocery } from '../delete/Delete';
 
 
-export const GridMaker = ({grocery, groceries, setGroceries})=> {
+export const GridMaker = ({types})=> {
     const userId = localStorage.getItem('userId')
     const [rows, setRows] = useState([]);
     const _MS_PER_DAY = 1000 * 60 * 60 * 24;
@@ -26,17 +26,13 @@ export const GridMaker = ({grocery, groceries, setGroceries})=> {
         (async () => {
     const  mapHistoryToRows = () => {
       
-      const gridRows = groceries.map((grocery) => {
-        const a = new Date(grocery.createdAt),
-        b = new Date(),
-        difference = dateDiffInDays(a, b);
+      const gridRows = types.map((type) => {
+      
         return ({
-          id: grocery.id,
-          date: grocery.createdAt,
-          days_passed: difference,
-          item: grocery.item_name,
-          type: grocery.type.type,
-          days_to_expiry: grocery.type.days_to_expiry - difference
+          id: type.id,
+          type: type.type,
+          days_to_expiry: type.days_to_expiry,
+          
         }
         )
   
@@ -49,19 +45,17 @@ export const GridMaker = ({grocery, groceries, setGroceries})=> {
 }, [])
 
     const columns = [
-        { field: 'date', headerName: 'Date'},
-        { field: 'days_passed', headerName: 'Days Passed'},
-        { field: 'item', headerName: 'Item Name'},
-        { field: 'type', headerName: 'Type' },
-        { field: 'days_to_expiry', headerName: 'Expires'},
+        { field: 'id', headerName: 'ID'},
+        { field: 'type', headerName: 'Type', width: 700 },
+        { field: 'days_to_expiry', headerName: 'Expires', width: 200 },
         
         
       ];
 
     return (
       
-             <div style={{ height: 500}}>
-      <DataGrid rows={rows} columns={columns} pageSize={20} checkboxSelection />
+             <div style={{ height: 1000}}>
+      <DataGrid rows={rows} columns={columns} pageSize={100} checkboxSelection />
       </div>
        
     )
