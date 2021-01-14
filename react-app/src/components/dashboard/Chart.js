@@ -14,6 +14,7 @@ import Paper from '@material-ui/core/Paper';
 import { makeStyles } from '@material-ui/core/styles';
 
 import './mini-profile.css'
+import zIndex from '@material-ui/core/styles/zIndex';
 const useStyles = makeStyles((theme) => ({
   root: {
     height: 180,
@@ -94,7 +95,7 @@ const handleClick = (grocery) => {
               background: 'linear-gradient(7deg, rgba(2,0,36,1) 0%, rgba(212,212,228,0.48921566917782733) 34%, rgba(0,212,255,1) 100%)', 
               position: 'absolute',
               top: '140px',
-              left: '340px',
+              left: '140px',
               right: '140px',
               bottom: '140px',
               border: '1px solid #ccc',
@@ -102,7 +103,8 @@ const handleClick = (grocery) => {
               WebkitOverflowScrolling: 'touch',
               borderRadius: '5px',
               outline: 'none',
-              padding: '20px'
+              padding: '20px',
+              zIndex: '30',
             }
           }
           }

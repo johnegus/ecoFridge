@@ -166,60 +166,16 @@ export default function User() {
 
   if (!loaded ) {
     return (
-      <div className={classes.root}>
-         <CssBaseline />
-  
-  <Drawer
-    variant="permanent"
-    classes={{
-      paper: clsx(classes.drawerPaper, !open && classes.drawerPaperClose),
-    }}
-    open={open}
-  >
-    <div className={classes.toolbarIcon}>
-      <IconButton onClick={toggleDrawer}>
-        <ChevronLeftIcon />
-      </IconButton>
-    </div>
-    <Divider />
-    <List>{mainListItems}</List>
-    
-  </Drawer>
       
-  <main className={classes.content}>
-        <div className={classes.appBarSpacer} />
-        <Container maxWidth="lg" className={classes.container}>
           
         <CircularProgress />
-        
-        </Container>
-      </main>
-    </div>
+      
       )
     }
 
   return (
-    <div className={classes.root}>
-      <CssBaseline />
-  
-      <Drawer
-        variant="permanent"
-        classes={{
-          paper: clsx(classes.drawerPaper, !open && classes.drawerPaperClose),
-        }}
-        open={open}
-      >
-        <div className={classes.toolbarIcon}>
-          <IconButton onClick={toggleDrawer}>
-            <ChevronLeftIcon />
-          </IconButton>
-        </div>
-        <Divider />
-        <List>{mainListItems}</List>
-        
-      </Drawer>
-      <main className={classes.content}>
-        <div className={classes.appBarSpacer} />
+    
+      
         <Container maxWidth="lg" className={classes.container}>
           <Grid container spacing={3}>
             {/* Chart */}
@@ -250,7 +206,7 @@ export default function User() {
             <Copyright />
           </Box>
         </Container>
-      </main>
-    </div>
+      
+    
   );
 }

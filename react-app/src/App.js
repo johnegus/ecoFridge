@@ -15,6 +15,7 @@ import AddGrocery from "./components/dashboard/addItem/Add";
 import RecipeSearch from "./components/recipe-search/RecipeSearch";
 import Modal from 'react-modal'
 import RecipeSearchInput from "./components/recipe-search/RecipeSearchInput";
+import Recipe from "./components/recipe-search/Recipe";
 
 Modal.setAppElement('#root')
 
@@ -40,6 +41,9 @@ function App() {
   return (
     <BrowserRouter>
       <NavBar setAuthenticated={setAuthenticated} authenticated={authenticated}/>
+      <Route path="/" exact={true}  >
+        <HomePage setAuthenticated={setAuthenticated} authenticated={authenticated}/>
+      </Route>
       <Route path="/login" exact={true}>
         <SignInSide
           authenticated={authenticated}
@@ -49,6 +53,7 @@ function App() {
       <Route path="/sign-up" exact={true}>
         <SignUp authenticated={authenticated} setAuthenticated={setAuthenticated} />
       </Route>
+      
       <ProtectedRoute path="/users" exact={true} authenticated={authenticated}>
         <UsersList/>
       </ProtectedRoute>
@@ -57,7 +62,7 @@ function App() {
         <Dashboard/>
       </ProtectedRoute>
       <ProtectedRoute path="/recipes" exact={true} authenticated={authenticated}>
-        <RecipeSearchInput />
+        <Recipe />
       </ProtectedRoute>
       <ProtectedRoute path="/add" exact={true} authenticated={authenticated}>
         <AddGrocery />
@@ -71,9 +76,7 @@ function App() {
       </ProtectedRoute>
   
       
-      <Route path="/" exact={true}  >
-        <HomePage setAuthenticated={setAuthenticated} authenticated={authenticated}/>
-      </Route>
+      
     </BrowserRouter>
   );
 }

@@ -16,7 +16,7 @@ import InsertChartIcon from '@material-ui/icons/InsertChart';
 
 export const mainListItems = (
   <div>
-    <NavLink to={`/`} exact={true} activeClassName="active">
+    <NavLink to={`/`} exact={true} activeClassName="active" style={{ textDecoration: 'none' }}>
     <ListItem button>
       <ListItemIcon>
         <KitchenIcon />

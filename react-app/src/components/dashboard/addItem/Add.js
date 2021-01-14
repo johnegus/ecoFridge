@@ -87,7 +87,7 @@ export default function AddGrocery({groceries, setGroceries}) {
         onChange={onUps}
       />
         <Button type="submit" variant="outlined" color="primary">Add Grocery Item</Button>
-        <img src={fridge} alt='ecofridge' />
+        {/* <img src={fridge} alt='ecofridge' /> */}
       </div>
       
     </form>
