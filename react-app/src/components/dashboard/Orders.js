@@ -9,16 +9,19 @@ import TableRow from '@material-ui/core/TableRow';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import Title from './Title';
 import './mini-profile.css'
-import { getGroceries } from '../../services/groceries';
+import { getGroceries, editGrocery } from '../../services/groceries';
 import { DeleteGrocery } from './delete/Delete';
 import AddGrocery from './addItem/Add';
 import { DateDiffInDays } from './dateDiffer/DateDiffInDays';
 import { ExpireCountdown } from './dateDiffer/ExpireCountdown';
-import { Grid } from '@material-ui/core';
 import { GridMaker } from './data-grid/Grid';
 import Modal from 'react-modal'
 import RecipeSearch from '../recipe-search/RecipeSearch';
 import CloseIcon from '@material-ui/icons/Close';
+import Button from '@material-ui/core/Button';
+
+import { EditGrocery } from './edit/Edit';
+
 
 
 
@@ -39,6 +42,8 @@ export default function Orders({groceries, setGroceries}) {
   const date = new Date().getDate()
   const [modalIsOpen, setModalIsOpen] = useState(false)
   const [currentGrocery, setCurrentGrocery] = useState('')
+  
+
 
 
   
@@ -53,6 +58,8 @@ export default function Orders({groceries, setGroceries}) {
     setCurrentGrocery(grocery.item_name);
     setModalIsOpen(true)   
   }
+
+ 
 
   return (
     <React.Fragment>
@@ -80,7 +87,9 @@ export default function Orders({groceries, setGroceries}) {
             <TableRow key={grocery.id}>
               <TableCell>{grocery.createdAt}</TableCell>
               <TableCell><DateDiffInDays grocery={grocery} /></TableCell>
-              <TableCell onClick={() => handleItemClick(grocery)}>{grocery.item_name}</TableCell>
+              <TableCell>
+                <EditGrocery grocery={grocery} groceries={groceries} setGroceries={setGroceries}/>
+              </TableCell>
               <TableCell onClick={() => handleTypeClick(grocery)}>{grocery.type.type}</TableCell>
               <TableCell><ExpireCountdown grocery={grocery} /> </TableCell>
               <TableCell align="right"><DeleteGrocery groceries={groceries} grocery={grocery} setGroceries={setGroceries} /></TableCell>

@@ -49,6 +49,14 @@ def get_grocery_item(grocery_id):
         print(error)
         return {'errors': ['An error occurred while retrieving the data']}, 500
 
+# PUT a new grocery name for a specific grocery item
+@grocery_routes.route('/edit/<int:grocery_id>', methods=['PUT'])
+def edit_grocery(grocery_id):
+    data = request.json
+    grocery = Grocery.query.filter(Grocery.id == grocery_id).first()
+    grocery.item_name = data['item_name']
+    db.session.commit()
+    return grocery.to_type_dict(), 200
 
 # POST a new grocery for a specific user
 @grocery_routes.route('/new/<int:user_id>', methods=['POST'])
