@@ -14,6 +14,7 @@ import HomePage from "./components/HomePage";
 import AddGrocery from "./components/dashboard/addItem/Add";
 import RecipeSearch from "./components/recipe-search/RecipeSearch";
 import Modal from 'react-modal'
+import RecipeSearchInput from "./components/recipe-search/RecipeSearchInput";
 
 Modal.setAppElement('#root')
 
@@ -51,11 +52,12 @@ function App() {
       <ProtectedRoute path="/users" exact={true} authenticated={authenticated}>
         <UsersList/>
       </ProtectedRoute>
+      <Switch>
       <ProtectedRoute path="/" exact={true} authenticated={authenticated}>
         <Dashboard/>
       </ProtectedRoute>
       <ProtectedRoute path="/recipes" exact={true} authenticated={authenticated}>
-        <RecipeSearch />
+        <RecipeSearchInput />
       </ProtectedRoute>
       <ProtectedRoute path="/add" exact={true} authenticated={authenticated}>
         <AddGrocery />
@@ -63,7 +65,7 @@ function App() {
       <ProtectedRoute path="/database" exact={true} authenticated={authenticated}>
         <User />
       </ProtectedRoute>
-  
+      </Switch>
       <ProtectedRoute path="/groceries/new" exact={true} authenticated={authenticated}>
         <Checkout />
       </ProtectedRoute>

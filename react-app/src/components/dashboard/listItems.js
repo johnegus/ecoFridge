@@ -1,4 +1,6 @@
 import * as React from 'react';
+import { NavLink} from 'react-router-dom';
+
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
@@ -10,27 +12,34 @@ import BarChartIcon from '@material-ui/icons/BarChart';
 import LayersIcon from '@material-ui/icons/Layers';
 import AssignmentIcon from '@material-ui/icons/Assignment';
 import KitchenIcon from '@material-ui/icons/Kitchen';
+import InsertChartIcon from '@material-ui/icons/InsertChart';
 
 export const mainListItems = (
   <div>
+    <NavLink to={`/`} exact={true} activeClassName="active">
     <ListItem button>
       <ListItemIcon>
         <KitchenIcon />
       </ListItemIcon>
-      <ListItemText primary="Dashboard" />
+      <ListItemText primary="Fridge" />
     </ListItem>
+    </NavLink>
+    <NavLink to={`/recipes`} exact={true} activeClassName="active">
     <ListItem button>
       <ListItemIcon>
         <FastfoodIcon />
       </ListItemIcon>
       <ListItemText primary="Recipe Search" />
     </ListItem>
+    </NavLink>
+    <NavLink to={`/database`} exact={true} activeClassName="active">
     <ListItem button>
       <ListItemIcon>
-        <PeopleIcon />
+        <InsertChartIcon />
       </ListItemIcon>
-      <ListItemText primary="Profile" />
+      <ListItemText primary="Database" />
     </ListItem>
+    </NavLink>
    
   </div>
 );

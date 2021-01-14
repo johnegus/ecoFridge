@@ -25,6 +25,7 @@ import Chart from './Chart';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import { getGroceries } from '../../services/groceries';
 import RecipeSearch from '../recipe-search/RecipeSearch';
+import RecipeSearchInput from '../recipe-search/RecipeSearchInput';
 
 
 function Copyright() {
@@ -226,6 +227,7 @@ export default function Dashboard() {
       <main className={classes.content}>
         <div className={classes.appBarSpacer} />
         <Container maxWidth="lg" className={classes.container}>
+          {/* <RecipeSearchInput /> */}
           <Grid container spacing={3}>
             {/* Chart */}
             <Grid item xs={12} md={8} lg={9}>
