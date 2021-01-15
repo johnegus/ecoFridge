@@ -14,6 +14,10 @@
         z-index: 1;
 }
 
-/* .addForm Button {
-    position:relative;
-} */
+@media only screen and (max-width: 720px) {
+    .addForm {
+        display: block;
+        width: 100%;
+    
+    }
+  }

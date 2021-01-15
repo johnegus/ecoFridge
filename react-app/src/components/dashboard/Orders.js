@@ -60,13 +60,13 @@ export default function Orders({groceries, setGroceries}) {
   return (
     <React.Fragment>
       <div className={classes.seeMore}>
-        <Link color="primary" href="/add" onClick={<AddGrocery />}>
-          Add more Groceries
-        </Link>
+      <Title>Add More Groceries</Title>
+          
+ 
       </div>
-      Today is {month + '/' + date + '/' + year}
+  
       <AddGrocery groceries={groceries} setGroceries={setGroceries}/>
-      <Title>Recent Orders</Title>
+      <Title>Groceries</Title>
       <Table size="small">
         <TableHead>
           <TableRow>

@@ -1,5 +1,5 @@
 .recipe{
-    border-radius: 10px;
+    border-radius: 5px;
     box-shadow: 0px 5px 20px black;
     margin: 20px;
     display: grid;
@@ -12,6 +12,7 @@
     min-width: 40%;
     max-width: 420px;
     padding: 50px;
+    font-family: "Roboto", "Helvetica", "Arial", sans-serif;
 
 }
 
@@ -20,7 +21,9 @@
     grid-row: 1/2;
     display: flex;
     align-self: stretch;
-    border-top-left-radius: 10px;
+    border-radius: 5px;
+    /* border: black 3px solid; */
+    box-shadow: 0px 5px 20px black;
 }
 .recipe h1{
     grid-row: 1/2;
@@ -48,9 +51,14 @@
     grid-row: 3/4;
 }
 
-@media only screen and (max-width: 620px) {
+h2 {
+    font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+    
+}
+
+@media only screen and (max-width: 1020px) {
     .recipe{
-        
+        display: block;
         grid-template-columns: 1fr 1fr;
         grid-template-rows: 50% 4fr 1fr;
         

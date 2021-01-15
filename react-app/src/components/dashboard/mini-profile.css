@@ -24,6 +24,7 @@
     
     .miniProfile h2 {
         margin-top: 10px;
+        font-family: "Roboto", "Helvetica", "Arial", sans-serif;
     }
     
     .miniInfo {
@@ -116,13 +117,14 @@
     display: flex;
     /* margin: 10px; */
     padding: 20px;
-    font-weight: bold;
+    /* font-weight: bold; */
     border-radius: 5px;
     background: rgb(250,2,2);
     background: linear-gradient(90deg, rgba(250,2,2,1) 0%, rgba(10,121,158,1) 50%, rgba(0,255,139,1) 100%);
     overflow-x: scroll;
     z-index: 5;
     box-shadow: 0px 0px 2px 2px lightgray;
+    font-family: "Roboto", "Helvetica", "Arial", sans-serif;
 }
 
 .data-bars {
@@ -148,6 +150,7 @@
 .spectrum-children {
     border-radius: 5px;
     margin: 5px;
+    padding: 5px;
     background: white;
     opacity: 0;
         animation: fadeIn .3s linear forwards;
@@ -257,4 +260,8 @@
         opacity: 0;
         transform: translateY(600px) rotateZ(90deg);
     }
+}
+
+.editform{
+    display: flex;
 }
