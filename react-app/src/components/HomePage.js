@@ -1,6 +1,6 @@
 import React from 'react';
 import { Redirect } from 'react-router-dom';
-import styled from 'styled-components'
+
 import '../stylesheets/homepage.css';
 
 // const Header = styled.div`

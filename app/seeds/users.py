@@ -125,7 +125,12 @@ def seed_grocery_types():
         GroceryType(type='Hummus (traditional - no preservatives, not pasteurized)', image='https://i.imgur.com/TVpAKUq.jpg', days_to_expiry=7), 
         GroceryType(type='Mayonnaise (commercial)', image='https://i.imgur.com/TVpAKUq.jpg', days_to_expiry=60),
         GroceryType(type='Salad dressings (commercial, bottled)', image='https://i.imgur.com/TVpAKUq.jpg', days_to_expiry=30),
-        
+        GroceryType(type='Custom: 1 week', days_to_expiry=7),
+        GroceryType(type='Custom: 2 weeks', days_to_expiry=14),
+        GroceryType(type='Custom: 1 month', days_to_expiry=30),
+        GroceryType(type='Custom: 3 months', days_to_expiry=90),
+        GroceryType(type='Custom: 6 months', days_to_expiry=180),
+        GroceryType(type='Custom: 1 year', days_to_expiry=365),        
     ]
 
     db.session.add_all(grocery_type)

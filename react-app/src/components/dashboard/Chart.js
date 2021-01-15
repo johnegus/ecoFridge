@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { useTheme } from '@material-ui/core/styles';
-import Title from './Title';
+
 import './mini-profile.css'
-import CircularProgress from '@material-ui/core/CircularProgress';
+
 import fridge from '../dashboard/fridge.png';
 import { DeleteGrocery } from './delete/Delete';
 import { ExpireCountdown } from './dateDiffer/ExpireCountdown';
@@ -10,11 +9,10 @@ import Modal from 'react-modal'
 import RecipeSearch from '../recipe-search/RecipeSearch';
 import CloseIcon from '@material-ui/icons/Close';
 import Slide from '@material-ui/core/Slide';
-import Paper from '@material-ui/core/Paper';
+
 import { makeStyles } from '@material-ui/core/styles';
 
 import './mini-profile.css'
-import zIndex from '@material-ui/core/styles/zIndex';
 const useStyles = makeStyles((theme) => ({
   root: {
     height: 180,
@@ -40,7 +38,6 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function Chart({groceries, setGroceries}) {
-  const classes = useStyles();
 const [modalIsOpen, setModalIsOpen] = useState(false)
 const [currentGrocery, setCurrentGrocery] = useState('')
 const [checked, setChecked] = useState(false)

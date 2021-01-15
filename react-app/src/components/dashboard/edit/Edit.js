@@ -1,7 +1,7 @@
-import React, { useState, useEffect, forceUpdate } from 'react'
+import React, { useState } from 'react'
 import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
-import { editGrocery, getGroceries } from '../../../services/groceries';
+import { editGrocery } from '../../../services/groceries';
 import TextField from '@material-ui/core/TextField';
 
 const useStyles = makeStyles((theme) => ({
@@ -12,8 +12,6 @@ const useStyles = makeStyles((theme) => ({
 
 export const EditGrocery = ({grocery, groceries, setGroceries})=> {
     const classes = useStyles();
-    const userId = localStorage.getItem('userId')
-    const [newName, setNewName] = useState('')
     const [isEdit, setIsEdit] = useState(false)
     const [itemName, setItemName] = useState("");
 

@@ -7,7 +7,7 @@ import Button from '@material-ui/core/Button';
 import Autocomplete from '@material-ui/lab/Autocomplete';
 import { getTypes } from '../../../services/types';
 import './add.css'
-import fridge from "./ecofridge.png"
+
 
 
 const useStyles = makeStyles((theme) => ({

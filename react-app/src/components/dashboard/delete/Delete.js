@@ -1,10 +1,9 @@
-import React, { useState, useEffect, forceUpdate } from 'react'
+import React from 'react'
 import Button from '@material-ui/core/Button';
 import { deleteGrocery, getGroceries } from '../../../services/groceries';
-import { useParams, useHistory } from "react-router-dom";
 
 
-export const DeleteGrocery = ({grocery, groceries, setGroceries})=> {
+export const DeleteGrocery = ({grocery, setGroceries})=> {
     const userId = localStorage.getItem('userId')
     
 

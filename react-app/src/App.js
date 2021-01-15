@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
-import LoginForm from "./components/auth/LoginForm";
 import SignInSide from "./components/sign-in-side/SignInSide";
 import SignUp from "./components/sign-up/SignUp";
 import NavBar from "./components/NavBar";
@@ -12,9 +11,7 @@ import User from "./components/dashboard/User";
 import { authenticate, signUp } from "./services/auth";
 import HomePage from "./components/HomePage";
 import AddGrocery from "./components/dashboard/addItem/Add";
-import RecipeSearch from "./components/recipe-search/RecipeSearch";
 import Modal from 'react-modal'
-import RecipeSearchInput from "./components/recipe-search/RecipeSearchInput";
 import Recipe from "./components/recipe-search/Recipe";
 
 Modal.setAppElement('#root')

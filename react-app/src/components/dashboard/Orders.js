@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import Link from '@material-ui/core/Link';
 import { makeStyles } from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
@@ -6,19 +6,19 @@ import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
-import CircularProgress from '@material-ui/core/CircularProgress';
+
 import Title from './Title';
 import './mini-profile.css'
-import { getGroceries, editGrocery } from '../../services/groceries';
+
 import { DeleteGrocery } from './delete/Delete';
 import AddGrocery from './addItem/Add';
 import { DateDiffInDays } from './dateDiffer/DateDiffInDays';
 import { ExpireCountdown } from './dateDiffer/ExpireCountdown';
-import { GridMaker } from './data-grid/Grid';
+
 import Modal from 'react-modal'
 import RecipeSearch from '../recipe-search/RecipeSearch';
 import CloseIcon from '@material-ui/icons/Close';
-import Button from '@material-ui/core/Button';
+
 
 import { EditGrocery } from './edit/Edit';
 
@@ -53,11 +53,7 @@ export default function Orders({groceries, setGroceries}) {
     setModalIsOpen(true)   
   }
 
-  const handleItemClick = (grocery) => {
-    console.log(grocery)
-    setCurrentGrocery(grocery.item_name);
-    setModalIsOpen(true)   
-  }
+
 
  
 
