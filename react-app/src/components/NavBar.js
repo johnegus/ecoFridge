@@ -12,6 +12,7 @@ import Typography from '@material-ui/core/Typography';
 import Link from '@material-ui/core/Link';
 
 import RecipeSearchInput from './recipe-search/RecipeSearchInput';
+import logo from '../ecofridge.png'
 
 
 
@@ -39,7 +40,7 @@ margin: 0 auto;
 
 
 const Logo = styled.img.attrs({
-    src: '../../ecofridge.png'
+  src: logo
 })`
 width: 80px;
 height: 80px;
