@@ -6,6 +6,8 @@ import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import Autocomplete from '@material-ui/lab/Autocomplete';
 import { getTypes } from '../../../services/types';
+import Alert from '@material-ui/lab/Alert';
+
 import './add.css'
 
 
@@ -27,6 +29,8 @@ export default function AddGrocery({groceries, setGroceries}) {
   const user = localStorage.getItem('userId');
   const [loaded, setLoaded] = useState(false);
   const [types, setTypes] = useState([]);
+  const [errors, setErrors] = useState('');
+
   
 
   useEffect(() => {
@@ -40,18 +44,27 @@ export default function AddGrocery({groceries, setGroceries}) {
 
   const onAddGrocery = async (e) => {  
       e.preventDefault()  
+      if (!itemType){
+        setErrors('No Item Type Found')
+        setTimeout(function()
+           {
+             setErrors('')
+           },2000);
+      } else{
       const newGrocery = await addGrocery(user, itemName, itemType.id);
       const sortedGroceries = [...groceries, newGrocery].sort((a, b) => a.type.days_to_expiry - b.type.days_to_expiry)
 
       setGroceries(sortedGroceries)
       setItemName('')
+      setErrors('')
       setItemType(null)
-      
+    }
     
     }
 
     const onUps = (e, newValue) => {
       console.log('///', newValue);
+      
       setItemType(newValue);
     }
 
@@ -59,7 +72,9 @@ export default function AddGrocery({groceries, setGroceries}) {
   return (
     <form onSubmit={onAddGrocery} className={classes.root} noValidate autoComplete="off">
       <div className='addForm'>
+      
       <TextField
+          required
           id="filled-textarea"
           label="Item Name"
           placeholder="Item Name"
@@ -78,6 +93,7 @@ export default function AddGrocery({groceries, setGroceries}) {
           onChange={e => setItemType(e.target.value)}
         /> */}
         <Autocomplete
+        required
         options= {types}
         getOptionLabel= {(option) => option.type}
         id="Item Type"
@@ -87,7 +103,7 @@ export default function AddGrocery({groceries, setGroceries}) {
         onChange={onUps}
       />
         <Button type="submit" variant="outlined" color="primary">Add Grocery Item</Button>
-        {/* <img src={fridge} alt='ecofridge' /> */}
+        {errors ? <Alert className='fade-out' severity="error">{errors}</Alert> : ''}
       </div>
       
     </form>

@@ -14,6 +14,8 @@ import Grid from '@material-ui/core/Grid';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
+import Alert from '@material-ui/lab/Alert';
+
 
 function Copyright() {
   return (
@@ -63,7 +65,7 @@ const useStyles = makeStyles((theme) => ({
 
 export default function SignInSide({ authenticated, setAuthenticated }) {
   const classes = useStyles();
-  const [errors, setErrors] = useState([]);
+  const [errors, setErrors] = useState('');
   const [email, setEmail] = useState("demo@aa.io");
   const [password, setPassword] = useState("password");
 
@@ -109,6 +111,8 @@ export default function SignInSide({ authenticated, setAuthenticated }) {
             Sign in
           </Typography>
           <form className={classes.form} onSubmit={onLogin}>
+         {errors ? <Alert severity="error">{errors}</Alert> : ''}
+          
             <TextField
               margin="normal"
               required
