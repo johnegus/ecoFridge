@@ -19,7 +19,7 @@
         height: 120px;
         background-color: white;
         border-radius: 50%;
-        box-shadow: 0px 5px 3px 3px lightgray;
+        box-shadow: 0px 0px 2px 2px lightgray;
     }
     
     .miniProfile h2 {
@@ -122,11 +122,16 @@
     background: linear-gradient(90deg, rgba(250,2,2,1) 0%, rgba(10,121,158,1) 50%, rgba(0,255,139,1) 100%);
     overflow-x: scroll;
     z-index: 5;
+    box-shadow: 0px 0px 2px 2px lightgray;
 }
 
-.spectrum-container2 {
+.data-bars {
     background: white;
     border-radius: 5px;
+    height: 350px;
+    display: flex;
+    min-width: fit-content;
+    box-shadow: 0px 0px 2px 2px lightgray;
 }
 
 

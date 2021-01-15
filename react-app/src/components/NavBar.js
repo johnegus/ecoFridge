@@ -59,7 +59,7 @@ function Copyright() {
     <Typography variant="body2" color="textSecondary" align="center">
       {'Copyright © '}
       <Link color="inherit" href="https://material-ui.com/">
-        Your Website
+        John Hiestand
       </Link>{' '}
       {new Date().getFullYear()}
       {'.'}
@@ -175,7 +175,7 @@ const NavBar = ({ authenticated, setAuthenticated }) => {
     <>
     <Nav>
       <NavContainer>
-        <RecipeSearchInput />
+      {authenticated ? <RecipeSearchInput /> : ''}
         <NavLink to="/" exact={true} activeClassName="active">
           <Logo />
         </NavLink>

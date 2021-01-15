@@ -21,7 +21,7 @@ function Copyright() {
     <Typography variant="body2" color="textSecondary" align="center">
       {'Copyright © '}
       <Link color="inherit" href="https://material-ui.com/">
-        Performa by John Hiestand
+      John Hiestand
       </Link>{' '}
       {new Date().getFullYear()}
       {'.'}
