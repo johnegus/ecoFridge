@@ -5,8 +5,30 @@ body {
     /* overflow: hidden; */
 }
 
-/* .activity-feed {
-    background-color: white;
-    margin: 50%;
-} */
 
+
+.miniInfo1 {
+    display: flex;
+    margin-bottom: 10px;
+    align-items: center;
+    justify-content: center;
+}
+
+.miniInfo1 div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+}
+
+.miniInfo1 h4 {
+    align-self: center;
+}
+
+.miniInfo1 h6 {
+    font-size: 12px;
+}
+.about-us-text {
+    padding: 10px;
+    margin: 10px;
+}

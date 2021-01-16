@@ -13,24 +13,44 @@ import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import { signUp } from '../../services/auth';
+import github from '../../github.png'
+import linkedin from '../../linkedin.png'
+import '../../index.css'
 
 
 function Copyright() {
   return (
+    <>
     <Typography variant="body2" color="textSecondary" align="center">
       {'Copyright © '}
-      <Link color="inherit" href="https://material-ui.com/">
-      John Hiestand
+      <Link color="inherit" href="https://www.linkedin.com/in/john-hiestand-3bb22a17/">
+      John Hiestand 
       </Link>{' '}
       {new Date().getFullYear()}
       {'.'}
+      
     </Typography>
+    <div className='miniInfo1'>
+    <div>
+    <a href="https://github.com/johnegus/" target="_blank"> 
+      
+        <img className='icons' height='25px' width='25px' src={github} alt='github' />
+        </a>
+    </div>
+    <div>
+    <a href="https://www.linkedin.com/in/john-hiestand-3bb22a17/" target="_blank"> 
+        
+        <img className='icons' height='25px' width='25px' src={linkedin} alt='linkedin' />
+        </a>
+    </div>
+    </div>
+    </>
   );
 }
 
 const useStyles = makeStyles((theme) => ({
   paper: {
-    marginTop: theme.spacing(8),
+    marginTop: theme.spacing(2),
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
@@ -104,7 +124,7 @@ export default function SignUp({authenticated, setAuthenticated}) {
   };
 
   if (authenticated) {
-    return <Redirect to="/" />;
+    return <Redirect to="/dashboard" />;
   }
 
   return (

@@ -5,6 +5,8 @@ COPY react-app/. .
 
 # You have to set this because it should be set during build time.
 ENV REACT_APP_BASE_URL=https://ecofridge.herokuapp.com
+ENV REACT_APP_APP_ID=d52ce565
+ENV REACT_APP_APP_KEY=ae866e8bb3383dcb7a0c888c9af8aec9
 
 # Build our React App
 RUN npm install

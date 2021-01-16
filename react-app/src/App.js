@@ -38,9 +38,7 @@ function App() {
   return (
     <BrowserRouter>
       <NavBar setAuthenticated={setAuthenticated} authenticated={authenticated}/>
-      <Route path="/" exact={true}  >
-        <HomePage setAuthenticated={setAuthenticated} authenticated={authenticated}/>
-      </Route>
+      
       <Route path="/login" exact={true}>
         <SignInSide
           authenticated={authenticated}
@@ -55,7 +53,7 @@ function App() {
         <UsersList/>
       </ProtectedRoute>
       <Switch>
-      <ProtectedRoute path="/" exact={true} authenticated={authenticated}>
+      <ProtectedRoute path="/dashboard" exact={true} authenticated={authenticated}>
         <Dashboard/>
       </ProtectedRoute>
       <ProtectedRoute path="/recipes" exact={true} authenticated={authenticated}>
@@ -72,6 +70,9 @@ function App() {
         <Checkout />
       </ProtectedRoute>
   
+      <Route path="/" exact={true}  >
+        <HomePage setAuthenticated={setAuthenticated} authenticated={authenticated}/>
+      </Route>
       
       
     </BrowserRouter>

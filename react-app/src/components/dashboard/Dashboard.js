@@ -16,19 +16,38 @@ import Orders from './Orders';
 import Chart from './Chart';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import { getGroceries } from '../../services/groceries';
-
+import github from '../../github.png'
+import linkedin from '../../linkedin.png'
+import '../../index.css'
 
 
 function Copyright() {
   return (
+    <>
     <Typography variant="body2" color="textSecondary" align="center">
       {'Copyright © '}
-      <Link color="inherit" href="https://material-ui.com/">
-      John Hiestand
+      <Link color="inherit" href="https://www.linkedin.com/in/john-hiestand-3bb22a17/">
+      John Hiestand 
       </Link>{' '}
       {new Date().getFullYear()}
       {'.'}
+      
     </Typography>
+    <div className='miniInfo1'>
+    <div>
+    <a href="https://github.com/johnegus/" target="_blank"> 
+      
+        <img className='icons' height='25px' width='25px' src={github} alt='github' />
+        </a>
+    </div>
+    <div>
+    <a href="https://www.linkedin.com/in/john-hiestand-3bb22a17/" target="_blank"> 
+        
+        <img className='icons' height='25px' width='25px' src={linkedin} alt='linkedin' />
+        </a>
+    </div>
+    </div>
+    </>
   );
 }
 

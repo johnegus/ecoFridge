@@ -52,9 +52,9 @@ function Copyright() {
   return (
     <Typography variant="body2" color="textSecondary" align="center">
       {'Copyright © '}
-      <Link color="inherit" href="https://material-ui.com/">
+      <Link color="inherit" href="https://www.linkedin.com/in/john-hiestand-3bb22a17/">
         John Hiestand
-      </Link>{' '}
+      </Link>{''}
       {new Date().getFullYear()}
       {'.'}
     </Typography>
@@ -170,9 +170,14 @@ const NavBar = ({ authenticated, setAuthenticated }) => {
     <Nav>
       <NavContainer>
       {authenticated ? <RecipeSearchInput /> : ''}
-        <NavLink to="/" exact={true} activeClassName="active">
+      {authenticated ? <NavLink to="/dashboard" exact={true} activeClassName="active">
           <Logo />
-        </NavLink>
+        </NavLink> : 
+        <NavLink to="/" exact={true} activeClassName="active">
+        <Logo />
+      </NavLink>}
+
+        
       <ul>
           {!authenticated && currentPage !== '/login' ? 
         <>
@@ -194,7 +199,7 @@ const NavBar = ({ authenticated, setAuthenticated }) => {
             : "" }
           {authenticated ? 
           <>
-            <NavLink to={`/`} exact={true} activeClassName="active">
+            <NavLink to={`/dashboard`} exact={true} activeClassName="active">
             <Button variant="outlined" color="primary">
                 Fridge
               </Button>

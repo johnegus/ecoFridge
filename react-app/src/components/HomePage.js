@@ -1,8 +1,14 @@
 import React from 'react';
 import { Redirect } from 'react-router-dom';
-
+import styled from 'styled-components'
 import '../stylesheets/homepage.css';
+import Typography from '@material-ui/core/Typography';
+import Link from '@material-ui/core/Link';
+import github from '../github.png'
+import linkedin from '../linkedin.png'
+import '../index.css'
 
+import fridge from '../ECOFridge-crop.png'
 // const Header = styled.div`
 // font-size: 35px;
 // display: flex;
@@ -16,7 +22,7 @@ import '../stylesheets/homepage.css';
 
 // const BackgroundImage = styled.div`
 // overflow: hidden;
-// background-image: url('https://images.pexels.com/photos/1081031/pexels-photo-1081031.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260');
+// background-image: url('https://i.imgur.com/B2Iyywy.jpg');
 // width: 100vw;
 // height: 91vh;
 // background-size: cover;
@@ -32,17 +38,11 @@ const HomePage = ({ authenticated, setAuthenticated }) => {
     }
     return(
         <div id='body'>
+            
             <Header/>
             <Card 
-                className='section'
-                img='./Capture1.PNG'
-                title='About ECOFridge' 
-                description='ECOFridge is a sustainability minded dashboard for users to reduce wasted grocery items. ECOFridge visually prioritizes items that will parish first in the user’s refrigerator or pantry, and help users to make informed decisions when creating a grocery list to utilizes items that could otherwise be wasted. '
-            />
-
-            <Card 
                 className='section bg-grey'
-                img='./Capture3.PNG' 
+                
                 title='Our Values'
                 description='Food waste prevention is one of the most important
                 issues to tackle when it comes sustainability.  Food waste is the single largest component of solid waste reaching landfills and incinerators in the U.S., according to the EPA.
@@ -51,10 +51,19 @@ const HomePage = ({ authenticated, setAuthenticated }) => {
 
             <Card 
                 className='section'
+                img={fridge}
+                title='About ECOFridge' 
+                description='ECOFridge is a sustainability minded dashboard for users to reduce wasted grocery items. ECOFridge visually prioritizes items that will parish first in the user’s refrigerator or pantry, and help users to make informed decisions when creating a grocery list to utilizes items that could otherwise be wasted. '
+            />
+            
+            
+
+            {/* <Card 
+                className='section'
                 img='./Capture1.PNG' 
                 title='Our Mission' 
                 description='Our mission is to reduce food waste.'
-            />
+            /> */}
             <ContactContainer/>
         </div>
     );
@@ -83,7 +92,7 @@ const Card = (props) =>{
         <div className={props.className} >
             <div className="small-div">
                 <i className={props.className}></i>
-                <img src={props.img} alt=''/>
+                
             </div>
 
             <div className="big-div">
@@ -94,6 +103,7 @@ const Card = (props) =>{
                 <span>
                     {props.description}
                 </span>
+                <img src={props.img} alt=''/>
             </div>
         </div>
     )
@@ -104,18 +114,34 @@ const Card = (props) =>{
 const ContactContainer = () => {
     return(
         <div className='contact-container bg-grey'>
-            <span className="div-title">Contact us</span>
+            <span className="div-title">Contact</span>
             <div className='contact-form'>
                 <div id='sect1'>
-                    <span>Contact us and we will get back to you within 24 hours.</span>
-                    <span>
-                        <i className="fas fa-map-marker-alt"></i>
-                        John Hiestand
-                    </span>
-                    <span>
-                        <i className="far fa-envelope"></i>
-                        jgh2102@gmail.com
-                    </span>
+                <>
+    <Typography variant="body2" color="textSecondary" align="center">
+      {'Copyright © '}
+      <Link color="inherit" href="https://www.linkedin.com/in/john-hiestand-3bb22a17/">
+      John Hiestand 
+      </Link>{' '}
+      {new Date().getFullYear()}
+      {'.'}
+      
+    </Typography>
+    <div className='miniInfo1'>
+    <div>
+    <a href="https://github.com/johnegus/" target="_blank"> 
+      
+        <img className='icons' height='25px' width='25px' src={github} alt='github' />
+        </a>
+    </div>
+    <div>
+    <a href="https://www.linkedin.com/in/john-hiestand-3bb22a17/" target="_blank"> 
+        
+        <img className='icons' height='25px' width='25px' src={linkedin} alt='linkedin' />
+        </a>
+    </div>
+    </div>
+    </>
                 </div>
                     
                 <div id='sect2'>

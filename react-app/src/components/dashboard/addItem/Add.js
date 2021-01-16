@@ -49,7 +49,7 @@ export default function AddGrocery({groceries, setGroceries}) {
         setTimeout(function()
            {
              setErrors('')
-           },2000);
+           },4000);
       } else{
       const newGrocery = await addGrocery(user, itemName, itemType.id);
       const sortedGroceries = [...groceries, newGrocery].sort((a, b) => a.type.days_to_expiry - b.type.days_to_expiry)
