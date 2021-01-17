@@ -127,6 +127,7 @@ const ContactContainer = () => {
       {'.'}
       
     </Typography>
+    
     <div className='miniInfo1'>
     <div>
     <a href="https://github.com/johnegus/" target="_blank"> 
@@ -141,6 +142,9 @@ const ContactContainer = () => {
         </a>
     </div>
     </div>
+    <Typography variant="body2" color="textSecondary" align="center">
+     Email: jgh2102@gmail.com
+    </Typography>
     </>
                 </div>
                     

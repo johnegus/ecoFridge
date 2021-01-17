@@ -63,12 +63,16 @@ export const EditGrocery = ({grocery, groceries, setGroceries})=> {
                 : grocery.item_name
                 
               }
+              <div className='editform'>
               {isEdit ? '':
+              // <div className='edit-button'>
               <Button variant="outlined" color="primary"  onClick={async ()=> {
                             onEdit()
                             }}>Edit
                 </Button>
+               
 }
+</div>
         </>
     )
 }

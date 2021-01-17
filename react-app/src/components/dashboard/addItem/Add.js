@@ -44,13 +44,21 @@ export default function AddGrocery({groceries, setGroceries}) {
 
   const onAddGrocery = async (e) => {  
       e.preventDefault()  
-      if (!itemType){
-        setErrors('No Item Type Found')
+      if (!itemType ){
+        setErrors('Please set an item type.')
         setTimeout(function()
            {
              setErrors('')
            },4000);
-      } else{
+      } 
+      // if (!itemName){
+      //   setErrors('Please give the item a name.')
+      //   setTimeout(function()
+      //      {
+      //        setErrors('')
+      //      },4000);
+      // }
+      else{
       const newGrocery = await addGrocery(user, itemName, itemType.id);
       const sortedGroceries = [...groceries, newGrocery].sort((a, b) => a.type.days_to_expiry - b.type.days_to_expiry)
 
@@ -74,7 +82,7 @@ export default function AddGrocery({groceries, setGroceries}) {
       <div className='addForm'>
       
       <TextField
-          required
+          // required
           id="filled-textarea"
           label="Item Name"
           placeholder="Item Name"

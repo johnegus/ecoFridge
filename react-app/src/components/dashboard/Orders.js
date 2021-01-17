@@ -70,7 +70,7 @@ export default function Orders({groceries, setGroceries}) {
       <Table size="small">
         <TableHead>
           <TableRow>
-            <TableCell>Date Purchased</TableCell>
+            <TableCell>Date Stored</TableCell>
             <TableCell>Days Passed</TableCell>
             <TableCell>Item Name</TableCell>
             <TableCell>Type</TableCell>

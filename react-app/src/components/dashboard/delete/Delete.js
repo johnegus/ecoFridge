@@ -13,7 +13,7 @@ export const DeleteGrocery = ({grocery, setGroceries})=> {
             <Button variant="outlined" color="primary" onClick={async ()=> {
                               await deleteGrocery(grocery.id)
                               const response = await getGroceries(userId)
-                              const sortedGroceries = response.groceries.sort((a, b) => a.type.days_to_expiry - b.type.days_to_expiry)
+                              const sortedGroceries = await response.groceries.sort((a, b) => a.type.days_to_expiry - b.type.days_to_expiry)
                                 setGroceries(sortedGroceries)
                               }}>Delete</Button>
         </>
