@@ -7,20 +7,20 @@ import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 
-import Title from './Title';
-import './mini-profile.css'
+import Title from '../Title';
+import '../mini-profile.css'
 
-import { DeleteGrocery } from './delete/Delete';
-import AddGrocery from './addItem/Add';
-import { DateDiffInDays } from './dateDiffer/DateDiffInDays';
-import { ExpireCountdown } from './dateDiffer/ExpireCountdown';
+import { DeleteGrocery } from '../delete/Delete';
+import AddGrocery from '../addItem/Add';
+import { DateDiffInDays } from '../dateDiffer/DateDiffInDays';
+import { ExpireCountdown } from '../dateDiffer/ExpireCountdown';
 
 import Modal from 'react-modal'
-import RecipeSearch from '../recipe-search/RecipeSearch';
+import RecipeSearch from '../../recipe-search/RecipeSearch';
 import CloseIcon from '@material-ui/icons/Close';
 
 
-import { EditGrocery } from './edit/Edit';
+import { EditGrocery } from '../edit/Edit';
 
 
 
@@ -35,7 +35,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function Orders({groceries, setGroceries}) {
+export default function Freezer({freezerGroceries,}) {
   const classes = useStyles();
   const year = new Date().getFullYear();
   const month =new Date().getMonth() + 1;

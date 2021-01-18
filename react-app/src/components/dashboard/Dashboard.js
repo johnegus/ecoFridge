@@ -12,13 +12,14 @@ import Paper from '@material-ui/core/Paper';
 import Link from '@material-ui/core/Link';
 
 import Deposits from './Deposits';
-import Orders from './Orders';
+import Orders from './stored-items/Fridge';
 import Chart from './Chart';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import { getFreezerGroceries, getGroceries, getPantryGroceries } from '../../services/groceries';
 import github from '../../github.png'
 import linkedin from '../../linkedin.png'
 import '../../index.css'
+import Fridge from './stored-items/Fridge';
 
 
 function Copyright() {
@@ -160,7 +161,6 @@ export default function Dashboard() {
     // Discard the time and time-zone information.
     const utc1 = Date.UTC(a.getFullYear(), a.getMonth(), a.getDate());
     const utc2 = Date.UTC(b.getFullYear(), b.getMonth(), b.getDate());
-    console.log(Math.floor((utc2 - utc1) / _MS_PER_DAY))
     return Math.floor((utc2 - utc1) / _MS_PER_DAY);
   }
 
@@ -180,12 +180,34 @@ export default function Dashboard() {
 
       return (groceryA.type.days_to_expiry -difference) - (groceryB.type.days_to_expiry - difference2)
     })
-    setGroceries(sortedGroceries)
-    setFreezerGroceries(freezerResponse)
-    setPantryGroceries(pantryResponse)
+
+    const sortedFreezerGroceries = freezerResponse.groceries.sort((groceryA, groceryB) => {
+      const a = new Date(groceryA.createdAt),
+      b = new Date(),
+      difference = dateDiffInDays(a, b);
+      const c = new Date(groceryB.createdAt),
+      d = new Date(),
+      difference2 = dateDiffInDays(c, d);
+
+      return (groceryA.type.days_to_expiry -difference) - (groceryB.type.days_to_expiry - difference2)
+    })
+
+    const sortedPantryGroceries = pantryResponse.groceries.sort((groceryA, groceryB) => {
+      const a = new Date(groceryA.createdAt),
+      b = new Date(),
+      difference = dateDiffInDays(a, b);
+      const c = new Date(groceryB.createdAt),
+      d = new Date(),
+      difference2 = dateDiffInDays(c, d);
+
+      return (groceryA.type.days_to_expiry -difference) - (groceryB.type.days_to_expiry - difference2)
+    })
+
+    await setGroceries(sortedGroceries)
+    await setFreezerGroceries(sortedFreezerGroceries)
+    await setPantryGroceries(sortedPantryGroceries)
     setTimeout(function(){ setLoaded(true); }, 500);
-    console.log(freezerGroceries)
-    console.log(pantryGroceries)
+    
   })()
   }, [])
 
@@ -200,7 +222,9 @@ export default function Dashboard() {
  
       )
     }
-
+    console.log(groceries)
+    console.log(freezerGroceries)
+    console.log(pantryGroceries)
   return (
     
     
@@ -213,7 +237,7 @@ export default function Dashboard() {
             {/* Chart */}
             <Grid item xs={12} md={8} lg={9}>
               {/* <Paper className={fixedHeightPaper}> */}
-                <Chart groceries={groceries} setGroceries={setGroceries}/>
+                <Chart groceries={[...groceries, ...freezerGroceries, ...pantryGroceries]} setGroceries={setGroceries}/>
               {/* </Paper> */}
             </Grid>
             {/* Recent Deposits */}
@@ -228,9 +252,9 @@ export default function Dashboard() {
             <Grid item xs={12}>
               <Paper className={classes.paper}>
               {/* <RecipeSearch /> */}
-                <Orders groceries={groceries} setGroceries={setGroceries}/>
-                {/* <Orders groceries={freezerGroceries} setGroceries={setFreezerGroceries}/>
-                <Orders groceries={pantryGroceries} setGroceries={setPantryGroceries}/> */}
+                <Fridge groceries={groceries} setGroceries={setGroceries}/>
+                <Fridge groceries={freezerGroceries} setGroceries={setFreezerGroceries}/>
+                <Fridge groceries={pantryGroceries} setGroceries={setPantryGroceries}/>
                 
               </Paper>
             </Grid>
