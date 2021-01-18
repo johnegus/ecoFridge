@@ -37,6 +37,7 @@ const RecipeSearchInput = () => {
   }
     return(
       <>
+        
       <div className="App">
         <form onSubmit={getSearch} className="search-form">
           <input className="search-bar" type="text" value={search} onChange={updateSearch} />
@@ -73,7 +74,16 @@ const RecipeSearchInput = () => {
         <div className='closeIcon'>
               <CloseIcon onClick={() => setModalIsOpen(false)}>Close</CloseIcon>
             </div>
-
+      {recipes.length == 0 ? 
+      <>
+      <br></br>
+      <h2>
+        Sorry, your search request failed, possibly due to the following reasons:
+      </h2>
+      <h3>- The API has exceeded the 5 fetch per minute maximum.</h3>
+      <h3>- There are no recipes for your particular query.</h3>
+      </> :''
+    }
       
         <div className="recipes">
         {recipes.map(recipe => (

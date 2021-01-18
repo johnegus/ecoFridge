@@ -60,7 +60,7 @@ export default function Freezer({groceries, setGroceries}) {
   return (
     <React.Fragment>
     <Title>Freezer</Title>
-      <Title>Add More Groceries To The Freezer</Title>
+      
       <AddFreezerGrocery groceries={groceries} setGroceries={setGroceries}/>
      
       <Table size="small">

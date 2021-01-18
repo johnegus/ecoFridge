@@ -42,18 +42,20 @@ const HomePage = ({ authenticated, setAuthenticated }) => {
             <Header/>
             <Card 
                 className='section bg-grey'
-                
-                title='Our Values'
+                img='https://i.imgur.com/iYGDIsu.jpeg'
+                title='ECOFridge Goal'
                 description='Food waste prevention is one of the most important
-                issues to tackle when it comes sustainability.  Food waste is the single largest component of solid waste reaching landfills and incinerators in the U.S., according to the EPA.
-                ECOFridge is a tool to help users reduce their environmental impact.'
+                issues to tackle when it comes sustainability.  Food waste is the single largest component of 
+                solid waste reaching landfills and incinerators in the U.S., according to the EPA.
+                ECOFridge sources its expiration 
+                data from the University of Nebraska to help people to optimize their kitchen, save money, and help the environment. '
             />
 
             <Card 
                 className='section'
                 img={fridge}
                 title='About ECOFridge' 
-                description='ECOFridge is a sustainability minded dashboard for users to reduce wasted grocery items. ECOFridge visually prioritizes items that will parish first in the user’s refrigerator or pantry, and help users to make informed decisions when creating a grocery list to utilizes items that could otherwise be wasted. '
+                description='How often have you forgotten you had frozen fish, cornstarch, or oatmeal and not realized until it was too late? ECOFridge is a sustainability minded dashboard for users to reduce wasted grocery items. ECOFridge organizes and visually prioritizes items that will parish first in the user’s refrigerator, freezer, or pantry, and help users to make informed decisions when creating a grocery list to utilizes items that could otherwise be wasted. '
             />
             
             
@@ -103,7 +105,7 @@ const Card = (props) =>{
                 <span>
                     {props.description}
                 </span>
-                <img src={props.img} alt=''/>
+                <img className='homepage-image' src={props.img} alt=''/>
             </div>
         </div>
     )

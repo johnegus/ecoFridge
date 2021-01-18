@@ -60,7 +60,7 @@ export default function Pantry({groceries, setGroceries}) {
   return (
     <React.Fragment>
     <Title>Pantry</Title>
-      <Title>Add More Groceries To The Pantry</Title>
+     
       <AddPantryGrocery groceries={groceries} setGroceries={setGroceries}/>
      
       <Table size="small">

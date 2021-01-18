@@ -101,7 +101,7 @@ export default function AddFreezerGrocery({groceries, setGroceries}) {
         value={itemType} 
         onChange={onUps}
       />
-        <Button type="submit" variant="outlined" color="primary">Add Grocery Item</Button>
+        <Button type="submit" variant="outlined" color="primary">Add Freezer Item</Button>
         {errors ? <Alert className='fade-out' severity="error">{errors}</Alert> : ''}
       </div>
       

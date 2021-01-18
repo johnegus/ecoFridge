@@ -41,3 +41,53 @@ Types
 | image | varchar |   |
 | days_to_expiry | integer | not null |
 
+PantryGroceries
+--------------
+
+
+| attribute name | data type | details |
+| - | - | - |
+| id | integer | not null, primary key |
+| item | varchar(255) | not null |
+| type_id | integer | foreign key |
+| user_id | integer | not null, foreign key |
+| createdAt | date |   |
+
+
+
+PantryTypes
+--------
+
+
+| attribute name | data type | details |
+| - | - | - |
+| id | integer | not null, primary key |
+| type_name | varchar(255) | not null |
+| image | varchar |   |
+| days_to_expiry | integer | not null |
+
+FreezerGroceries
+--------------
+
+
+| attribute name | data type | details |
+| - | - | - |
+| id | integer | not null, primary key |
+| item | varchar(255) | not null |
+| type_id | integer | foreign key |
+| user_id | integer | not null, foreign key |
+| createdAt | date |   |
+
+
+
+FreezerTypes
+--------
+
+
+| attribute name | data type | details |
+| - | - | - |
+| id | integer | not null, primary key |
+| type_name | varchar(255) | not null |
+| image | varchar |   |
+| days_to_expiry | integer | not null |
+
