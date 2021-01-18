@@ -59,14 +59,10 @@ export default function Fridge({groceries, setGroceries}) {
 
   return (
     <React.Fragment>
-      <div className={classes.seeMore}>
-      <Title>Add More Groceries</Title>
-          
- 
-      </div>
-  
+    <Title>Fridge</Title>
+      <Title>Add More Groceries To The Refrigerator</Title>
       <AddGrocery groceries={groceries} setGroceries={setGroceries}/>
-      <Title>Groceries</Title>
+     
       <Table size="small">
         <TableHead>
           <TableRow>

@@ -50,8 +50,8 @@ export const GridMaker = ({types})=> {
 
     return (
       
-             <div style={{ height: 1000}}>
-      <DataGrid rows={rows} columns={columns} pageSize={100} checkboxSelection />
+             <div style={{ height: 500}}>
+      <DataGrid rows={rows} columns={columns} pageSize={50} checkboxSelection />
       </div>
        
     )

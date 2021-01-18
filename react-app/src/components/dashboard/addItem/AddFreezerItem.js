@@ -1,11 +1,11 @@
 import React, { useState, useEffect} from 'react'
-import { addGrocery, getGroceries } from '../../../services/groceries';
+import { addFreezerGrocery } from '../../../services/groceries';
 
 import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import Autocomplete from '@material-ui/lab/Autocomplete';
-import { getTypes } from '../../../services/types';
+import { getFreezerTypes } from '../../../services/types';
 import Alert from '@material-ui/lab/Alert';
 
 import './add.css'
@@ -22,7 +22,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function AddGrocery({groceries, setGroceries}) {
+export default function AddFreezerGrocery({groceries, setGroceries}) {
   const classes = useStyles();
   const [itemName, setItemName] = useState("");
   const [itemType, setItemType] = useState(null);
@@ -35,7 +35,7 @@ export default function AddGrocery({groceries, setGroceries}) {
 
   useEffect(() => {
     (async () => {
-    const response = await getTypes()
+    const response = await getFreezerTypes()
     setTypes(response.types)
     setTimeout(function(){ setLoaded(true); }, 500);
     setLoaded(true);
@@ -59,7 +59,7 @@ export default function AddGrocery({groceries, setGroceries}) {
       //      },4000);
       // }
       else{
-      const newGrocery = await addGrocery(user, itemName, itemType.id);
+      const newGrocery = await addFreezerGrocery(user, itemName, itemType.id);
       const sortedGroceries = [...groceries, newGrocery].sort((a, b) => a.type.days_to_expiry - b.type.days_to_expiry)
 
       setGroceries(sortedGroceries)

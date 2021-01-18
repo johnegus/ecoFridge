@@ -77,7 +77,7 @@ const handleClick = (grocery) => {
                 <img src={fridge} alt='stock fridge' />
             )}
             </div>
-            <DeleteGrocery groceries={groceries} grocery={grocery} setGroceries={setGroceries} />
+            {/* <DeleteGrocery groceries={groceries} grocery={grocery} setGroceries={setGroceries} /> */}
             </div>
         
             </Slide>

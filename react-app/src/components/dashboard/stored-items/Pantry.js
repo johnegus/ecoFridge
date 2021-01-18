@@ -10,8 +10,8 @@ import TableRow from '@material-ui/core/TableRow';
 import Title from '../Title';
 import '../mini-profile.css'
 
-import { DeleteFreezerGrocery } from '../delete/FreezerDelete';
-import AddFreezerGrocery from '../addItem/AddFreezerItem';
+import { DeletePantryGrocery } from '../delete/PantryDelete';
+import AddPantryGrocery from '../addItem/AddPantryItem';
 import { DateDiffInDays } from '../dateDiffer/DateDiffInDays';
 import { ExpireCountdown } from '../dateDiffer/ExpireCountdown';
 
@@ -20,7 +20,7 @@ import RecipeSearch from '../../recipe-search/RecipeSearch';
 import CloseIcon from '@material-ui/icons/Close';
 
 
-import { FreezerEditGrocery } from '../edit/FreezerEdit';
+import { PantryEditGrocery } from '../edit/PantryEdit';
 
 
 
@@ -35,7 +35,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function Freezer({groceries, setGroceries}) {
+export default function Pantry({groceries, setGroceries}) {
   const classes = useStyles();
   const year = new Date().getFullYear();
   const month =new Date().getMonth() + 1;
@@ -59,9 +59,9 @@ export default function Freezer({groceries, setGroceries}) {
 
   return (
     <React.Fragment>
-    <Title>Freezer</Title>
-      <Title>Add More Groceries To The Freezer</Title>
-      <AddFreezerGrocery groceries={groceries} setGroceries={setGroceries}/>
+    <Title>Pantry</Title>
+      <Title>Add More Groceries To The Pantry</Title>
+      <AddPantryGrocery groceries={groceries} setGroceries={setGroceries}/>
      
       <Table size="small">
         <TableHead>
@@ -80,11 +80,11 @@ export default function Freezer({groceries, setGroceries}) {
               <TableCell>{grocery.createdAt}</TableCell>
               <TableCell><DateDiffInDays grocery={grocery} /></TableCell>
               <TableCell>
-                <FreezerEditGrocery grocery={grocery} groceries={groceries} setGroceries={setGroceries}/>
+                <PantryEditGrocery grocery={grocery} groceries={groceries} setGroceries={setGroceries}/>
               </TableCell>
               <TableCell onClick={() => handleTypeClick(grocery)}>{grocery.type.type}</TableCell>
               <TableCell><ExpireCountdown grocery={grocery} /> </TableCell>
-              <TableCell align="right"><DeleteFreezerGrocery groceries={groceries} grocery={grocery} setGroceries={setGroceries} /></TableCell>
+              <TableCell align="right"><DeletePantryGrocery groceries={groceries} grocery={grocery} setGroceries={setGroceries} /></TableCell>
             </TableRow>
           ))}
           

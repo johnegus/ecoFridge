@@ -13,12 +13,13 @@ import Link from '@material-ui/core/Link';
 
 import CircularProgress from '@material-ui/core/CircularProgress';
 
-import { getTypes } from '../../services/types';
+import { getFreezerTypes, getPantryTypes, getTypes } from '../../services/types';
 import { GridMaker } from './data-grid/Grid';
 import ChartDataBase from './ChartDataBase';
 import github from '../../github.png'
 import linkedin from '../../linkedin.png'
 import '../../index.css'
+import Title from './Title';
 
 
 function Copyright() {
@@ -145,6 +146,8 @@ export default function User() {
   const [loaded, setLoaded] = useState(false);
  
   const [types, setTypes] = useState([]);
+  const [freezerTypes, setFreezerTypes] = useState([]);
+  const [pantryTypes, setPantryTypes] = useState([]);
 
   const toggleDrawer = () => {
     setOpen(!open);
@@ -166,7 +169,11 @@ export default function User() {
   useEffect(() => {
     (async () => {
     const response = await getTypes()
+    const freezerResponse = await getFreezerTypes()
+    const pantryResponse = await getPantryTypes()
     setTypes(response.types)
+    setFreezerTypes(freezerResponse.types)
+    setPantryTypes(pantryResponse.types)
     setLoaded(true) 
     
   })()
@@ -189,7 +196,12 @@ export default function User() {
             {/* Chart */}
             <Grid item xs={12} md={8} lg={9}>
               {/* <Paper className={fixedHeightPaper}> */}
+              <Title>Fridge</Title>
                 <ChartDataBase types={types}/>
+                <Title>Freezer</Title>
+                <ChartDataBase types={freezerTypes}/>
+                <Title>Pantry</Title>
+                <ChartDataBase types={pantryTypes}/>
               {/* </Paper> */}
             </Grid>
             {/* Recent Deposits */}
@@ -203,8 +215,12 @@ export default function User() {
             {/* Recent Orders */}
             <Grid item xs={12}>
               <Paper className={classes.paper}>
-              {/* <RecipeSearch /> */}
-              <GridMaker types={types} />
+              <Title>Fridge</Title>
+                <GridMaker types={types} />
+              <Title>Freezer</Title>
+                <GridMaker types={freezerTypes} />
+              <Title>Pantry</Title>
+                <GridMaker types={pantryTypes} />
                 
               </Paper>
             </Grid>

@@ -20,6 +20,8 @@ import github from '../../github.png'
 import linkedin from '../../linkedin.png'
 import '../../index.css'
 import Fridge from './stored-items/Fridge';
+import Freezer from './stored-items/Freezer';
+import Pantry from './stored-items/Pantry';
 
 
 function Copyright() {
@@ -148,6 +150,7 @@ export default function Dashboard() {
   const [groceries, setGroceries] = useState([]);
   const [freezerGroceries, setFreezerGroceries] = useState([]);
   const [pantryGroceries, setPantryGroceries] = useState([]);
+  const [screen, setScreen] = useState('fridge')
  
   const toggleDrawer = () => {
     setOpen(!open);
@@ -251,10 +254,12 @@ export default function Dashboard() {
             {/* Recent Orders */}
             <Grid item xs={12}>
               <Paper className={classes.paper}>
-              {/* <RecipeSearch /> */}
+              <button>Fridge</button>
+              <button>Freezer</button>
+              <button>Pantry</button>
                 <Fridge groceries={groceries} setGroceries={setGroceries}/>
-                <Fridge groceries={freezerGroceries} setGroceries={setFreezerGroceries}/>
-                <Fridge groceries={pantryGroceries} setGroceries={setPantryGroceries}/>
+                <Freezer groceries={freezerGroceries} setGroceries={setFreezerGroceries}/>
+                <Pantry groceries={pantryGroceries} setGroceries={setPantryGroceries}/>
                 
               </Paper>
             </Grid>
