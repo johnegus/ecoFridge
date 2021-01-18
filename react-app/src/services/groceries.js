@@ -9,6 +9,28 @@ const response = await fetch(`/api/groceries/user/${userId}`, {
 
 }
 
+export const getFreezerGroceries = async (userId) => {
+  const response = await fetch(`/api/freezer-groceries/user/${userId}`, {
+      headers: {
+          "Content-Type": "application/json",
+        }
+      });
+      return await response.json();
+      
+  
+  }
+
+  export const getPantryGroceries = async (userId) => {
+    const response = await fetch(`/api/pantry-groceries/user/${userId}`, {
+        headers: {
+            "Content-Type": "application/json",
+          }
+        });
+        return await response.json();
+        
+    
+    }
+
 export const deleteGrocery = async (id) => {
   const response = await fetch(`/api/groceries/delete/${id}`, {
     method: "DELETE",

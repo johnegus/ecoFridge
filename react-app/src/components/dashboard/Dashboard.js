@@ -15,7 +15,7 @@ import Deposits from './Deposits';
 import Orders from './Orders';
 import Chart from './Chart';
 import CircularProgress from '@material-ui/core/CircularProgress';
-import { getGroceries } from '../../services/groceries';
+import { getFreezerGroceries, getGroceries, getPantryGroceries } from '../../services/groceries';
 import github from '../../github.png'
 import linkedin from '../../linkedin.png'
 import '../../index.css'
@@ -145,6 +145,9 @@ export default function Dashboard() {
   const [loaded, setLoaded] = useState(false);
   const userId = localStorage.getItem('userId') 
   const [groceries, setGroceries] = useState([]);
+  const [freezerGroceries, setFreezerGroceries] = useState([]);
+  const [pantryGroceries, setPantryGroceries] = useState([]);
+ 
   const toggleDrawer = () => {
     setOpen(!open);
   };
@@ -164,6 +167,8 @@ export default function Dashboard() {
   useEffect(() => {
     (async () => {
     const response = await getGroceries(userId)
+    const freezerResponse = await getFreezerGroceries(userId)
+    const pantryResponse = await getPantryGroceries(userId)
    
     const sortedGroceries = response.groceries.sort((groceryA, groceryB) => {
       const a = new Date(groceryA.createdAt),
@@ -176,7 +181,11 @@ export default function Dashboard() {
       return (groceryA.type.days_to_expiry -difference) - (groceryB.type.days_to_expiry - difference2)
     })
     setGroceries(sortedGroceries)
-    setLoaded(true)  
+    setFreezerGroceries(freezerResponse)
+    setPantryGroceries(pantryResponse)
+    setTimeout(function(){ setLoaded(true); }, 500);
+    console.log(freezerGroceries)
+    console.log(pantryGroceries)
   })()
   }, [])
 
@@ -220,6 +229,8 @@ export default function Dashboard() {
               <Paper className={classes.paper}>
               {/* <RecipeSearch /> */}
                 <Orders groceries={groceries} setGroceries={setGroceries}/>
+                {/* <Orders groceries={freezerGroceries} setGroceries={setFreezerGroceries}/>
+                <Orders groceries={pantryGroceries} setGroceries={setPantryGroceries}/> */}
                 
               </Paper>
             </Grid>
