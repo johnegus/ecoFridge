@@ -45,3 +45,19 @@ body {
     border: #31c6e8 solid 3px;
     display: block;
 }
+
+.centered {
+    justify-content: center;
+  }
+.middled {
+    align-items: center;
+  }
+
+  main {
+    bottom: 0;
+    display: flex;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+  }

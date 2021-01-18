@@ -217,12 +217,13 @@ export default function Dashboard() {
   if (!loaded ) {
     return (
      
-  
+      <>
     
-          
+      <main className="centered middled">
+        <b>Loading Groceries...</b>
         <CircularProgress />
-        
- 
+        </main>
+      </>
       )
     }
     console.log(groceries)

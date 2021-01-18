@@ -1,6 +1,8 @@
 import React,{useEffect, useState} from 'react';
 import Recipe from "./Recipe";
 import './index.css'
+import CircularProgress from '@material-ui/core/CircularProgress';
+
 const RecipeSearch = ({currentGrocery}) => {
 const API_ID = process.env.REACT_APP_APP_ID;
 const API_KEY = process.env.REACT_APP_APP_KEY;
@@ -8,7 +10,9 @@ const API_KEY = process.env.REACT_APP_APP_KEY;
 const [recipes, setRecipes] = useState([]);
 const [search, setSearch] = useState('');
 const [query, setQuery] = useState('');
-console.log(currentGrocery)
+const [loaded, setLoaded] = useState(false);
+
+
 useEffect(()=>{
   setQuery(currentGrocery);
 }, [query]);
@@ -21,7 +25,7 @@ const getRecipes = async () => {
   const response = await fetch(`https://api.edamam.com/search?q=${query}&app_id=${API_ID}&app_key=${API_KEY}`);
   const data = await response.json();
   setRecipes(data.hits);
-  console.log(data.hits)
+  setTimeout(function(){ setLoaded(true); }, 500);
 };
 
 const updateSearch = e => {
@@ -33,6 +37,19 @@ const getSearch = e => {
   setQuery(search);
   setSearch('');
 }
+
+if (!loaded ) {
+  return (
+   
+    <>
+  
+    <main className="centered middled">
+      <b>Fetching Recipes...</b>
+      <CircularProgress />
+      </main>
+    </>
+    )
+  }
   return(
     <div className="App">
       <h2>Recipe Search for: {currentGrocery}</h2>

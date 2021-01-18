@@ -3,6 +3,8 @@ import Recipe from "./Recipe";
 import Modal from 'react-modal'
 import CloseIcon from '@material-ui/icons/Close';
 import './index.css'
+import CircularProgress from '@material-ui/core/CircularProgress';
+
 const RecipeSearchInput = () => {
   const API_ID = process.env.REACT_APP_APP_ID;
   const API_KEY = process.env.REACT_APP_APP_KEY;
@@ -11,7 +13,7 @@ const RecipeSearchInput = () => {
   const [search, setSearch] = useState('');
   const [query, setQuery] = useState('');
   const [modalIsOpen, setModalIsOpen] = useState(false)
-
+  const [loaded, setLoaded] = useState(false);
   
   
   useEffect(()=>{
@@ -22,7 +24,7 @@ const RecipeSearchInput = () => {
     const response = await fetch(`https://api.edamam.com/search?q=${query}&app_id=${API_ID}&app_key=${API_KEY}`);
     const data = await response.json();
     setRecipes(data.hits);
-    console.log(data.hits);
+    setTimeout(function(){ setLoaded(true); }, 500);
   };
   
   const updateSearch = e => {
@@ -35,6 +37,9 @@ const RecipeSearchInput = () => {
     setSearch('');
     setModalIsOpen(true) 
   }
+
+
+
     return(
       <>
         
@@ -84,6 +89,14 @@ const RecipeSearchInput = () => {
       <h3>- There are no recipes for your particular query.</h3>
       </> :''
     }
+    {!loaded ? 
+         <>
+        <main className="centered middled">
+        <b>Fetching Recipes...</b>
+        <CircularProgress />
+        </main>
+      </>:
+      ''}
       
         <div className="recipes">
         {recipes.map(recipe => (
