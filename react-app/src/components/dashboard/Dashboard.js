@@ -12,7 +12,7 @@ import Paper from '@material-ui/core/Paper';
 import Link from '@material-ui/core/Link';
 
 import Deposits from './Deposits';
-import Orders from './stored-items/Fridge';
+import Button from '@material-ui/core/Button';
 import Chart from './Chart';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import { getFreezerGroceries, getGroceries, getPantryGroceries } from '../../services/groceries';
@@ -254,13 +254,24 @@ export default function Dashboard() {
             {/* Recent Orders */}
             <Grid item xs={12}>
               <Paper className={classes.paper}>
-              <button>Fridge</button>
-              <button>Freezer</button>
-              <button>Pantry</button>
-                <Fridge groceries={groceries} setGroceries={setGroceries}/>
-                <Freezer groceries={freezerGroceries} setGroceries={setFreezerGroceries}/>
+                <div className='button-container'> 
+              <Button variant="outlined" color="primary" 
+                              onClick={async ()=> {
+                              setScreen('fridge')
+                              }}>Fridge</Button>
+              <Button variant="outlined" color="primary" 
+                              onClick={async ()=> {
+                              setScreen('freezer')
+                              }}>Freezer</Button>
+              <Button variant="outlined" color="primary" 
+                              onClick={async ()=> {
+                              setScreen('pantry')
+                              }}>Pantry</Button>
+                  </div>
+                  { screen == 'fridge' ? <Fridge groceries={groceries} setGroceries={setGroceries}/> :
+                  screen == 'freezer' ? <Freezer groceries={freezerGroceries} setGroceries={setFreezerGroceries}/> :
                 <Pantry groceries={pantryGroceries} setGroceries={setPantryGroceries}/>
-                
+                  }
               </Paper>
             </Grid>
             

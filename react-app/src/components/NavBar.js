@@ -201,7 +201,7 @@ const NavBar = ({ authenticated, setAuthenticated }) => {
           <>
             <NavLink to={`/dashboard`} exact={true} activeClassName="active">
             <Button variant="outlined" color="primary">
-                Fridge
+                Dashboard
               </Button>
             </NavLink>
             <NavLink to={`/database`} exact={true} activeClassName="active">
@@ -215,30 +215,7 @@ const NavBar = ({ authenticated, setAuthenticated }) => {
         </ul>
         </NavContainer>
         </Nav>
-        {/* {authenticated ?
-          <div className={classes.root}>
-         <CssBaseline />
-  
-  <Drawer
-    variant="permanent"
-    classes={{
-      paper: clsx(classes.drawerPaper, !open && classes.drawerPaperClose),
-    }}
-    open={open}
-  >
-    <div className={classes.toolbarIcon}>
-      <IconButton onClick={toggleDrawer}>
-        <ChevronLeftIcon />
-      </IconButton>
-    </div>
-    <Divider />
-    <List>{mainListItems}</List>
-    
-  </Drawer>
-
-    
-    </div>
-: ""} */}
+   
     </>
   );
 }
