@@ -61,3 +61,17 @@ body {
     right: 0;
     top: 0;
   }
+
+  .circle-progress {
+    position: absolute;
+    margin: 50%;
+    z-index: -5;
+    right: -115px;
+  }
+
+  .icon-progress {
+    position: absolute;
+    margin: 50%;
+    left: -60px;
+    z-index: 1;
+  }

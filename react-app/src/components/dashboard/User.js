@@ -156,7 +156,7 @@ export default function User() {
     setTypes(response.types)
     setFreezerTypes(freezerResponse.types)
     setPantryTypes(pantryResponse.types)
-    setLoaded(true) 
+    setTimeout(function(){ setLoaded(true); }, 500);
     
   })()
   }, [])
@@ -164,9 +164,13 @@ export default function User() {
   if (!loaded ) {
     return (
       
-          
+      <>
+    
+      <main className="centered middled">
+        <b>Loading Database...</b>
         <CircularProgress />
-      
+        </main>
+      </>
       )
     }
 

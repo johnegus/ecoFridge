@@ -218,6 +218,7 @@ export default function Dashboard() {
     
       <main className="centered middled">
         <b>Loading Groceries...</b>
+        
         <CircularProgress />
         </main>
       </>
