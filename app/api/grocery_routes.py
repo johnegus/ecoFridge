@@ -8,7 +8,7 @@ grocery_routes = Blueprint('groceries', __name__)
 
 # GET all groceries for a specific user 
 @grocery_routes.route('/user/<int:userId>')
-# @login_required
+@login_required
 def get_all_groceries(userId):
     try:
         groceries = Grocery.query.filter(Grocery.user_id == userId).order_by(Grocery.createdAt.desc()).all()
@@ -21,19 +21,6 @@ def get_all_groceries(userId):
         print(error)
         return {'errors': ['An error occurred while retrieving the data']}, 500
 
-# GET all groceries for a specific user
-@grocery_routes.route('/users/<int:user_id>', methods=['GET'])
-@login_required
-def get_user_groceries(user_id):
-    try:
-        groceries = Grocery.query.filter(Grocery.user_id == user_id).all()
-        grocery_dicts = [grocery.to_dict() for grocery in groceries]
-        grocery_json = jsonify({'groceries': grocery_dicts})
-        return grocery_json
-    except SQLAlchemyError as e:
-        error = str(e.__dict__['orig'])
-        print(error)
-        return {'errors': ['hit An error occurred while retrieving the data']}, 500
 
 
 # GET a specific grocery item

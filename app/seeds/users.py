@@ -1,5 +1,5 @@
 from werkzeug.security import generate_password_hash
-from app.models import db, User, GroceryType, Grocery
+from app.models import db, User, GroceryType, Grocery, FreezerGroceryType, FreezerGrocery, PantryGroceryType, PantryGrocery
 
 # Adds a demo user, you can add other users here if you want
 def seed_users():
@@ -137,6 +137,78 @@ def seed_grocery_types():
 
     db.session.commit()
 
+def seed_freezer_grocery_types():
+
+    freezer_grocery_type = [
+        FreezerGroceryType(type='Custom: 1 week', days_to_expiry=7),
+        FreezerGroceryType(type='Custom: 2 weeks', days_to_expiry=14),
+        FreezerGroceryType(type='Custom: 1 month', days_to_expiry=30),
+        FreezerGroceryType(type='Custom: 3 months', days_to_expiry=90),
+        FreezerGroceryType(type='Custom: 6 months', days_to_expiry=180),
+        FreezerGroceryType(type='Custom: 1 year', days_to_expiry=365), 
+        FreezerGroceryType(type='Fresh beef, veal, lamb or pork (steaks, chops or roasts)', image='https://i.imgur.com/rt7BERZ.jpg', days_to_expiry=120), 
+        FreezerGroceryType(type='Ground beef, turkey, veal, pork or lamb, stew meat', image='https://i.imgur.com/rt7BERZ.jpg', days_to_expiry=90), 
+        FreezerGroceryType(type='Bacon', image='https://i.imgur.com/oL9teA8.jpg', days_to_expiry=30), 
+        FreezerGroceryType(type='Bacon, fully cooked and shelf stable', image='https://i.imgur.com/oL9teA8.jpg', days_to_expiry=90), 
+        FreezerGroceryType(type='Sausage, raw from chicken, turkey, pork or beef', image='https://i.imgur.com/Y69uwRB.jpg', days_to_expiry=90), 
+        FreezerGroceryType(type='Sausage, fully cooked, from chicken, turkey, pork or beef', image='https://i.imgur.com/Y69uwRB.jpg', days_to_expiry=30), 
+        FreezerGroceryType(type='Ham, canned, labeled "Keep Refrigerated"', image='https://i.imgur.com/hzRsvEl.jpg', days_to_expiry=30), 
+        FreezerGroceryType(type='Ham, fully cooked, store-wrapped, slices, half or spiral cut', image='https://i.imgur.com/hzRsvEl.jpg', days_to_expiry=30), 
+        FreezerGroceryType(type='Ham, fully cooked, store-wrapped, whole', image='https://i.imgur.com/hzRsvEl.jpg', days_to_expiry=30), 
+        FreezerGroceryType(type='Hot dogs', image='https://i.imgur.com/sOPIuql.jpg', days_to_expiry=30), 
+        FreezerGroceryType(type='Lunch meats; sliced at store or deli', image='https://i.imgur.com/qz1wFAK.jpg', days_to_expiry=30), 
+        FreezerGroceryType(type='Lunch meats; prepackaged', image='https://i.imgur.com/qz1wFAK.jpg', days_to_expiry=30), 
+        FreezerGroceryType(type='Venison', image='https://i.imgur.com/rt7BERZ.jpg', days_to_expiry=60), 
+        FreezerGroceryType(type='Chicken or turkey', image='https://i.imgur.com/V5yF8aX.jpg', days_to_expiry=365), 
+        FreezerGroceryType(type='Fresh fish or shellfish', image='https://i.imgur.com/cWS2n2V.jpg', days_to_expiry=90), 
+        FreezerGroceryType(type='Raw egg yolks, whites', image='https://i.imgur.com/aDMneVr.jpg', days_to_expiry=365), 
+        FreezerGroceryType(type='Liquid pasteurized eggs or egg substitutes (unopened)', image='https://i.imgur.com/aDMneVr.jpg', days_to_expiry=365), 
+        FreezerGroceryType(type='Leftovers with meat, fish, poultry or egg', image='https://i.imgur.com/V5yF8aX.jpg', days_to_expiry=60),        
+    ]
+
+    db.session.add_all(freezer_grocery_type)
+
+    db.session.commit()
+
+def seed_pantry_grocery_types():
+
+    pantry_grocery_type = [
+        PantryGroceryType(type='Baking Powder', image='https://i.imgur.com/zML4B4u.jpg', days_to_expiry=90),
+        PantryGroceryType(type='Baking Soda', image='https://i.imgur.com/zML4B4u.jpg', days_to_expiry=180),
+        PantryGroceryType(type='Bouillon cubes or granules', image='https://i.imgur.com/t5VjnqZ.jpg', days_to_expiry=365),
+        PantryGroceryType(type='Cereals, ready-to-eat', image='https://i.imgur.com/2OYWLTh.jpg', days_to_expiry=60),
+        PantryGroceryType(type='Cornmeal', image='https://i.imgur.com/t5VjnqZ.jpg', days_to_expiry=180),
+        PantryGroceryType(type='Flour, white', image='https://i.imgur.com/t5VjnqZ.jpg', days_to_expiry=180),
+        PantryGroceryType(type='Flour, whole wheat', image='https://i.imgur.com/t5VjnqZ.jpg', days_to_expiry=90),
+        PantryGroceryType(type='Herbs, dried', image='https://i.imgur.com/3McAtJ9.jpg', days_to_expiry=365),
+        PantryGroceryType(type='Oatmeal', image='https://i.imgur.com/t5VjnqZ.jpg', days_to_expiry=180),
+        PantryGroceryType(type='Oil - vegetable or olive', image='https://i.imgur.com/HijTAe5.jpg', days_to_expiry=180),
+        PantryGroceryType(type='Pasta', image='https://i.imgur.com/TnFNKIz.jpg', days_to_expiry=365),
+        PantryGroceryType(type='Peanut butter', image='https://i.imgur.com/TVpAKUq.jpg', days_to_expiry=60),  
+        PantryGroceryType(type='Popcorn - dry kernels in a jar', image='https://i.imgur.com/w77pjsY.jpg', days_to_expiry=365),
+        PantryGroceryType(type='Popcorn - microwave packets', image='https://i.imgur.com/w77pjsY.jpg', days_to_expiry=60),
+        PantryGroceryType(type='Quinoa', image='https://i.imgur.com/w77pjsY.jpg', days_to_expiry=730),
+        PantryGroceryType(type='Rice, brown', image='https://i.imgur.com/bvrKGdZ.jpg', days_to_expiry=365),
+        PantryGroceryType(type='Rice, white or wild', image='https://i.imgur.com/bvrKGdZ.jpg', days_to_expiry=730),
+        PantryGroceryType(type='Spices, ground', image='https://i.imgur.com/3McAtJ9.jpg', days_to_expiry=730), 
+        PantryGroceryType(type='Spices, whole', image='https://i.imgur.com/3McAtJ9.jpg', days_to_expiry=1000),
+        PantryGroceryType(type='Sugar - brown, powdered, granulated', image='https://i.imgur.com/t5VjnqZ.jpg', days_to_expiry=550),
+        PantryGroceryType(type='Yeast', image='https://i.imgur.com/pNyGInN.jpg', days_to_expiry=730),
+        PantryGroceryType(type='Custom: 1 week', days_to_expiry=7),
+        PantryGroceryType(type='Custom: 2 weeks', days_to_expiry=14),
+        PantryGroceryType(type='Custom: 1 month', days_to_expiry=30),
+        PantryGroceryType(type='Custom: 3 months', days_to_expiry=90),
+        PantryGroceryType(type='Custom: 6 months', days_to_expiry=180),
+        PantryGroceryType(type='Custom: 1 year', days_to_expiry=365), 
+        PantryGroceryType(type='Bread', image='https://i.imgur.com/pNyGInN.jpg', days_to_expiry=3), 
+        PantryGroceryType(type='Bread products, baked commercially such as bread, flat breads, rolls, buns, etc.', image='https://i.imgur.com/pNyGInN.jpg', days_to_expiry=14), 
+        PantryGroceryType(type='Cakes and muffins, baked commercially', image='https://i.imgur.com/pNyGInN.jpg', days_to_expiry=7),        
+    ]
+
+    db.session.add_all(pantry_grocery_type)
+
+    db.session.commit()
+
 def seed_groceries():
 
     grocery = [
@@ -145,6 +217,37 @@ def seed_groceries():
         Grocery(user_id=1, item_name='Avocados', grocery_types_id=2),
         Grocery(user_id=1, item_name='Bananas', grocery_types_id=3),
         Grocery(user_id=1, item_name='Blueberries', grocery_types_id=4),
+   
+    ]
+
+    db.session.add_all(grocery)
+
+    db.session.commit()
+
+def seed_freezer_groceries():
+
+    grocery = [
+        FreezerGrocery(user_id=1, item_name='Veal', freezer_grocery_types_id=7),
+        FreezerGrocery(user_id=1, item_name='Hot dogs', freezer_grocery_types_id=16),
+        FreezerGrocery(user_id=1, item_name='chicken', freezer_grocery_types_id=20),
+        FreezerGrocery(user_id=1, item_name='bacon', freezer_grocery_types_id=9),
+        FreezerGrocery(user_id=1, item_name='venison', freezer_grocery_types_id=19),
+   
+    ]
+
+    db.session.add_all(grocery)
+
+    db.session.commit()
+
+def seed_pantry_groceries():
+
+    grocery = [
+        PantryGrocery(user_id=1, item_name='pasta', pantry_grocery_types_id=11),
+        PantryGrocery(user_id=1, item_name='peanut butter', pantry_grocery_types_id=12),
+        PantryGrocery(user_id=1, item_name='quinoa', pantry_grocery_types_id=15),
+        PantryGrocery(user_id=1, item_name='oatmeal', pantry_grocery_types_id=9),
+        PantryGrocery(user_id=1, item_name='cornmeal', pantry_grocery_types_id=5),
+        PantryGrocery(user_id=1, item_name='cereal', pantry_grocery_types_id=4),
    
     ]
 
@@ -166,4 +269,20 @@ def undo_grocery_types():
 
 def undo_groceries():
     db.session.execute('TRUNCATE groceries;')
+    db.session.commit()
+# new models for v2---------------------------------------
+def undo_freezer_grocery_types():
+    db.session.execute('TRUNCATE freezer_grocery_types;')
+    db.session.commit()
+
+def undo_freezer_groceries():
+    db.session.execute('TRUNCATE freezer_groceries;')
+    db.session.commit()
+
+def undo_pantry_grocery_types():
+    db.session.execute('TRUNCATE pantry_grocery_types;')
+    db.session.commit()
+
+def undo_pantry_groceries():
+    db.session.execute('TRUNCATE pantry_groceries;')
     db.session.commit()

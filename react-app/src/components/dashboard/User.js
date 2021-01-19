@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import clsx from 'clsx';
 import { makeStyles } from '@material-ui/core/styles';
 
 import Box from '@material-ui/core/Box';
@@ -13,12 +12,13 @@ import Link from '@material-ui/core/Link';
 
 import CircularProgress from '@material-ui/core/CircularProgress';
 
-import { getTypes } from '../../services/types';
+import { getFreezerTypes, getPantryTypes, getTypes } from '../../services/types';
 import { GridMaker } from './data-grid/Grid';
 import ChartDataBase from './ChartDataBase';
 import github from '../../github.png'
 import linkedin from '../../linkedin.png'
 import '../../index.css'
+import Title from './Title';
 
 
 function Copyright() {
@@ -35,13 +35,13 @@ function Copyright() {
     </Typography>
     <div className='miniInfo1'>
     <div>
-    <a href="https://github.com/johnegus/" target="_blank"> 
+    <a href="https://github.com/johnegus/" target="_blank" rel="noreferrer"> 
       
         <img className='icons' height='25px' width='25px' src={github} alt='github' />
         </a>
     </div>
     <div>
-    <a href="https://www.linkedin.com/in/john-hiestand-3bb22a17/" target="_blank"> 
+    <a href="https://www.linkedin.com/in/john-hiestand-3bb22a17/" target="_blank" rel="noreferrer"> 
         
         <img className='icons' height='25px' width='25px' src={linkedin} alt='linkedin' />
         </a>
@@ -141,33 +141,22 @@ const useStyles = makeStyles((theme) => ({
 
 export default function User() {
   const classes = useStyles();
-  const [open, setOpen] = React.useState(true);
   const [loaded, setLoaded] = useState(false);
  
   const [types, setTypes] = useState([]);
-
-  const toggleDrawer = () => {
-    setOpen(!open);
-  };
-  const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
-
-  const _MS_PER_DAY = 1000 * 60 * 60 * 24;
-
-  // a and b are javascript Date objects
-  function dateDiffInDays(a, b) {
-    // Discard the time and time-zone information.
-    const utc1 = Date.UTC(a.getFullYear(), a.getMonth(), a.getDate());
-    const utc2 = Date.UTC(b.getFullYear(), b.getMonth(), b.getDate());
-    console.log(Math.floor((utc2 - utc1) / _MS_PER_DAY))
-    return Math.floor((utc2 - utc1) / _MS_PER_DAY);
-  }
+  const [freezerTypes, setFreezerTypes] = useState([]);
+  const [pantryTypes, setPantryTypes] = useState([]);
 
 
   useEffect(() => {
     (async () => {
     const response = await getTypes()
+    const freezerResponse = await getFreezerTypes()
+    const pantryResponse = await getPantryTypes()
     setTypes(response.types)
-    setLoaded(true) 
+    setFreezerTypes(freezerResponse.types)
+    setPantryTypes(pantryResponse.types)
+    setTimeout(function(){ setLoaded(true); }, 500);
     
   })()
   }, [])
@@ -175,9 +164,13 @@ export default function User() {
   if (!loaded ) {
     return (
       
-          
+      <>
+    
+      <main className="centered middled">
+        <b>Loading Database...</b>
         <CircularProgress />
-      
+        </main>
+      </>
       )
     }
 
@@ -189,7 +182,12 @@ export default function User() {
             {/* Chart */}
             <Grid item xs={12} md={8} lg={9}>
               {/* <Paper className={fixedHeightPaper}> */}
+              <Title>Fridge</Title>
                 <ChartDataBase types={types}/>
+                <Title>Freezer</Title>
+                <ChartDataBase types={freezerTypes}/>
+                <Title>Pantry</Title>
+                <ChartDataBase types={pantryTypes}/>
               {/* </Paper> */}
             </Grid>
             {/* Recent Deposits */}
@@ -203,8 +201,12 @@ export default function User() {
             {/* Recent Orders */}
             <Grid item xs={12}>
               <Paper className={classes.paper}>
-              {/* <RecipeSearch /> */}
-              <GridMaker types={types} />
+              <Title>Fridge</Title>
+                <GridMaker types={types} />
+              <Title>Freezer</Title>
+                <GridMaker types={freezerTypes} />
+              <Title>Pantry</Title>
+                <GridMaker types={pantryTypes} />
                 
               </Paper>
             </Grid>

@@ -10,7 +10,7 @@ const Recipe = ({title, calories, image, ingredients, source, url}) => {
                 ))}
             </ol>
             <p>{calories.toFixed(0)} calories</p>
-            <a href={url} target="_blank">
+            <a href={url} target="_blank" rel="noreferrer">
             <p className='source'>Source: {source}</p>
             </a>
           

@@ -1,14 +1,17 @@
 import React,{useEffect, useState} from 'react';
 import Recipe from "./Recipe";
 import './index.css'
+import CircularProgress from '@material-ui/core/CircularProgress';
+
 const RecipeSearch = ({currentGrocery}) => {
 const API_ID = process.env.REACT_APP_APP_ID;
 const API_KEY = process.env.REACT_APP_APP_KEY;
 
 const [recipes, setRecipes] = useState([]);
-const [search, setSearch] = useState('');
 const [query, setQuery] = useState('');
-console.log(currentGrocery)
+const [loaded, setLoaded] = useState(false);
+
+
 useEffect(()=>{
   setQuery(currentGrocery);
 }, [query]);
@@ -21,27 +24,35 @@ const getRecipes = async () => {
   const response = await fetch(`https://api.edamam.com/search?q=${query}&app_id=${API_ID}&app_key=${API_KEY}`);
   const data = await response.json();
   setRecipes(data.hits);
-  console.log(data.hits)
+  setTimeout(function(){ setLoaded(true); }, 500);
 };
 
-const updateSearch = e => {
-  setSearch(e.target.value);
-};
 
-const getSearch = e => {
-  e.preventDefault();
-  setQuery(search);
-  setSearch('');
-}
+if (!loaded ) {
+  return (
+   
+    <>
+  
+    <main className="centered middled">
+      <b>Fetching Recipes...</b>
+      <CircularProgress />
+      </main>
+    </>
+    )
+  }
   return(
     <div className="App">
       <h2>Recipe Search for: {currentGrocery}</h2>
-      {/* <form onSubmit={getSearch} className="search-form">
-        <input className="search-bar" type="text" value={search} onChange={updateSearch} />
-        <button 
-        className="search-button" 
-        type="submit">Search</button>
-      </form> */}
+      {recipes.length === 0 ? 
+      <>
+      <br></br>
+      <h2>
+        Sorry, your search request failed, possibly due to the following reasons:
+      </h2>
+      <h3>- The API has exceeded the 5 fetch per minute maximum.</h3>
+      <h3>- There are no recipes for your particular query.</h3>
+      </> :''
+    }
       <div className="recipes">
       {recipes.map(recipe => (
         <Recipe 

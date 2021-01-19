@@ -12,13 +12,16 @@ import Paper from '@material-ui/core/Paper';
 import Link from '@material-ui/core/Link';
 
 import Deposits from './Deposits';
-import Orders from './Orders';
+import Button from '@material-ui/core/Button';
 import Chart from './Chart';
 import CircularProgress from '@material-ui/core/CircularProgress';
-import { getGroceries } from '../../services/groceries';
+import { getFreezerGroceries, getGroceries, getPantryGroceries } from '../../services/groceries';
 import github from '../../github.png'
 import linkedin from '../../linkedin.png'
 import '../../index.css'
+import Fridge from './stored-items/Fridge';
+import Freezer from './stored-items/Freezer';
+import Pantry from './stored-items/Pantry';
 
 
 function Copyright() {
@@ -35,13 +38,13 @@ function Copyright() {
     </Typography>
     <div className='miniInfo1'>
     <div>
-    <a href="https://github.com/johnegus/" target="_blank"> 
+    <a href="https://github.com/johnegus/" target="_blank" rel="noreferrer"> 
       
         <img className='icons' height='25px' width='25px' src={github} alt='github' />
         </a>
     </div>
     <div>
-    <a href="https://www.linkedin.com/in/john-hiestand-3bb22a17/" target="_blank"> 
+    <a href="https://www.linkedin.com/in/john-hiestand-3bb22a17/" target="_blank" rel="noreferrer"> 
         
         <img className='icons' height='25px' width='25px' src={linkedin} alt='linkedin' />
         </a>
@@ -141,13 +144,14 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Dashboard() {
   const classes = useStyles();
-  const [open, setOpen] = React.useState(true);
   const [loaded, setLoaded] = useState(false);
   const userId = localStorage.getItem('userId') 
   const [groceries, setGroceries] = useState([]);
-  const toggleDrawer = () => {
-    setOpen(!open);
-  };
+  const [freezerGroceries, setFreezerGroceries] = useState([]);
+  const [pantryGroceries, setPantryGroceries] = useState([]);
+  const [screen, setScreen] = useState('fridge')
+ 
+
   const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
 
   const _MS_PER_DAY = 1000 * 60 * 60 * 24;
@@ -157,13 +161,14 @@ export default function Dashboard() {
     // Discard the time and time-zone information.
     const utc1 = Date.UTC(a.getFullYear(), a.getMonth(), a.getDate());
     const utc2 = Date.UTC(b.getFullYear(), b.getMonth(), b.getDate());
-    console.log(Math.floor((utc2 - utc1) / _MS_PER_DAY))
     return Math.floor((utc2 - utc1) / _MS_PER_DAY);
   }
 
   useEffect(() => {
     (async () => {
     const response = await getGroceries(userId)
+    const freezerResponse = await getFreezerGroceries(userId)
+    const pantryResponse = await getPantryGroceries(userId)
    
     const sortedGroceries = response.groceries.sort((groceryA, groceryB) => {
       const a = new Date(groceryA.createdAt),
@@ -175,23 +180,51 @@ export default function Dashboard() {
 
       return (groceryA.type.days_to_expiry -difference) - (groceryB.type.days_to_expiry - difference2)
     })
-    setGroceries(sortedGroceries)
-    setLoaded(true)  
+
+    const sortedFreezerGroceries = freezerResponse.groceries.sort((groceryA, groceryB) => {
+      const a = new Date(groceryA.createdAt),
+      b = new Date(),
+      difference = dateDiffInDays(a, b);
+      const c = new Date(groceryB.createdAt),
+      d = new Date(),
+      difference2 = dateDiffInDays(c, d);
+
+      return (groceryA.type.days_to_expiry -difference) - (groceryB.type.days_to_expiry - difference2)
+    })
+
+    const sortedPantryGroceries = pantryResponse.groceries.sort((groceryA, groceryB) => {
+      const a = new Date(groceryA.createdAt),
+      b = new Date(),
+      difference = dateDiffInDays(a, b);
+      const c = new Date(groceryB.createdAt),
+      d = new Date(),
+      difference2 = dateDiffInDays(c, d);
+
+      return (groceryA.type.days_to_expiry -difference) - (groceryB.type.days_to_expiry - difference2)
+    })
+
+    await setGroceries(sortedGroceries)
+    await setFreezerGroceries(sortedFreezerGroceries)
+    await setPantryGroceries(sortedPantryGroceries)
+    setTimeout(function(){ setLoaded(true); }, 500);
+    
   })()
   }, [])
 
   if (!loaded ) {
     return (
      
-  
+      <>
     
-          
-        <CircularProgress />
+      <main className="centered middled">
+        <b>Loading Groceries...</b>
         
- 
+        <CircularProgress />
+        </main>
+      </>
       )
     }
-
+ 
   return (
     
     
@@ -204,7 +237,7 @@ export default function Dashboard() {
             {/* Chart */}
             <Grid item xs={12} md={8} lg={9}>
               {/* <Paper className={fixedHeightPaper}> */}
-                <Chart groceries={groceries} setGroceries={setGroceries}/>
+                <Chart groceries={[...groceries, ...freezerGroceries, ...pantryGroceries]} setGroceries={setGroceries}/>
               {/* </Paper> */}
             </Grid>
             {/* Recent Deposits */}
@@ -218,9 +251,24 @@ export default function Dashboard() {
             {/* Recent Orders */}
             <Grid item xs={12}>
               <Paper className={classes.paper}>
-              {/* <RecipeSearch /> */}
-                <Orders groceries={groceries} setGroceries={setGroceries}/>
-                
+                <div className='button-container'> 
+              <Button variant="outlined" color="primary" 
+                              onClick={async ()=> {
+                              setScreen('fridge')
+                              }}>Fridge</Button>
+              <Button variant="outlined" color="primary" 
+                              onClick={async ()=> {
+                              setScreen('freezer')
+                              }}>Freezer</Button>
+              <Button variant="outlined" color="primary" 
+                              onClick={async ()=> {
+                              setScreen('pantry')
+                              }}>Pantry</Button>
+                  </div>
+                  { screen === 'fridge' ? <Fridge groceries={groceries} setGroceries={setGroceries}/> :
+                  screen === 'freezer' ? <Freezer groceries={freezerGroceries} setGroceries={setFreezerGroceries}/> :
+                <Pantry groceries={pantryGroceries} setGroceries={setPantryGroceries}/>
+                  }
               </Paper>
             </Grid>
             

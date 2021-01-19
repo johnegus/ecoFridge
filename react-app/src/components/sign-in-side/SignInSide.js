@@ -34,13 +34,13 @@ function Copyright() {
     </Typography>
     <div className='miniInfo1'>
     <div>
-    <a href="https://github.com/johnegus/" target="_blank"> 
+    <a href="https://github.com/johnegus/" target="_blank" rel="noreferrer"> 
       
         <img className='icons' height='25px' width='25px' src={github} alt='github' />
         </a>
     </div>
     <div>
-    <a href="https://www.linkedin.com/in/john-hiestand-3bb22a17/" target="_blank"> 
+    <a href="https://www.linkedin.com/in/john-hiestand-3bb22a17/" target="_blank" rel="noreferrer"> 
         
         <img className='icons' height='25px' width='25px' src={linkedin} alt='linkedin' />
         </a>
@@ -92,16 +92,12 @@ export default function SignInSide({ authenticated, setAuthenticated }) {
   const onLogin = async (e) => {
     e.preventDefault();
     const user = await login(email, password);
-    console.log('outside if', user)
     if (!user.errors) {
       
-      console.log('inside if', user)
       localStorage.setItem('userId', user.id);
-      console.log(localStorage.getItem('userId'))
       setAuthenticated(true);
     } else {
       setErrors(user.errors);
-      console.log('errors', errors)
     }
   };
 

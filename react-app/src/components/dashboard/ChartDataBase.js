@@ -10,7 +10,6 @@ import './mini-profile.css'
 
 export default function ChartDataBase({types}) {
 
-  const [checked, setChecked] = useState(false)
   const [stockChartXValues, setstockChartXValues] = useState([]);
   const [stockChartYValues, setstockChartYValues] = useState([]);
 
@@ -20,7 +19,7 @@ export default function ChartDataBase({types}) {
     let stockChartYValuesFunction = [];
   if (types) {
     
-    setChecked(true)
+
     const sortedTypes = types.sort((groceryA, groceryB) => groceryA.days_to_expiry - groceryB.days_to_expiry)
     sortedTypes.map((type) => {
         stockChartXValuesFunction.push(type.type)
@@ -49,27 +48,7 @@ export default function ChartDataBase({types}) {
   return (
     <React.Fragment>
       <div className='data-bars'>
-      {/* {types.map((type) => (
-        <Slide elevation={4} direction="up" in={checked} mountOnEnter unmountOnExit>
-         
-            <div className='spectrum-children' key={type.id} >
-              
-              {type.type}
-              
-               
-             
-                <div className='spectrum-image'>
-                {type.image ? (
-                <img src={type.image} alt='grocery pic' />
-            ) : (
-                <img src={fridge} alt='stock fridge' />
-            )}
-            </div>
-            
-            </div>
-        
-            </Slide>
-          ))} */}
+  
          <div>
         
         <Bar

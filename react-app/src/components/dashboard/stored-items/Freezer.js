@@ -1,45 +1,33 @@
 import React, { useState } from 'react';
-import Link from '@material-ui/core/Link';
-import { makeStyles } from '@material-ui/core/styles';
+
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 
-import Title from './Title';
-import './mini-profile.css'
+import Title from '../Title';
+import '../mini-profile.css'
 
-import { DeleteGrocery } from './delete/Delete';
-import AddGrocery from './addItem/Add';
-import { DateDiffInDays } from './dateDiffer/DateDiffInDays';
-import { ExpireCountdown } from './dateDiffer/ExpireCountdown';
+import { DeleteFreezerGrocery } from '../delete/FreezerDelete';
+import AddFreezerGrocery from '../addItem/AddFreezerItem';
+import { DateDiffInDays } from '../dateDiffer/DateDiffInDays';
+import { ExpireCountdown } from '../dateDiffer/ExpireCountdown';
 
 import Modal from 'react-modal'
-import RecipeSearch from '../recipe-search/RecipeSearch';
+import RecipeSearch from '../../recipe-search/RecipeSearch';
 import CloseIcon from '@material-ui/icons/Close';
 
 
-import { EditGrocery } from './edit/Edit';
+import { FreezerEditGrocery } from '../edit/FreezerEdit';
 
 
 
 
-function preventDefault(event) {
-  event.preventDefault();
-}
 
-const useStyles = makeStyles((theme) => ({
-  seeMore: {
-    marginTop: theme.spacing(3),
-  },
-}));
 
-export default function Orders({groceries, setGroceries}) {
-  const classes = useStyles();
-  const year = new Date().getFullYear();
-  const month =new Date().getMonth() + 1;
-  const date = new Date().getDate()
+
+export default function Freezer({groceries, setGroceries}) {
   const [modalIsOpen, setModalIsOpen] = useState(false)
   const [currentGrocery, setCurrentGrocery] = useState('')
   
@@ -48,7 +36,6 @@ export default function Orders({groceries, setGroceries}) {
 
   
   const handleTypeClick = (grocery) => {
-    console.log(grocery)
     setCurrentGrocery(grocery.type.type);
     setModalIsOpen(true)   
   }
@@ -59,14 +46,10 @@ export default function Orders({groceries, setGroceries}) {
 
   return (
     <React.Fragment>
-      <div className={classes.seeMore}>
-      <Title>Add More Groceries</Title>
-          
- 
-      </div>
-  
-      <AddGrocery groceries={groceries} setGroceries={setGroceries}/>
-      <Title>Groceries</Title>
+    <Title>Freezer</Title>
+      
+      <AddFreezerGrocery groceries={groceries} setGroceries={setGroceries}/>
+     
       <Table size="small">
         <TableHead>
           <TableRow>
@@ -84,11 +67,11 @@ export default function Orders({groceries, setGroceries}) {
               <TableCell>{grocery.createdAt}</TableCell>
               <TableCell><DateDiffInDays grocery={grocery} /></TableCell>
               <TableCell>
-                <EditGrocery grocery={grocery} groceries={groceries} setGroceries={setGroceries}/>
+                <FreezerEditGrocery grocery={grocery} groceries={groceries} setGroceries={setGroceries}/>
               </TableCell>
               <TableCell onClick={() => handleTypeClick(grocery)}>{grocery.type.type}</TableCell>
               <TableCell><ExpireCountdown grocery={grocery} /> </TableCell>
-              <TableCell align="right"><DeleteGrocery groceries={groceries} grocery={grocery} setGroceries={setGroceries} /></TableCell>
+              <TableCell align="right"><DeleteFreezerGrocery groceries={groceries} grocery={grocery} setGroceries={setGroceries} /></TableCell>
             </TableRow>
           ))}
           
