@@ -25,7 +25,6 @@ export const FreezerEditGrocery = ({grocery, groceries, setGroceries})=> {
     
       const onEditSubmit = async (e) => {
         e.preventDefault()  
-        console.log('Grocery id: ', grocery.id, 'Item name: ', itemName)
         const newGrocery = await editFreezerGrocery(grocery.id, itemName);
         const newGroceries = groceries.map(item => item.id === grocery.id ? newGrocery: item)
         // const sortedGroceries = [...groceries, newGrocery].sort((a, b) => a.type.days_to_expiry - b.type.days_to_expiry)

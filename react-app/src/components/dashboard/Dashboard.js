@@ -38,13 +38,13 @@ function Copyright() {
     </Typography>
     <div className='miniInfo1'>
     <div>
-    <a href="https://github.com/johnegus/" target="_blank"> 
+    <a href="https://github.com/johnegus/" target="_blank" rel="noreferrer"> 
       
         <img className='icons' height='25px' width='25px' src={github} alt='github' />
         </a>
     </div>
     <div>
-    <a href="https://www.linkedin.com/in/john-hiestand-3bb22a17/" target="_blank"> 
+    <a href="https://www.linkedin.com/in/john-hiestand-3bb22a17/" target="_blank" rel="noreferrer"> 
         
         <img className='icons' height='25px' width='25px' src={linkedin} alt='linkedin' />
         </a>
@@ -144,7 +144,6 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Dashboard() {
   const classes = useStyles();
-  const [open, setOpen] = React.useState(true);
   const [loaded, setLoaded] = useState(false);
   const userId = localStorage.getItem('userId') 
   const [groceries, setGroceries] = useState([]);
@@ -152,9 +151,7 @@ export default function Dashboard() {
   const [pantryGroceries, setPantryGroceries] = useState([]);
   const [screen, setScreen] = useState('fridge')
  
-  const toggleDrawer = () => {
-    setOpen(!open);
-  };
+
   const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
 
   const _MS_PER_DAY = 1000 * 60 * 60 * 24;
@@ -226,9 +223,7 @@ export default function Dashboard() {
       </>
       )
     }
-    console.log(groceries)
-    console.log(freezerGroceries)
-    console.log(pantryGroceries)
+ 
   return (
     
     
@@ -269,8 +264,8 @@ export default function Dashboard() {
                               setScreen('pantry')
                               }}>Pantry</Button>
                   </div>
-                  { screen == 'fridge' ? <Fridge groceries={groceries} setGroceries={setGroceries}/> :
-                  screen == 'freezer' ? <Freezer groceries={freezerGroceries} setGroceries={setFreezerGroceries}/> :
+                  { screen === 'fridge' ? <Fridge groceries={groceries} setGroceries={setGroceries}/> :
+                  screen === 'freezer' ? <Freezer groceries={freezerGroceries} setGroceries={setFreezerGroceries}/> :
                 <Pantry groceries={pantryGroceries} setGroceries={setPantryGroceries}/>
                   }
               </Paper>

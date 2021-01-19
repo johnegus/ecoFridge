@@ -1,5 +1,5 @@
 import React, { useState, useEffect} from 'react'
-import { addGrocery, getGroceries } from '../../../services/groceries';
+import { addGrocery } from '../../../services/groceries';
 
 import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
@@ -27,7 +27,6 @@ export default function AddGrocery({groceries, setGroceries}) {
   const [itemName, setItemName] = useState("");
   const [itemType, setItemType] = useState(null);
   const user = localStorage.getItem('userId');
-  const [loaded, setLoaded] = useState(false);
   const [types, setTypes] = useState([]);
   const [errors, setErrors] = useState('');
 
@@ -37,8 +36,6 @@ export default function AddGrocery({groceries, setGroceries}) {
     (async () => {
     const response = await getTypes()
     setTypes(response.types)
-    setTimeout(function(){ setLoaded(true); }, 500);
-    setLoaded(true);
   })()
   }, [])
 
@@ -51,13 +48,6 @@ export default function AddGrocery({groceries, setGroceries}) {
              setErrors('')
            },4000);
       } 
-      // if (!itemName){
-      //   setErrors('Please give the item a name.')
-      //   setTimeout(function()
-      //      {
-      //        setErrors('')
-      //      },4000);
-      // }
       else{
       const newGrocery = await addGrocery(user, itemName, itemType.id);
       const sortedGroceries = [...groceries, newGrocery].sort((a, b) => a.type.days_to_expiry - b.type.days_to_expiry)
@@ -71,7 +61,6 @@ export default function AddGrocery({groceries, setGroceries}) {
     }
 
     const onUps = (e, newValue) => {
-      console.log('///', newValue);
       
       setItemType(newValue);
     }

@@ -8,7 +8,6 @@ const API_ID = process.env.REACT_APP_APP_ID;
 const API_KEY = process.env.REACT_APP_APP_KEY;
 
 const [recipes, setRecipes] = useState([]);
-const [search, setSearch] = useState('');
 const [query, setQuery] = useState('');
 const [loaded, setLoaded] = useState(false);
 
@@ -28,15 +27,6 @@ const getRecipes = async () => {
   setTimeout(function(){ setLoaded(true); }, 500);
 };
 
-const updateSearch = e => {
-  setSearch(e.target.value);
-};
-
-const getSearch = e => {
-  e.preventDefault();
-  setQuery(search);
-  setSearch('');
-}
 
 if (!loaded ) {
   return (
@@ -53,7 +43,7 @@ if (!loaded ) {
   return(
     <div className="App">
       <h2>Recipe Search for: {currentGrocery}</h2>
-      {recipes.length == 0 ? 
+      {recipes.length === 0 ? 
       <>
       <br></br>
       <h2>

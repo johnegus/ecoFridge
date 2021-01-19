@@ -79,7 +79,17 @@ const RecipeSearchInput = () => {
         <div className='closeIcon'>
               <CloseIcon onClick={() => setModalIsOpen(false)}>Close</CloseIcon>
             </div>
-      {recipes.length == 0 ? 
+     
+    {!loaded ? 
+         <>
+        <main className="centered middled">
+        <b>Fetching Recipes...</b>
+        <CircularProgress />
+        </main>
+      </>:
+      ''}
+
+    {recipes.length === 0 ? 
       <>
       <br></br>
       <h2>
@@ -89,14 +99,6 @@ const RecipeSearchInput = () => {
       <h3>- There are no recipes for your particular query.</h3>
       </> :''
     }
-    {!loaded ? 
-         <>
-        <main className="centered middled">
-        <b>Fetching Recipes...</b>
-        <CircularProgress />
-        </main>
-      </>:
-      ''}
       
         <div className="recipes">
         {recipes.map(recipe => (

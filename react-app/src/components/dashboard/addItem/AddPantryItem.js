@@ -27,7 +27,6 @@ export default function AddPantryGrocery({groceries, setGroceries}) {
   const [itemName, setItemName] = useState("");
   const [itemType, setItemType] = useState(null);
   const user = localStorage.getItem('userId');
-  const [loaded, setLoaded] = useState(false);
   const [types, setTypes] = useState([]);
   const [errors, setErrors] = useState('');
 
@@ -37,8 +36,7 @@ export default function AddPantryGrocery({groceries, setGroceries}) {
     (async () => {
     const response = await getPantryTypes()
     setTypes(response.types)
-    setTimeout(function(){ setLoaded(true); }, 500);
-    setLoaded(true);
+
   })()
   }, [])
 
@@ -51,13 +49,7 @@ export default function AddPantryGrocery({groceries, setGroceries}) {
              setErrors('')
            },4000);
       } 
-      // if (!itemName){
-      //   setErrors('Please give the item a name.')
-      //   setTimeout(function()
-      //      {
-      //        setErrors('')
-      //      },4000);
-      // }
+ 
       else{
       const newGrocery = await addPantryGrocery(user, itemName, itemType.id);
       const sortedGroceries = [...groceries, newGrocery].sort((a, b) => a.type.days_to_expiry - b.type.days_to_expiry)
@@ -71,7 +63,6 @@ export default function AddPantryGrocery({groceries, setGroceries}) {
     }
 
     const onUps = (e, newValue) => {
-      console.log('///', newValue);
       
       setItemType(newValue);
     }

@@ -1,6 +1,5 @@
 import React from "react";
 import { logout } from "../../services/auth";
-import styled from 'styled-components'
 import { Redirect } from 'react-router-dom';
 import Button from '@material-ui/core/Button';
 

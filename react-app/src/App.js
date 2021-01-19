@@ -8,7 +8,7 @@ import Checkout from './components/checkout/Checkout'
 import ProtectedRoute from "./components/auth/ProtectedRoute";
 import UsersList from "./components/UsersList";
 import User from "./components/dashboard/User";
-import { authenticate, signUp } from "./services/auth";
+import { authenticate } from "./services/auth";
 import HomePage from "./components/HomePage";
 import AddGrocery from "./components/dashboard/addItem/Add";
 import Modal from 'react-modal'

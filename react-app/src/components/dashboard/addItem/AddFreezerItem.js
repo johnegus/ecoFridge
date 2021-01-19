@@ -27,7 +27,6 @@ export default function AddFreezerGrocery({groceries, setGroceries}) {
   const [itemName, setItemName] = useState("");
   const [itemType, setItemType] = useState(null);
   const user = localStorage.getItem('userId');
-  const [loaded, setLoaded] = useState(false);
   const [types, setTypes] = useState([]);
   const [errors, setErrors] = useState('');
 
@@ -37,8 +36,6 @@ export default function AddFreezerGrocery({groceries, setGroceries}) {
     (async () => {
     const response = await getFreezerTypes()
     setTypes(response.types)
-    setTimeout(function(){ setLoaded(true); }, 500);
-    setLoaded(true);
   })()
   }, [])
 
@@ -71,7 +68,6 @@ export default function AddFreezerGrocery({groceries, setGroceries}) {
     }
 
     const onUps = (e, newValue) => {
-      console.log('///', newValue);
       
       setItemType(newValue);
     }

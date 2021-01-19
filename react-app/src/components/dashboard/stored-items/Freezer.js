@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
-import Link from '@material-ui/core/Link';
-import { makeStyles } from '@material-ui/core/styles';
+
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
@@ -25,21 +24,10 @@ import { FreezerEditGrocery } from '../edit/FreezerEdit';
 
 
 
-function preventDefault(event) {
-  event.preventDefault();
-}
 
-const useStyles = makeStyles((theme) => ({
-  seeMore: {
-    marginTop: theme.spacing(3),
-  },
-}));
+
 
 export default function Freezer({groceries, setGroceries}) {
-  const classes = useStyles();
-  const year = new Date().getFullYear();
-  const month =new Date().getMonth() + 1;
-  const date = new Date().getDate()
   const [modalIsOpen, setModalIsOpen] = useState(false)
   const [currentGrocery, setCurrentGrocery] = useState('')
   
@@ -48,7 +36,6 @@ export default function Freezer({groceries, setGroceries}) {
 
   
   const handleTypeClick = (grocery) => {
-    console.log(grocery)
     setCurrentGrocery(grocery.type.type);
     setModalIsOpen(true)   
   }
