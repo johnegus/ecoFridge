@@ -48,6 +48,8 @@ body {
 
 .centered {
     justify-content: center;
+    font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+
   }
 .middled {
     align-items: center;
