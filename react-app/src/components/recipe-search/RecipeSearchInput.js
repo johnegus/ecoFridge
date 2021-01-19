@@ -108,7 +108,8 @@ const RecipeSearchInput = () => {
           calories={recipe.recipe.calories} 
           image={recipe.recipe.image}
           ingredients={recipe.recipe.ingredients}
-          source={recipe.recipe.source} />
+          source={recipe.recipe.source} 
+          url={recipe.recipe.url} />
         ))}
         </div>
       
