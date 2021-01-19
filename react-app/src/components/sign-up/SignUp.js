@@ -82,7 +82,7 @@ export default function SignUp({authenticated, setAuthenticated}) {
   const onSignUp = async (e) => {
     e.preventDefault();
     if (password === repeatPassword) {
-      const user = await signUp(firstName, lastName, city, country, email, password);
+      const user = await signUp(firstName, lastName, city, country, email, password, avatar);
       if (!user.errors) {
         
         localStorage.setItem('userId', user.id);
@@ -232,7 +232,7 @@ export default function SignUp({authenticated, setAuthenticated}) {
                 name="avatar"
                 onChange={updateAvatar}
                 value={avatar}
-                label="Avatar"
+                label="Avatar Image (URL)"
                 
                 id="avatar"
               />
