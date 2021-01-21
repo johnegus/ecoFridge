@@ -10,7 +10,7 @@ import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 import Link from '@material-ui/core/Link';
-
+import { Doughnut } from 'react-chartjs-2';
 import Deposits from './Deposits';
 import Button from '@material-ui/core/Button';
 import Chart from './Chart';
@@ -134,8 +134,6 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     overflow: 'auto',
     flexDirection: 'column',
-    // background: 'rgb(250,2,2)',
-    // background: 'linear-gradient(90deg, rgba(250,2,2,1) 0%, rgba(10,121,158,1) 50%, rgba(0,255,139,1) 100%)'
   },
   fixedHeight: {
     height: 240,
@@ -211,6 +209,32 @@ export default function Dashboard() {
   })()
   }, [])
 
+  const doughnutData = {
+    datasets: [{
+        data: [groceries.length, freezerGroceries.length, pantryGroceries.length],
+        backgroundColor: [
+          'red', 'green', 'blue'
+        ],
+        borderColor: [
+          'red', 'green', 'blue'
+        ],
+        borderWidth: 5,
+    }],
+    
+
+    // These labels appear in the legend and in the tooltips when hovering different arcs
+    labels: [
+        'Fridge',
+        'Freezer',
+        'Pantry'
+    ],
+    
+};
+
+const pieOptions= {
+  //cutoutPercentage: 40,
+ responsive: true,
+}
   if (!loaded ) {
     return (
      
@@ -252,19 +276,23 @@ export default function Dashboard() {
             <Grid item xs={12}>
               <Paper className={classes.paper}>
                 <div className='button-container'> 
-              <Button variant="outlined" color="primary" 
+              <Button variant={screen==='fridge' ? 'contained':"outlined"} color="primary" 
                               onClick={async ()=> {
                               setScreen('fridge')
                               }}>Fridge</Button>
-              <Button variant="outlined" color="primary" 
+              <Button variant={screen==='freezer' ? 'contained':"outlined"}  color="primary" 
                               onClick={async ()=> {
                               setScreen('freezer')
                               }}>Freezer</Button>
-              <Button variant="outlined" color="primary" 
+              <Button variant={screen==='pantry' ? 'contained':"outlined"}  color="primary" 
                               onClick={async ()=> {
                               setScreen('pantry')
                               }}>Pantry</Button>
+                   <div className='doughnut'>
+                  <Doughnut data={doughnutData} options={pieOptions} />
                   </div>
+                  </div>
+                
                   { screen === 'fridge' ? <Fridge groceries={groceries} setGroceries={setGroceries}/> :
                   screen === 'freezer' ? <Freezer groceries={freezerGroceries} setGroceries={setFreezerGroceries}/> :
                 <Pantry groceries={pantryGroceries} setGroceries={setPantryGroceries}/>
