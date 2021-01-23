@@ -79,7 +79,8 @@ body {
   }
 
   .doughnut {
-    height: 100px;
+    height: 20px;
     position: relative;
-    /* right: 300px; */
+    left: 250px;
+    /* border: #31c6e8 solid 2px; */
   }

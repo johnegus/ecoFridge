@@ -229,19 +229,14 @@ export default function Dashboard() {
         'Freezer',
         'Pantry'
     ],
-//     options: {
-//       legend: {
-//          display: false
-//       },
-//       tooltips: {
-//          enabled: false
-//       }
-//  },
     
 };
 
 const pieOptions= {
-  //cutoutPercentage: 40,
+  legend: {
+    display: false,
+    position: "right"
+  },
  responsive: true,
 }
   if (!loaded ) {

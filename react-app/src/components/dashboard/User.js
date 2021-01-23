@@ -33,6 +33,13 @@ function Copyright() {
       {'.'}
       
     </Typography>
+    <Typography variant="body2" color="textSecondary" align="center">
+      {'Food Data from '}
+      <Link color="inherit" href="https://food.unl.edu/free-resource/food-storage">
+      The University of Nebraska
+      </Link>
+      
+    </Typography>
     <div className='miniInfo1'>
     <div>
     <a href="https://github.com/johnegus/" target="_blank" rel="noreferrer"> 

@@ -82,9 +82,9 @@ class User(db.Model, UserMixin):
     country = db.Column(db.String(255), nullable = False)
     avatar = db.Column(db.String(255))
 
-    groceries = db.relationship("Grocery", secondary=grocery_users, back_populates="users")
-    freezer_groceries = db.relationship("FreezerGrocery", secondary=freezer_grocery_users, back_populates="users")
-    pantry_groceries = db.relationship("PantryGrocery", secondary=pantry_grocery_users, back_populates="users")
+    groceries = db.relationship("Grocery", secondary=grocery_users, back_populates="users", lazy=True, single_parent=True, cascade="all, delete-orphan")
+    freezer_groceries = db.relationship("FreezerGrocery", secondary=freezer_grocery_users, back_populates="users", lazy=True, single_parent=True, cascade="all, delete-orphan")
+    pantry_groceries = db.relationship("PantryGrocery", secondary=pantry_grocery_users, back_populates="users", lazy=True, single_parent=True, cascade="all, delete-orphan")
 
     @property
     def password(self):
