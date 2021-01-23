@@ -212,11 +212,12 @@ export default function Dashboard() {
   const doughnutData = {
     datasets: [{
         data: [groceries.length, freezerGroceries.length, pantryGroceries.length],
+        
         backgroundColor: [
-          'red', 'green', 'blue'
+          '#31e89f', '#31c6e8', 'lightcoral'
         ],
         borderColor: [
-          'red', 'green', 'blue'
+          '#31e89f', '#31c6e8', 'lightcoral'
         ],
         borderWidth: 5,
     }],
@@ -228,6 +229,14 @@ export default function Dashboard() {
         'Freezer',
         'Pantry'
     ],
+//     options: {
+//       legend: {
+//          display: false
+//       },
+//       tooltips: {
+//          enabled: false
+//       }
+//  },
     
 };
 

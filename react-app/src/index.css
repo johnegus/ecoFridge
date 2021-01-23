@@ -80,6 +80,6 @@ body {
 
   .doughnut {
     height: 100px;
-    position: absolute;
-    right: 300px;
+    position: relative;
+    /* right: 300px; */
   }
