@@ -9,6 +9,7 @@ import Typography from '@material-ui/core/Typography';
 import profile from "./Profile.png"
 import './mini-profile.css'
 import { EditAvatar } from './edit/EditAvatar';
+import { DeleteUser } from './edit/DeleteUser';
 
 
 const useStyles = makeStyles({
@@ -63,9 +64,9 @@ export default function Deposits() {
               background: 'linear-gradient(7deg, rgba(2,0,36,1) 0%, rgba(212,212,228,0.48921566917782733) 34%, rgba(0,212,255,1) 100%)', 
               position: 'absolute',
               top: '20%',
-              left: '30%',
+              left: '40%',
               right: '30%',
-              bottom: '65%',
+              bottom: '50%',
               border: '1px solid #ccc',
               overflow: 'auto',
               WebkitOverflowScrolling: 'touch',
@@ -82,6 +83,9 @@ export default function Deposits() {
             </div>
             <div className='editAvatar'>
             <EditAvatar user={user} setUser={setUser} setModalIsOpen={setModalIsOpen}/>
+            </div>
+            <div className='deleteUser'>
+            <DeleteUser user={user} />
             </div>
           </Modal>
     </React.Fragment>

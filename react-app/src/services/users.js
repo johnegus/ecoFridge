@@ -11,3 +11,14 @@ export const editAvatar = async (id, avatar) => {
     });
     return await response.json();
   }
+
+
+  export const deleteUser = async (id) => {
+    const response = await fetch(`/api/users/delete/${id}`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    return await response.json();
+  }
