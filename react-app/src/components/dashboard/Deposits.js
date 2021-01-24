@@ -65,7 +65,7 @@ export default function Deposits() {
               top: '20%',
               left: '30%',
               right: '30%',
-              bottom: '50%',
+              bottom: '65%',
               border: '1px solid #ccc',
               overflow: 'auto',
               WebkitOverflowScrolling: 'touch',
@@ -80,8 +80,9 @@ export default function Deposits() {
             <div className='closeIcon'>
               <CloseIcon onClick={() => setModalIsOpen(false)}>Close</CloseIcon>
             </div>
+            <div className='editAvatar'>
             <EditAvatar user={user} setUser={setUser} setModalIsOpen={setModalIsOpen}/>
-            
+            </div>
           </Modal>
     </React.Fragment>
   );

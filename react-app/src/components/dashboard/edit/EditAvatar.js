@@ -18,8 +18,6 @@ export const EditAvatar = ({user, setUser, setModalIsOpen})=> {
     
       const onEditSubmit = async (e) => {
         e.preventDefault()  
-        console.log(user)
-        console.log(avatar)
         const newUser = await editAvatar(user.id, avatar);    
     
         setAvatar('')
@@ -31,11 +29,11 @@ export const EditAvatar = ({user, setUser, setModalIsOpen})=> {
         <>
         
                 
-                <div className='editform'>
+                <div >
                   <form onSubmit={onEditSubmit} className={classes.root} noValidate autoComplete="off">
                   <TextField
                     id="filled-textarea"
-                    label="Avatar"
+                    label="Avatar URL"
                     placeholder="Avatar URL"
                     multiline
                     size="small"

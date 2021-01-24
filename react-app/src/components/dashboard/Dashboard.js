@@ -265,10 +265,11 @@ const pieOptions= {
             {/* Chart */}
             <Grid item xs={12} md={8} lg={9}>
               {/* <Paper className={fixedHeightPaper}> */}
-                <Chart groceries={[...groceries, ...freezerGroceries, ...pantryGroceries]} setGroceries={setGroceries}/>
+                <Chart groceries={[...groceries, ...freezerGroceries, ...pantryGroceries]} setGroceries={setGroceries}
+                setFreezerGroceries={setFreezerGroceries} setGroceries={setPantryGroceries}/>
               {/* </Paper> */}
             </Grid>
-            {/* Recent Deposits */}
+            
             <Grid item xs={12} md={4} lg={3}>
               <Paper className={fixedHeightPaper}>
                 
@@ -276,7 +277,7 @@ const pieOptions= {
                 
               </Paper>
             </Grid>
-            {/* Recent Orders */}
+          
             <Grid item xs={12}>
               <Paper className={classes.paper}>
                 <div className='button-container'> 

@@ -9,6 +9,7 @@ import Button from '@material-ui/core/Button';
 
 import RecipeSearchInput from './recipe-search/RecipeSearchInput';
 import logo from '../ecofridge.png'
+import '../index.css'
 
 
 
@@ -90,7 +91,7 @@ const NavBar = ({ authenticated, setAuthenticated }) => {
             : "" }
           {authenticated ? 
           <>
-            <NavLink to={`/dashboard`} exact={true} activeClassName="active">
+            <NavLink to={`/dashboard`} exact={true} activeClassName="active" className='dashboard-button'>
             <Button variant="outlined" color="primary">
                 Dashboard
               </Button>

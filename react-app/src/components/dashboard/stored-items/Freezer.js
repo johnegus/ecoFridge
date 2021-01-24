@@ -49,7 +49,7 @@ export default function Freezer({groceries, setGroceries}) {
     <Title>Freezer</Title>
       
       <AddFreezerGrocery groceries={groceries} setGroceries={setGroceries}/>
-     
+      <div className='freezerBackground'>
       <Table size="small">
         <TableHead>
           <TableRow>
@@ -79,7 +79,7 @@ export default function Freezer({groceries, setGroceries}) {
           
         </TableBody>
       </Table>
-            
+      </div>   
       
       
       <Modal 
