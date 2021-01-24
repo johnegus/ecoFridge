@@ -45,7 +45,7 @@ export default function Pantry({groceries, setGroceries}) {
     <Title>Pantry</Title>
      
       <AddPantryGrocery groceries={groceries} setGroceries={setGroceries}/>
-     
+     <div className='pantryBackground'>
       <Table size="small">
         <TableHead>
           <TableRow>
@@ -75,7 +75,7 @@ export default function Pantry({groceries, setGroceries}) {
           
         </TableBody>
       </Table>
-            
+      </div>
       
       
       <Modal 

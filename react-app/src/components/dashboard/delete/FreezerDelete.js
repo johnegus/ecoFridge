@@ -3,7 +3,7 @@ import Button from '@material-ui/core/Button';
 import { deleteFreezerGrocery, getFreezerGroceries } from '../../../services/groceries';
 
 
-export const DeleteFreezerGrocery = ({grocery, setGroceries})=> {
+export const DeleteFreezerGrocery = ({grocery, setFreezerGroceries})=> {
     const userId = localStorage.getItem('userId')
     
 
@@ -14,7 +14,7 @@ export const DeleteFreezerGrocery = ({grocery, setGroceries})=> {
                               await deleteFreezerGrocery(grocery.id)
                               const response = await getFreezerGroceries(userId)
                               const sortedGroceries = await response.groceries.sort((a, b) => a.type.days_to_expiry - b.type.days_to_expiry)
-                            setGroceries(sortedGroceries)
+                              setFreezerGroceries(sortedGroceries)
                               }}>Delete</Button>
         </>
     )

@@ -63,7 +63,11 @@
     color: green;
 }
 
-
+.editAvatar {
+    display: flex;
+    align-items: center; 
+    justify-content: center;
+}
 
 .spectrum-container {
     display: flex;
@@ -110,16 +114,51 @@
     border-radius: 5px;
     margin: 5px;
     padding: 5px;
-    background: white;
+    background: #bce2d3;
+    
     opacity: 0;
         animation: fadeIn .3s linear forwards;
     transition: box-shadow .3s;
-    /* border: 3px solid black; */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.7);
     animation: 
         openspace .3s ease backwards, 
         restored-item-animation .5s .3s cubic-bezier(.14,.25,.52,1.56) forwards;
     float: right;
 
+
+
+}
+
+.spectrum-freezer {
+    border-radius: 5px;
+    margin: 5px;
+    padding: 5px;
+    background: #b9d4da;
+    opacity: 0;
+        animation: fadeIn .3s linear forwards;
+    transition: box-shadow .3s;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.7);
+    animation: 
+        openspace .3s ease backwards, 
+        restored-item-animation .5s .3s cubic-bezier(.14,.25,.52,1.56) forwards;
+    float: right;
+
+
+}
+
+.spectrum-pantry {
+    border-radius: 5px;
+    margin: 5px;
+    padding: 5px;
+    background: rgb(231, 217, 217);
+    opacity: 0;
+        animation: fadeIn .3s linear forwards;
+    transition: box-shadow .3s;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.7);
+    animation: 
+        openspace .3s ease backwards, 
+        restored-item-animation .5s .3s cubic-bezier(.14,.25,.52,1.56) forwards;
+    float: right;
 
 
 }
@@ -227,4 +266,30 @@
 
 .edit-button {
     display: inline-flex;
+}
+
+.freezerBackground {
+    border: #b9d4da solid 4px;
+    /* box-shadow: 0 0 10px #b9d4da; */
+    border-radius: 5px;
+}
+
+.fridgeBackground {
+    border: #bce2d3 solid 4px;
+    /* box-shadow: 0 0 10px #bce2d3; */
+    border-radius: 5px;
+}
+
+.pantryBackground {
+    border:  rgb(231, 217, 217) solid 4px;
+    /* box-shadow: 0 0 10px rgb(231, 217, 217); */
+    border-radius: 5px;
+}
+
+@media screen and (max-width: 750px) {
+    .pantryBackground, .fridgeBackground, .freezerBackground {
+      border: none;
+    }
+ 
+
 }

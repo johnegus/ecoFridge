@@ -1,11 +1,14 @@
 import React, { useState, useEffect } from 'react';
-import { useHistory } from "react-router-dom";
+import Modal from 'react-modal'
+import CloseIcon from '@material-ui/icons/Close';
+
 
 import { makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 
 import profile from "./Profile.png"
 import './mini-profile.css'
+import { EditAvatar } from './edit/EditAvatar';
 
 
 const useStyles = makeStyles({
@@ -16,11 +19,13 @@ const useStyles = makeStyles({
 
 export default function Deposits() {
   const classes = useStyles();
-  const history = useHistory();
   const [user, setUser] = useState({})
   const year = new Date().getFullYear();
   const month =new Date().getMonth() + 1;
   const date = new Date().getDate()
+  const [modalIsOpen, setModalIsOpen] = useState(false)
+
+
     
     useEffect(() => {
        let user = localStorage.getItem('userId');
@@ -28,22 +33,16 @@ export default function Deposits() {
             const response = await fetch(`/api/users/${user}`);
             const userA = await response.json();
             setUser(userA);
-            // const response2 = await fetch(`/api/following/users/${user}`)
-            // const data = await response2.json();
-            // setFollowingNum(data.following.length)
-            // setFollowersNum(data.followed.length)
-            // const response3 = await fetch(`/api/activities/users/${user}`);
-            // const data2 = await response3.json()
-            // setActivities(data2.activities.length)
         })()
     }, [])
 
-    const handleClick = (e) => {
-        return history.push(`/users/${e.target.id}`)
+    const handleClick = (grocery) => {
+
+      setModalIsOpen(true)   
     }
   return (
     <React.Fragment>
-      <div className='miniProfile'>
+      <div className='miniProfile' onClick={() => handleClick(user)}>
             {user.avatar ? (
                 <img src={user.avatar} alt='user' />
             ) : (
@@ -54,6 +53,37 @@ export default function Deposits() {
             Today is {month + '/' + date + '/' + year}
             </Typography>
         </div>
+        <Modal 
+          isOpen={modalIsOpen} 
+          onRequestClose={() => setModalIsOpen(false)}
+          closeTimeoutMS={500}
+          style={
+            {
+            content: {
+              background: 'linear-gradient(7deg, rgba(2,0,36,1) 0%, rgba(212,212,228,0.48921566917782733) 34%, rgba(0,212,255,1) 100%)', 
+              position: 'absolute',
+              top: '20%',
+              left: '30%',
+              right: '30%',
+              bottom: '65%',
+              border: '1px solid #ccc',
+              overflow: 'auto',
+              WebkitOverflowScrolling: 'touch',
+              borderRadius: '5px',
+              outline: 'none',
+              padding: '20px',
+              zIndex: '30',
+            }
+          }
+          }
+          >
+            <div className='closeIcon'>
+              <CloseIcon onClick={() => setModalIsOpen(false)}>Close</CloseIcon>
+            </div>
+            <div className='editAvatar'>
+            <EditAvatar user={user} setUser={setUser} setModalIsOpen={setModalIsOpen}/>
+            </div>
+          </Modal>
     </React.Fragment>
   );
 }

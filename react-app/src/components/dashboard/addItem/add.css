@@ -16,7 +16,7 @@
 
 @media only screen and (max-width: 720px) {
     .addForm {
-        display: block;
+        display: grid;
         width: 100%;
     
     }

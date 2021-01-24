@@ -88,14 +88,13 @@ def seed_grocery_types():
         GroceryType(type='Cheese, soft - Brie, Bel paese, etc.', image='https://i.imgur.com/2VIoLjm.jpg', days_to_expiry=7),
         GroceryType(type='Cottage or ricotta cheese', image='https://i.imgur.com/ZYHnbJ3.jpg', days_to_expiry=7), 
         GroceryType(type='Cream cheese', image='https://i.imgur.com/ZYHnbJ3.jpg', days_to_expiry=14),
-        GroceryType(type='Ice cream (freezer)', image='https://i.imgur.com/lK8QykQ.jpg', days_to_expiry=60), 
         GroceryType(type='Margarine', image='https://i.imgur.com/1cMcWdJ.jpg', days_to_expiry=180),
         GroceryType(type='Milk', image='https://i.imgur.com/BdzPlv3.jpg', days_to_expiry=7),  
         GroceryType(type='Milk - canned evaporated or condensed', image='https://i.imgur.com/BdzPlv3.jpg', days_to_expiry=4), 
         GroceryType(type='Non-dairy milk alternates - almond, soy, rice, etc.', image='https://i.imgur.com/BdzPlv3.jpg', days_to_expiry=7), 
         GroceryType(type='Sour cream', image='https://i.imgur.com/ZYHnbJ3.jpg', days_to_expiry=7), 
         GroceryType(type='Fresh beef, veal, lamb or pork (steaks, chops or roasts)', image='https://i.imgur.com/rt7BERZ.jpg', days_to_expiry=3), 
-        GroceryType(type='Ground beef, turkey, veal, pork or lamb, stew meat', image='https://i.imgur.com/rt7BERZ.jpg', days_to_expiry=1), 
+        GroceryType(type='Ground beef, turkey, veal, pork or lamb, stew meat', image='https://i.imgur.com/wxfmWMg.jpg', days_to_expiry=1), 
         GroceryType(type='Bacon', image='https://i.imgur.com/oL9teA8.jpg', days_to_expiry=7), 
         GroceryType(type='Bacon, fully cooked and shelf stable', image='https://i.imgur.com/oL9teA8.jpg', days_to_expiry=5), 
         GroceryType(type='Sausage, raw from chicken, turkey, pork or beef', image='https://i.imgur.com/Y69uwRB.jpg', days_to_expiry=1), 
@@ -130,7 +129,9 @@ def seed_grocery_types():
         GroceryType(type='Custom: 1 month', days_to_expiry=30),
         GroceryType(type='Custom: 3 months', days_to_expiry=90),
         GroceryType(type='Custom: 6 months', days_to_expiry=180),
-        GroceryType(type='Custom: 1 year', days_to_expiry=365),        
+        GroceryType(type='Custom: 1 year', days_to_expiry=365),
+        GroceryType(type='Kimchi', image='https://i.imgur.com/K4IeJTA.jpg', days_to_expiry=180),
+
     ]
 
     db.session.add_all(grocery_type)
@@ -147,7 +148,7 @@ def seed_freezer_grocery_types():
         FreezerGroceryType(type='Custom: 6 months', days_to_expiry=180),
         FreezerGroceryType(type='Custom: 1 year', days_to_expiry=365), 
         FreezerGroceryType(type='Fresh beef, veal, lamb or pork (steaks, chops or roasts)', image='https://i.imgur.com/rt7BERZ.jpg', days_to_expiry=120), 
-        FreezerGroceryType(type='Ground beef, turkey, veal, pork or lamb, stew meat', image='https://i.imgur.com/rt7BERZ.jpg', days_to_expiry=90), 
+        FreezerGroceryType(type='Ground beef, turkey, veal, pork or lamb, stew meat', image='https://i.imgur.com/wxfmWMg.jpg', days_to_expiry=90), 
         FreezerGroceryType(type='Bacon', image='https://i.imgur.com/oL9teA8.jpg', days_to_expiry=30), 
         FreezerGroceryType(type='Bacon, fully cooked and shelf stable', image='https://i.imgur.com/oL9teA8.jpg', days_to_expiry=90), 
         FreezerGroceryType(type='Sausage, raw from chicken, turkey, pork or beef', image='https://i.imgur.com/Y69uwRB.jpg', days_to_expiry=90), 
@@ -163,7 +164,9 @@ def seed_freezer_grocery_types():
         FreezerGroceryType(type='Fresh fish or shellfish', image='https://i.imgur.com/cWS2n2V.jpg', days_to_expiry=90), 
         FreezerGroceryType(type='Raw egg yolks, whites', image='https://i.imgur.com/aDMneVr.jpg', days_to_expiry=365), 
         FreezerGroceryType(type='Liquid pasteurized eggs or egg substitutes (unopened)', image='https://i.imgur.com/aDMneVr.jpg', days_to_expiry=365), 
-        FreezerGroceryType(type='Leftovers with meat, fish, poultry or egg', image='https://i.imgur.com/V5yF8aX.jpg', days_to_expiry=60),        
+        FreezerGroceryType(type='Leftovers with meat, fish, poultry or egg', image='https://i.imgur.com/V5yF8aX.jpg', days_to_expiry=60),
+        FreezerGroceryType(type='Ice cream', image='https://i.imgur.com/lK8QykQ.jpg', days_to_expiry=60), 
+        
     ]
 
     db.session.add_all(freezer_grocery_type)
@@ -202,7 +205,24 @@ def seed_pantry_grocery_types():
         PantryGroceryType(type='Custom: 1 year', days_to_expiry=365), 
         PantryGroceryType(type='Bread', image='https://i.imgur.com/pNyGInN.jpg', days_to_expiry=3), 
         PantryGroceryType(type='Bread products, baked commercially such as bread, flat breads, rolls, buns, etc.', image='https://i.imgur.com/pNyGInN.jpg', days_to_expiry=14), 
-        PantryGroceryType(type='Cakes and muffins, baked commercially', image='https://i.imgur.com/pNyGInN.jpg', days_to_expiry=7),        
+        PantryGroceryType(type='Cakes and muffins, baked commercially', image='https://i.imgur.com/pNyGInN.jpg', days_to_expiry=7), 
+        PantryGroceryType(type='Apples', image='https://i.imgur.com/FVf9I61.jpg', days_to_expiry=21),
+        PantryGroceryType(type='Avocados', image='https://i.imgur.com/xjimeYz.jpg', days_to_expiry=3),
+        PantryGroceryType(type='Bananas', image='https://i.imgur.com/qAVaqDE.jpg', days_to_expiry=3),
+        PantryGroceryType(type='Citrus fruits - orange, grapefruit, clementines, etc.', image='https://i.imgur.com/BaZbcWZ.jpg', days_to_expiry=10),
+        PantryGroceryType(type='Grapes', image='https://i.imgur.com/VnAIH5y.jpg', days_to_expiry=1),
+        PantryGroceryType(type='Melons', image='https://i.imgur.com/ZKwZ23R.jpg', days_to_expiry=3),
+        PantryGroceryType(type='Peaches, nectarines, plums or pears', image='https://i.imgur.com/Q0TbeAA.jpg', days_to_expiry=3), 
+        PantryGroceryType(type='Pineapple', image='https://i.imgur.com/Yj0940Q.jpg', days_to_expiry=5),
+        PantryGroceryType(type='Strawberries', image='https://i.imgur.com/OaEx0gn.jpg', days_to_expiry=2),
+        PantryGroceryType(type='Onions', image='https://i.imgur.com/bxCp4pa.jpg', days_to_expiry=30),
+        PantryGroceryType(type='Potatoes', image='https://i.imgur.com/XHIFEmZ.jpg', days_to_expiry=30),
+        PantryGroceryType(type='Dried beans, lentils or split peas', image='https://i.imgur.com/YGdwkaO.jpg', days_to_expiry=365),
+        PantryGroceryType(type='Summer squash or zucchini', image='https://i.imgur.com/RKRRBFj.jpg', days_to_expiry=1), 
+        PantryGroceryType(type='Tomatoes', image='https://i.imgur.com/dJ0Zk0E.jpg', days_to_expiry=7), 
+        PantryGroceryType(type='Winter squash', image='https://i.imgur.com/heOHlqy.jpg', days_to_expiry=30), 
+
+
     ]
 
     db.session.add_all(pantry_grocery_type)

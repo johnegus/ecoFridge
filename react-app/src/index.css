@@ -79,7 +79,15 @@ body {
   }
 
   .doughnut {
-    height: 100px;
-    position: absolute;
-    right: 300px;
+    height: 20px;
+    position: relative;
+    left: 250px;
+    /* border: #31c6e8 solid 2px; */
   }
+
+  @media screen and (max-width: 750px) {
+    .doughnut, .dashboard-button{
+      display: none;
+    }
+
+}

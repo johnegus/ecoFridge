@@ -212,11 +212,12 @@ export default function Dashboard() {
   const doughnutData = {
     datasets: [{
         data: [groceries.length, freezerGroceries.length, pantryGroceries.length],
+        
         backgroundColor: [
-          'red', 'green', 'blue'
+          '#31e89f', '#31c6e8', 'lightcoral'
         ],
         borderColor: [
-          'red', 'green', 'blue'
+          '#31e89f', '#31c6e8', 'lightcoral'
         ],
         borderWidth: 5,
     }],
@@ -232,7 +233,10 @@ export default function Dashboard() {
 };
 
 const pieOptions= {
-  //cutoutPercentage: 40,
+  legend: {
+    display: false,
+    position: "right"
+  },
  responsive: true,
 }
   if (!loaded ) {
@@ -261,10 +265,11 @@ const pieOptions= {
             {/* Chart */}
             <Grid item xs={12} md={8} lg={9}>
               {/* <Paper className={fixedHeightPaper}> */}
-                <Chart groceries={[...groceries, ...freezerGroceries, ...pantryGroceries]} setGroceries={setGroceries}/>
+                <Chart groceries={[...groceries, ...freezerGroceries, ...pantryGroceries]} setGroceries={setGroceries}
+                setFreezerGroceries={setFreezerGroceries} setGroceries={setPantryGroceries}/>
               {/* </Paper> */}
             </Grid>
-            {/* Recent Deposits */}
+            
             <Grid item xs={12} md={4} lg={3}>
               <Paper className={fixedHeightPaper}>
                 
@@ -272,7 +277,7 @@ const pieOptions= {
                 
               </Paper>
             </Grid>
-            {/* Recent Orders */}
+          
             <Grid item xs={12}>
               <Paper className={classes.paper}>
                 <div className='button-container'> 

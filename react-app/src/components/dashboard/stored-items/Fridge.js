@@ -43,7 +43,7 @@ export default function Fridge({groceries, setGroceries}) {
     <Title>Fridge</Title>
       
       <AddGrocery groceries={groceries} setGroceries={setGroceries}/>
-     
+      <div className='fridgeBackground'>
       <Table size="small">
         <TableHead>
           <TableRow>
@@ -74,7 +74,7 @@ export default function Fridge({groceries, setGroceries}) {
         </TableBody>
       </Table>
             
-      
+      </div>
       
       <Modal 
           isOpen={modalIsOpen} 

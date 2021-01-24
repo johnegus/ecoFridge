@@ -8,10 +8,13 @@ import Modal from 'react-modal'
 import RecipeSearch from '../recipe-search/RecipeSearch';
 import CloseIcon from '@material-ui/icons/Close';
 import Slide from '@material-ui/core/Slide';
+import { DeleteFreezerGrocery } from './delete/FreezerDelete';
+import { DeletePantryGrocery } from './delete/PantryDelete';
+import { DeleteGrocery } from './delete/Delete';
 
 
 
-export default function Chart({groceries, setGroceries}) {
+export default function Chart({groceries, setGroceries, setFreezerGroceries, setPantryGroceries}) {
 const [modalIsOpen, setModalIsOpen] = useState(false)
 const [currentGrocery, setCurrentGrocery] = useState('')
 const [checked, setChecked] = useState(false)
@@ -43,6 +46,7 @@ if (groceries) {
     
   })
   setSortedGroceries(sorted)
+  console.log(sorted)
 }
 })()
 }, [groceries])
@@ -59,7 +63,10 @@ const handleClick = (grocery) => {
       {sortedGroceries.map((grocery) => (
         <Slide elevation={4} direction="up" in={checked} mountOnEnter unmountOnExit>
          
-            <div className='spectrum-children' key={grocery.createdAt} >
+            <div className={
+              grocery.grocery_types_id ? 'spectrum-children': grocery.freezer_grocery_types_id ? 'spectrum-freezer':
+              'spectrum-pantry'
+          } key={grocery.createdAt} >
               
               {grocery.item_name}
               
@@ -74,7 +81,14 @@ const handleClick = (grocery) => {
                 <img src={fridge} alt='stock fridge' />
             )}
             </div>
-            {/* <DeleteGrocery groceries={groceries} grocery={grocery} setGroceries={setGroceries} /> */}
+            {/* { grocery.grocery_types_id ? <DeleteGrocery groceries={groceries} grocery={grocery} setGroceries={setGroceries} /> :
+              grocery.freezer_grocery_types_id ? <DeleteFreezerGrocery groceries={groceries} grocery={grocery} setFreezerGroceries={setFreezerGroceries} /> :
+              <DeletePantryGrocery groceries={groceries} grocery={grocery} setPantryGroceries={setPantryGroceries} />
+
+
+
+            } */}
+            
             </div>
         
             </Slide>

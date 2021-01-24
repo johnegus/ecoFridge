@@ -70,16 +70,7 @@ export default function AddGrocery({groceries, setGroceries}) {
     <form onSubmit={onAddGrocery} className={classes.root} noValidate autoComplete="off">
       <div className='addForm'>
       
-      <TextField
-          // required
-          id="filled-textarea"
-          label="Item Name"
-          placeholder="Item Name"
-          multiline
-          variant="filled"
-          value={itemName} 
-          onChange={e => setItemName(e.target.value)}
-        />
+     
         <Autocomplete
         required
         options= {types}
@@ -90,6 +81,17 @@ export default function AddGrocery({groceries, setGroceries}) {
         value={itemType} 
         onChange={onUps}
       />
+
+        <TextField
+          // required
+          id="filled-textarea"
+          label="Item Name"
+          placeholder="Item Name"
+          multiline
+          variant="filled"
+          value={itemName} 
+          onChange={e => setItemName(e.target.value)}
+        />
         <Button type="submit" variant="outlined" color="primary">Add Fridge Item</Button>
         {errors ? <Alert className='fade-out' severity="error">{errors}</Alert> : ''}
       </div>
