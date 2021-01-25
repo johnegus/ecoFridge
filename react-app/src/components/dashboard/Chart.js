@@ -81,14 +81,15 @@ const handleClick = (grocery) => {
                 <img src={fridge} alt='stock fridge' />
             )}
             </div>
-            {/* { grocery.grocery_types_id ? <DeleteGrocery groceries={groceries} grocery={grocery} setGroceries={setGroceries} /> :
-              grocery.freezer_grocery_types_id ? <DeleteFreezerGrocery groceries={groceries} grocery={grocery} setFreezerGroceries={setFreezerGroceries} /> :
-              <DeletePantryGrocery groceries={groceries} grocery={grocery} setPantryGroceries={setPantryGroceries} />
+            <div className='delete-grocery-button'>
+            { grocery.grocery_types_id ? <DeleteGrocery groceries={groceries} grocery={grocery} setGroceries={setGroceries} /> :
+              grocery.freezer_grocery_types_id ? <DeleteFreezerGrocery groceries={groceries} grocery={grocery} setGroceries={setFreezerGroceries} /> :
+              <DeletePantryGrocery groceries={groceries} grocery={grocery} setGroceries={setPantryGroceries} />
 
 
 
-            } */}
-            
+            }
+            </div>
             </div>
         
             </Slide>
