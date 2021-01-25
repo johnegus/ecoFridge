@@ -68,7 +68,8 @@ const handleClick = (grocery) => {
               'spectrum-pantry'
           } key={grocery.createdAt} >
               
-              {grocery.item_name}
+              {grocery.item_name.length > 14 ? grocery.item_name.substring(0, 14) + "..." :
+               grocery.item_name}
               
                
                 <div 

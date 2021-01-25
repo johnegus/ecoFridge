@@ -26,7 +26,7 @@ export const DeleteUser = ({user})=> {
                     window.location.replace('/')
                   
                   }}
-                  >Delete Profile</Button>
+                  >Delete Account</Button>
                   
                
                   
