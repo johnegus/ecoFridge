@@ -3,26 +3,26 @@ from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
 
 
-grocery_users = db.Table(
-  "grocery_users",
-  db.Model.metadata,
-  db.Column("grocery_id", db.Integer, db.ForeignKey("groceries.id"), primary_key=True),
-  db.Column("user_id", db.Integer, db.ForeignKey("users.id"), primary_key=True),
-)
+# grocery_users = db.Table(
+#   "grocery_users",
+#   db.Model.metadata,
+#   db.Column("grocery_id", db.Integer, db.ForeignKey("groceries.id"), primary_key=True),
+#   db.Column("user_id", db.Integer, db.ForeignKey("users.id"), primary_key=True),
+# )
 
-freezer_grocery_users = db.Table(
-  "freezer_grocery_users",
-  db.Model.metadata,
-  db.Column("freezer_grocery_id", db.Integer, db.ForeignKey("freezer_groceries.id"), primary_key=True),
-  db.Column("user_id", db.Integer, db.ForeignKey("users.id"), primary_key=True),
-)
+# freezer_grocery_users = db.Table(
+#   "freezer_grocery_users",
+#   db.Model.metadata,
+#   db.Column("freezer_grocery_id", db.Integer, db.ForeignKey("freezer_groceries.id"), primary_key=True),
+#   db.Column("user_id", db.Integer, db.ForeignKey("users.id"), primary_key=True),
+# )
 
-pantry_grocery_users = db.Table(
-  "pantry_grocery_users",
-  db.Model.metadata,
-  db.Column("pantry_grocery_id", db.Integer, db.ForeignKey("pantry_groceries.id"), primary_key=True),
-  db.Column("user_id", db.Integer, db.ForeignKey("users.id"), primary_key=True),
-)
+# pantry_grocery_users = db.Table(
+#   "pantry_grocery_users",
+#   db.Model.metadata,
+#   db.Column("pantry_grocery_id", db.Integer, db.ForeignKey("pantry_groceries.id"), primary_key=True),
+#   db.Column("user_id", db.Integer, db.ForeignKey("users.id"), primary_key=True),
+# )
 
 
 class GroceryType(db.Model):
@@ -51,7 +51,7 @@ class Grocery(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable = False)
 
     type = db.relationship("GroceryType")
-    users = db.relationship("User", secondary=grocery_users, back_populates="groceries")
+    users = db.relationship("User", back_populates="groceries")
 
     def to_dict(self):
         return {
@@ -82,9 +82,9 @@ class User(db.Model, UserMixin):
     country = db.Column(db.String(255), nullable = False)
     avatar = db.Column(db.String(255))
 
-    groceries = db.relationship("Grocery", secondary=grocery_users, back_populates="users", lazy=True, single_parent=True, cascade="all, delete-orphan")
-    freezer_groceries = db.relationship("FreezerGrocery", secondary=freezer_grocery_users, back_populates="users", lazy=True, single_parent=True, cascade="all, delete-orphan")
-    pantry_groceries = db.relationship("PantryGrocery", secondary=pantry_grocery_users, back_populates="users", lazy=True, single_parent=True, cascade="all, delete-orphan")
+    groceries = db.relationship("Grocery", back_populates="users", lazy=True, single_parent=True, cascade="all, delete-orphan")
+    freezer_groceries = db.relationship("FreezerGrocery", back_populates="users", lazy=True, single_parent=True, cascade="all, delete-orphan")
+    pantry_groceries = db.relationship("PantryGrocery", back_populates="users", lazy=True, single_parent=True, cascade="all, delete-orphan")
 
     @property
     def password(self):
@@ -138,7 +138,7 @@ class FreezerGrocery(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable = False)
 
     type = db.relationship("FreezerGroceryType")
-    users = db.relationship("User", secondary=freezer_grocery_users, back_populates="freezer_groceries")
+    users = db.relationship("User", back_populates="freezer_groceries")
 
     def to_dict(self):
         return {
@@ -185,7 +185,7 @@ class PantryGrocery(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable = False)
 
     type = db.relationship("PantryGroceryType")
-    users = db.relationship("User", secondary=pantry_grocery_users, back_populates="pantry_groceries")
+    users = db.relationship("User", back_populates="pantry_groceries")
 
     def to_dict(self):
         return {

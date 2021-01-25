@@ -41,7 +41,7 @@ export const EditAvatar = ({user, setUser, setModalIsOpen})=> {
                     value={avatar} 
                     onChange={e => setAvatar(e.target.value)}
                   />
-                  <Button type="submit" variant="outlined" color="primary">Save</Button>
+                  <Button type="submit" variant="contained" color="primary" >Save</Button>
                   
                   </form>
                   

@@ -53,6 +53,7 @@ const NavBar = ({ authenticated, setAuthenticated }) => {
   let location = useLocation();
   
   const currentPage = location.pathname;
+  console.log(currentPage)
   
 
 
@@ -91,13 +92,13 @@ const NavBar = ({ authenticated, setAuthenticated }) => {
             : "" }
           {authenticated ? 
           <>
-            <NavLink to={`/dashboard`} exact={true} activeClassName="active" className='dashboard-button'>
-            <Button variant="outlined" color="primary">
+            <NavLink to={`/dashboard`} exact={true} className='dashboard-button'>
+            <Button variant={currentPage === '/dashboard'? "contained" : "outlined"} color="primary">
                 Dashboard
               </Button>
             </NavLink>
-            <NavLink to={`/database`} exact={true} activeClassName="active">
-            <Button variant="outlined" color="primary">
+            <NavLink to={`/database`} exact={true} >
+            <Button variant={currentPage === '/database'? "contained" : "outlined"} color="primary">
                 Database
               </Button>
             </NavLink>

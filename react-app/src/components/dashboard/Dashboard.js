@@ -266,7 +266,7 @@ const pieOptions= {
             <Grid item xs={12} md={8} lg={9}>
               {/* <Paper className={fixedHeightPaper}> */}
                 <Chart groceries={[...groceries, ...freezerGroceries, ...pantryGroceries]} setGroceries={setGroceries}
-                setFreezerGroceries={setFreezerGroceries} setGroceries={setPantryGroceries}/>
+                setFreezerGroceries={setFreezerGroceries} setPantryGroceries={setPantryGroceries}/>
               {/* </Paper> */}
             </Grid>
             
