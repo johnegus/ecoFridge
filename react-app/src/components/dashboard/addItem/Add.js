@@ -29,6 +29,7 @@ export default function AddGrocery({groceries, setGroceries}) {
   const user = localStorage.getItem('userId');
   const [types, setTypes] = useState([]);
   const [errors, setErrors] = useState('');
+  const [success, setSuccess] = useState('')
 
   
 
@@ -55,6 +56,11 @@ export default function AddGrocery({groceries, setGroceries}) {
       setGroceries(sortedGroceries)
       setItemName('')
       setErrors('')
+      setSuccess('Item added to fridge.')
+        setTimeout(function()
+           {
+            setSuccess('')
+           },4000);
       setItemType(null)
     }
     
@@ -94,7 +100,10 @@ export default function AddGrocery({groceries, setGroceries}) {
           onChange={e => setItemName(e.target.value)}
         />
         <Button type="submit" variant="outlined" color="primary">Add Fridge Item</Button>
-        {errors ? <Alert className='fade-out' severity="error">{errors}</Alert> : ''}
+        {errors ? <Alert className='fade-out' severity="error">{errors}</Alert> : success ?
+         <Alert className='fade-out' severity="success">Item added to fridge.</Alert> :
+         ''
+         }
       </div>
       
     </form>

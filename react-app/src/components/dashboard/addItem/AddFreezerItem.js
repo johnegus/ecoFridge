@@ -29,7 +29,7 @@ export default function AddFreezerGrocery({groceries, setGroceries}) {
   const user = localStorage.getItem('userId');
   const [types, setTypes] = useState([]);
   const [errors, setErrors] = useState('');
-
+  const [success, setSuccess] = useState('')
   
 
   useEffect(() => {
@@ -48,13 +48,6 @@ export default function AddFreezerGrocery({groceries, setGroceries}) {
              setErrors('')
            },4000);
       } 
-      // if (!itemName){
-      //   setErrors('Please give the item a name.')
-      //   setTimeout(function()
-      //      {
-      //        setErrors('')
-      //      },4000);
-      // }
       else{
       const newGrocery = await addFreezerGrocery(user, itemName, itemType.id);
       const sortedGroceries = [...groceries, newGrocery].sort((a, b) => a.type.days_to_expiry - b.type.days_to_expiry)
@@ -62,6 +55,11 @@ export default function AddFreezerGrocery({groceries, setGroceries}) {
       setGroceries(sortedGroceries)
       setItemName('')
       setErrors('')
+      setSuccess('Item added to freezer.')
+        setTimeout(function()
+           {
+            setSuccess('')
+           },4000);
       setItemType(null)
     }
     
@@ -99,7 +97,10 @@ export default function AddFreezerGrocery({groceries, setGroceries}) {
           onChange={e => setItemName(e.target.value)}
         />
         <Button type="submit" variant="outlined" color="primary">Add Freezer Item</Button>
-        {errors ? <Alert className='fade-out' severity="error">{errors}</Alert> : ''}
+        {errors ? <Alert className='fade-out' severity="error">{errors}</Alert> : success ?
+         <Alert className='fade-out' severity="success">Item added to fridge.</Alert> :
+         ''
+         }
       </div>
       
     </form>
