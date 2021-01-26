@@ -84,7 +84,7 @@ export default function AddFreezerGrocery({groceries, setGroceries}) {
         getOptionLabel= {(option) => option.type}
         id="Item Type"
         debug
-        renderInput={(params) => <TextField {...params} label="Item Type" margin="normal" />}
+        renderInput={(params) => <TextField {...params} variant="filled"  label="Item Type" margin="normal" />}
         value={itemType} 
         onChange={onUps}
       />
@@ -93,7 +93,7 @@ export default function AddFreezerGrocery({groceries, setGroceries}) {
           id="filled-textarea"
           label="Item Name"
           placeholder="Item Name"
-          multiline
+          
           variant="filled"
           value={itemName} 
           onChange={e => setItemName(e.target.value)}

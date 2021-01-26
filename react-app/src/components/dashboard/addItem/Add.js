@@ -75,9 +75,10 @@ export default function AddGrocery({groceries, setGroceries}) {
         required
         options= {types}
         getOptionLabel= {(option) => option.type}
-        id="Item Type"
+        id="tags-filled"
         debug
-        renderInput={(params) => <TextField {...params} label="Item Type" margin="normal" />}
+        
+        renderInput={(params) => <TextField {...params} variant="filled" label="Item Type" margin="normal" />}
         value={itemType} 
         onChange={onUps}
       />
@@ -87,7 +88,7 @@ export default function AddGrocery({groceries, setGroceries}) {
           id="filled-textarea"
           label="Item Name"
           placeholder="Item Name"
-          multiline
+          
           variant="filled"
           value={itemName} 
           onChange={e => setItemName(e.target.value)}

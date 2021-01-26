@@ -66,9 +66,10 @@ body {
 
   .circle-progress {
     position: absolute;
+    /* height: 200px; */
     margin: 50%;
     z-index: -5;
-    right: -115px;
+    /* right: 70px; */
   }
 
   .icon-progress {

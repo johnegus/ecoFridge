@@ -131,6 +131,7 @@ def seed_grocery_types():
         GroceryType(type='Custom: 6 months', days_to_expiry=180),
         GroceryType(type='Custom: 1 year', days_to_expiry=365),
         GroceryType(type='Kimchi', image='https://i.imgur.com/K4IeJTA.jpg', days_to_expiry=180),
+        GroceryType(type='Pesto', image='https://i.imgur.com/TVpAKUq.jpg', days_to_expiry=7),
 
     ]
 
@@ -184,7 +185,7 @@ def seed_pantry_grocery_types():
         PantryGroceryType(type='Flour, white', image='https://i.imgur.com/t5VjnqZ.jpg', days_to_expiry=180),
         PantryGroceryType(type='Flour, whole wheat', image='https://i.imgur.com/t5VjnqZ.jpg', days_to_expiry=90),
         PantryGroceryType(type='Herbs, dried', image='https://i.imgur.com/3McAtJ9.jpg', days_to_expiry=365),
-        PantryGroceryType(type='Oatmeal', image='https://i.imgur.com/t5VjnqZ.jpg', days_to_expiry=180),
+        PantryGroceryType(type='Oatmeal', image='https://i.imgur.com/0ks0edA.jpg', days_to_expiry=180),
         PantryGroceryType(type='Oil - vegetable or olive', image='https://i.imgur.com/HijTAe5.jpg', days_to_expiry=180),
         PantryGroceryType(type='Pasta', image='https://i.imgur.com/TnFNKIz.jpg', days_to_expiry=365),
         PantryGroceryType(type='Peanut butter', image='https://i.imgur.com/TVpAKUq.jpg', days_to_expiry=60),  

@@ -47,7 +47,7 @@ const HomePage = ({ authenticated, setAuthenticated }) => {
                 issues to tackle when it comes sustainability.  Food waste is the single largest component of 
                 solid waste reaching landfills and incinerators in the U.S., according to the EPA.
                 ECOFridge sources its expiration 
-                data from the University of Nebraska to help people to optimize their kitchen, save money, and help the environment. '
+                data from the University of Nebraska–Lincoln to help people to optimize their kitchen, save money, and help the environment. '
             />
 
             <Card 
