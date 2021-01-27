@@ -18,6 +18,7 @@ import Alert from '@material-ui/lab/Alert';
 import github from '../../github.png'
 import linkedin from '../../linkedin.png'
 import '../../index.css'
+import fridgeIcon from '../dashboard/fridge.png'
 
 
 function Copyright() {
@@ -65,14 +66,17 @@ const useStyles = makeStyles((theme) => ({
     backgroundPosition: 'center',
   },
   paper: {
-    margin: theme.spacing(8, 4),
+    margin: theme.spacing(15, 4),
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
   },
   avatar: {
-    margin: theme.spacing(1),
+    margin: theme.spacing(10),
     backgroundColor: theme.palette.secondary.main,
+    width: theme.spacing(7),
+    height: theme.spacing(7),
+    
   },
   form: {
     width: '100%', // Fix IE11 issue.
@@ -120,9 +124,9 @@ export default function SignInSide({ authenticated, setAuthenticated }) {
       <Grid item xs={false} sm={4} md={7} className={classes.image} />
       <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
         <div className={classes.paper}>
-          <Avatar className={classes.avatar}>
-            <LockOutlinedIcon />
-          </Avatar>
+          {/* <Avatar size='200px' className={classes.avatar} variant='rounded'>
+          <img height='50px' width='50px' src={fridgeIcon} alt='fridgeIcon' />
+          </Avatar> */}
           <Typography component="h1" variant="h5">
             Sign in
           </Typography>

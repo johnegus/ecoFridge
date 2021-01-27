@@ -50,7 +50,7 @@ function Copyright() {
 
 const useStyles = makeStyles((theme) => ({
   paper: {
-    marginTop: theme.spacing(2),
+    marginTop: theme.spacing(15),
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
@@ -131,14 +131,14 @@ export default function SignUp({authenticated, setAuthenticated}) {
     <Container component="main" maxWidth="xs">
       <CssBaseline />
       <div className={classes.paper}>
-        <Avatar className={classes.avatar}>
+        {/* <Avatar className={classes.avatar}>
           <LockOutlinedIcon />
-        </Avatar>
+        </Avatar> */}
         <Typography component="h1" variant="h5">
           Sign up
         </Typography>
         <form className={classes.form} onSubmit={onSignUp}>
-          <Grid container spacing={2}>
+          <Grid container spacing={1}>
             <Grid item xs={12} sm={6}>
               <TextField
                 autoComplete="fname"
