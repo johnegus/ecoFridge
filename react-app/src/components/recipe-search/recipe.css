@@ -35,7 +35,7 @@
 .recipe h1{
     grid-row: 1/2;
     grid-column: 2/3;
-    padding-left: 10px;
+    padding-left: 20px;
 }
 
 .recipe ol{
