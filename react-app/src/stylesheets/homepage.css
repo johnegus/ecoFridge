@@ -71,6 +71,7 @@ body.background__home {
   
   .bg-grey{
     background-color:#f6f6f6;
+    display: block;
   }
   
   .orange {

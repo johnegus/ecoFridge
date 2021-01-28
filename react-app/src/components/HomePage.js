@@ -92,7 +92,7 @@ const Card = (props) =>{
     return(
         <div className={props.className} >
             <div className="small-div">
-                <i className={props.className}></i>
+                
                 
             </div>
 
@@ -101,9 +101,9 @@ const Card = (props) =>{
                     {props.title}
                 </span>
                 <br/>
-                <span>
+                <div>
                     {props.description}
-                </span>
+                </div>
                 <img className='homepage-image' src={props.img} alt=''/>
             </div>
         </div>

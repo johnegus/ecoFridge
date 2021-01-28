@@ -41,6 +41,7 @@ body {
 .homepage-image{
     max-height: 500px;
     padding: 20px;
+    margin: 20px;
     border-radius: 5px;
     border: #31c6e8 solid 3px;
     display: block;
@@ -86,9 +87,10 @@ body {
 
   .icon-progress {
     position: absolute;
+    /* height: 200px; */
     margin: 50%;
-    left: -60px;
-    z-index: 1;
+    z-index: -5;
+    opacity: 0.4;
   }
 
   .doughnut {
