@@ -249,7 +249,7 @@ const pieOptions= {
       <img className='icon-progress' height='50px' width='50px' src={fridgeIcon} alt='fridgeIcon' />
         <b>Loading Groceries...</b>
         
-        <div className='circle-progress'> <CircularProgress size='100px'/> </div>
+        <div className='circle-progress'> <CircularProgress size='100px' color='secondary'/> </div>
         </main>
       </>
       )

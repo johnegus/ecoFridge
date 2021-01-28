@@ -2,7 +2,7 @@ import React,{useEffect, useState} from 'react';
 import Recipe from "./Recipe";
 import './index.css'
 import CircularProgress from '@material-ui/core/CircularProgress';
-
+import fridgeIcon from '../dashboard/fridge.png'
 const RecipeSearch = ({currentGrocery}) => {
 const API_ID = process.env.REACT_APP_APP_ID;
 const API_KEY = process.env.REACT_APP_APP_KEY;
@@ -32,12 +32,14 @@ if (!loaded ) {
   return (
    
     <>
-  
+    
     <main className="centered middled">
-      <b>Fetching Recipes...</b>
-      <CircularProgress />
-      </main>
-    </>
+      <img className='icon-progress' height='50px' width='50px' src={fridgeIcon} alt='fridgeIcon' />
+        <b>Fetching Recipes...</b>
+        
+        <div className='circle-progress'> <CircularProgress size='100px' color='secondary'/> </div>
+        </main>
+      </>
     )
   }
   return(

@@ -41,7 +41,7 @@ body {
 .homepage-image{
     max-height: 500px;
     padding: 20px;
-    margin: 20px;
+    margin-top: 20px;
     border-radius: 5px;
     border: #31c6e8 solid 3px;
     display: block;
@@ -53,6 +53,7 @@ body {
         openspace 1s ease forwards, 
         restored-item-animation .5s .3s cubic-bezier(.14,.25,.52,1.56) forwards;
     float: left;
+    max-width: 100%;
 
     /* animation: removed-item-animation 1s cubic-bezier(0.55, -0.04, 0.91, 0.94) forwards;
     /*transform origin is moved to the bottom left corner*/
@@ -82,7 +83,7 @@ body {
     /* height: 200px; */
     margin: 50%;
     z-index: -5;
-    /* right: 70px; */
+    opacity: 0.4;
   }
 
   .icon-progress {

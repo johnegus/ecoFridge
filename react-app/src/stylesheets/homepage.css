@@ -151,7 +151,9 @@ body.background__home {
       justify-content: center;
       
     }
-  
+    .contact-container {
+      width: 100%;
+    }
   
     .small-div {
       width: 80%;
