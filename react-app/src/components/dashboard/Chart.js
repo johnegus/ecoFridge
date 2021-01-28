@@ -46,7 +46,7 @@ if (groceries) {
     
   })
   setSortedGroceries(sorted)
-  console.log(sorted)
+ 
 }
 })()
 }, [groceries])

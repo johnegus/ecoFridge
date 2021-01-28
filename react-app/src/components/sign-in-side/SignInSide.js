@@ -131,7 +131,7 @@ export default function SignInSide({ authenticated, setAuthenticated }) {
             Sign in
           </Typography>
           <form className={classes.form} onSubmit={onLogin}>
-         {errors ? <Alert severity="error">{errors}</Alert> : ''}
+         {errors ? <Alert severity="error">{errors} </Alert> : ''}
           
             <TextField
               margin="normal"

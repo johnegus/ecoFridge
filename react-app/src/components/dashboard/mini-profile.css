@@ -66,12 +66,12 @@
 .editAvatar {
     display: flex;
     align-items: center; 
-    justify-content: start;
+    justify-content: flex-start;
 }
 .deleteUser {
     display: flex;
     align-items: center; 
-    justify-content: start;
+    justify-content: flex-start;
     margin-top: 70px;
 }
 
