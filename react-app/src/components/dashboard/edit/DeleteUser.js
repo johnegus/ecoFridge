@@ -1,8 +1,7 @@
-import React, { useState } from 'react'
-import { makeStyles } from '@material-ui/core/styles';
+import React from 'react'
 import Button from '@material-ui/core/Button';
 import '../mini-profile.css'
-import { deleteUser, editAvatar } from '../../../services/users';
+import { deleteUser } from '../../../services/users';
 
 
 export const DeleteUser = ({user})=> {
