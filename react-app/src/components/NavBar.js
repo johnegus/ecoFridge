@@ -53,7 +53,7 @@ const NavBar = ({ authenticated, setAuthenticated }) => {
   let location = useLocation();
   
   const currentPage = location.pathname;
-  console.log(currentPage)
+ 
   
 
 

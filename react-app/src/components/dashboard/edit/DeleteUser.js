@@ -1,24 +1,18 @@
-import React, { useState } from 'react'
-import { makeStyles } from '@material-ui/core/styles';
+import React from 'react'
 import Button from '@material-ui/core/Button';
 import '../mini-profile.css'
-import { deleteUser, editAvatar } from '../../../services/users';
-const useStyles = makeStyles((theme) => ({
-    seeMore: {
-      marginTop: theme.spacing(3),
-    },
-  }));
+import { deleteUser } from '../../../services/users';
+
 
 export const DeleteUser = ({user})=> {
 
-    
 
     return (
         <>
         
                 
                 <div >
-                
+                {user.email !== "demo@aa.io" ? 
                   <Button variant="contained" color="primary"
                   onClick={async ()=> {
                     deleteUser(user.id) 
@@ -27,7 +21,7 @@ export const DeleteUser = ({user})=> {
                   
                   }}
                   >Delete Account</Button>
-                  
+                : ''}
                
                   
                 </div>

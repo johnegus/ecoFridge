@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { Redirect } from "react-router-dom";
 import { login } from "../../services/auth";
-import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import TextField from '@material-ui/core/TextField';
@@ -11,14 +10,12 @@ import Link from '@material-ui/core/Link';
 import Paper from '@material-ui/core/Paper';
 import Box from '@material-ui/core/Box';
 import Grid from '@material-ui/core/Grid';
-import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Alert from '@material-ui/lab/Alert';
 import github from '../../github.png'
 import linkedin from '../../linkedin.png'
 import '../../index.css'
-import fridgeIcon from '../dashboard/fridge.png'
 
 
 function Copyright() {
@@ -131,7 +128,7 @@ export default function SignInSide({ authenticated, setAuthenticated }) {
             Sign in
           </Typography>
           <form className={classes.form} onSubmit={onLogin}>
-         {errors ? <Alert severity="error">{errors}</Alert> : ''}
+         {errors ? <Alert severity="error">{errors} </Alert> : ''}
           
             <TextField
               margin="normal"
