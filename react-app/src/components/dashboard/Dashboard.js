@@ -16,6 +16,7 @@ import Button from '@material-ui/core/Button';
 import Chart from './Chart';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import { getFreezerGroceries, getGroceries, getPantryGroceries } from '../../services/groceries';
+import fridgeIcon from './fridge.png'
 import github from '../../github.png'
 import linkedin from '../../linkedin.png'
 import '../../index.css'
@@ -245,9 +246,10 @@ const pieOptions= {
       <>
     
       <main className="centered middled">
+      <img className='icon-progress' height='50px' width='50px' src={fridgeIcon} alt='fridgeIcon' />
         <b>Loading Groceries...</b>
         
-        <CircularProgress />
+        <div className='circle-progress'> <CircularProgress size='100px' color='secondary'/> </div>
         </main>
       </>
       )

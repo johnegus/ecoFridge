@@ -4,6 +4,7 @@ import Modal from 'react-modal'
 import CloseIcon from '@material-ui/icons/Close';
 import './index.css'
 import CircularProgress from '@material-ui/core/CircularProgress';
+import fridgeIcon from '../dashboard/fridge.png'
 
 const RecipeSearchInput = () => {
   const API_ID = process.env.REACT_APP_APP_ID;
@@ -81,12 +82,16 @@ const RecipeSearchInput = () => {
             </div>
      
     {!loaded ? 
-         <>
-        <main className="centered middled">
-        <b>Fetching Recipes...</b>
-        <CircularProgress />
-        </main>
-      </>:
+      <>
+    
+      <main className="centered middled">
+        <img className='icon-progress' height='50px' width='50px' src={fridgeIcon} alt='fridgeIcon' />
+          <b>Fetching Recipes...</b>
+          
+          <div className='circle-progress'> <CircularProgress size='100px' color='secondary'/> </div>
+          </main>
+        </>
+      :
       ''}
 
     {recipes.length === 0 ? 

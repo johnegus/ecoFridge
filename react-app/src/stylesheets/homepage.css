@@ -71,6 +71,7 @@ body.background__home {
   
   .bg-grey{
     background-color:#f6f6f6;
+    display: block;
   }
   
   .orange {
@@ -150,7 +151,9 @@ body.background__home {
       justify-content: center;
       
     }
-  
+    .contact-container {
+      width: 100%;
+    }
   
     .small-div {
       width: 80%;

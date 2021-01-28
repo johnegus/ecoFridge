@@ -29,6 +29,7 @@ export default function AddGrocery({groceries, setGroceries}) {
   const user = localStorage.getItem('userId');
   const [types, setTypes] = useState([]);
   const [errors, setErrors] = useState('');
+  const [success, setSuccess] = useState('')
 
   
 
@@ -55,6 +56,11 @@ export default function AddGrocery({groceries, setGroceries}) {
       setGroceries(sortedGroceries)
       setItemName('')
       setErrors('')
+      setSuccess('Item added to fridge.')
+        setTimeout(function()
+           {
+            setSuccess('')
+           },4000);
       setItemType(null)
     }
     
@@ -75,9 +81,10 @@ export default function AddGrocery({groceries, setGroceries}) {
         required
         options= {types}
         getOptionLabel= {(option) => option.type}
-        id="Item Type"
+        id="tags-filled"
         debug
-        renderInput={(params) => <TextField {...params} label="Item Type" margin="normal" />}
+        
+        renderInput={(params) => <TextField {...params} variant="filled" label="Item Type" margin="normal" />}
         value={itemType} 
         onChange={onUps}
       />
@@ -87,13 +94,16 @@ export default function AddGrocery({groceries, setGroceries}) {
           id="filled-textarea"
           label="Item Name"
           placeholder="Item Name"
-          multiline
+          
           variant="filled"
           value={itemName} 
           onChange={e => setItemName(e.target.value)}
         />
         <Button type="submit" variant="outlined" color="primary">Add Fridge Item</Button>
-        {errors ? <Alert className='fade-out' severity="error">{errors}</Alert> : ''}
+        {errors ? <Alert className='fade-out' severity="error">{errors}</Alert> : success ?
+         <Alert className='fade-out' severity="success">Item added to fridge.</Alert> :
+         ''
+         }
       </div>
       
     </form>

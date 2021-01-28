@@ -29,7 +29,7 @@ export default function AddFreezerGrocery({groceries, setGroceries}) {
   const user = localStorage.getItem('userId');
   const [types, setTypes] = useState([]);
   const [errors, setErrors] = useState('');
-
+  const [success, setSuccess] = useState('')
   
 
   useEffect(() => {
@@ -48,13 +48,6 @@ export default function AddFreezerGrocery({groceries, setGroceries}) {
              setErrors('')
            },4000);
       } 
-      // if (!itemName){
-      //   setErrors('Please give the item a name.')
-      //   setTimeout(function()
-      //      {
-      //        setErrors('')
-      //      },4000);
-      // }
       else{
       const newGrocery = await addFreezerGrocery(user, itemName, itemType.id);
       const sortedGroceries = [...groceries, newGrocery].sort((a, b) => a.type.days_to_expiry - b.type.days_to_expiry)
@@ -62,6 +55,11 @@ export default function AddFreezerGrocery({groceries, setGroceries}) {
       setGroceries(sortedGroceries)
       setItemName('')
       setErrors('')
+      setSuccess('Item added to freezer.')
+        setTimeout(function()
+           {
+            setSuccess('')
+           },4000);
       setItemType(null)
     }
     
@@ -84,7 +82,7 @@ export default function AddFreezerGrocery({groceries, setGroceries}) {
         getOptionLabel= {(option) => option.type}
         id="Item Type"
         debug
-        renderInput={(params) => <TextField {...params} label="Item Type" margin="normal" />}
+        renderInput={(params) => <TextField {...params} variant="filled"  label="Item Type" margin="normal" />}
         value={itemType} 
         onChange={onUps}
       />
@@ -93,13 +91,16 @@ export default function AddFreezerGrocery({groceries, setGroceries}) {
           id="filled-textarea"
           label="Item Name"
           placeholder="Item Name"
-          multiline
+          
           variant="filled"
           value={itemName} 
           onChange={e => setItemName(e.target.value)}
         />
         <Button type="submit" variant="outlined" color="primary">Add Freezer Item</Button>
-        {errors ? <Alert className='fade-out' severity="error">{errors}</Alert> : ''}
+        {errors ? <Alert className='fade-out' severity="error">{errors}</Alert> : success ?
+         <Alert className='fade-out' severity="success">Item added to fridge.</Alert> :
+         ''
+         }
       </div>
       
     </form>
