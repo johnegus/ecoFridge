@@ -6,8 +6,7 @@ ECOFridge is a sustainability minded dashboard for users to reduce wasted grocer
 ## Pictures
 
 
-### Home Page
-![ERD](/documentation/homepage.jpg)
+
 ### User Dashboard
 ![ERD](/documentation/dashboard.png)
 ### Data

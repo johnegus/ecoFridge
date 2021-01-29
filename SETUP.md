@@ -91,6 +91,8 @@ This is the backend for the Flask React project.
    ```bash
    heroku run -a {NAME_OF_HEROKU_APP} flask db upgrade
    heroku run -a {NAME_OF_HEROKU_APP} flask seed all
+
+   to delete: Ian - the other option is to connect with heroku pg:psql and drop table ...
    ```
 
 10. Under Settings find "Config Vars" and add any additional/secret .env variables.
