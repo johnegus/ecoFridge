@@ -33,7 +33,7 @@ import fridge from '../ECOFridge-crop.png'
 // `
 const HomePage = ({ authenticated, setAuthenticated }) => {
     if (authenticated) {
-        return <Redirect to="/" />;
+        return <Redirect to="/dashboard" />;
     }
     return(
         <div id='body'>
