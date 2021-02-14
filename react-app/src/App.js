@@ -4,9 +4,7 @@ import SignInSide from "./components/sign-in-side/SignInSide";
 import SignUp from "./components/sign-up/SignUp";
 import NavBar from "./components/NavBar";
 import Dashboard from './components/dashboard/Dashboard'
-import Checkout from './components/checkout/Checkout'
 import ProtectedRoute from "./components/auth/ProtectedRoute";
-import UsersList from "./components/UsersList";
 import User from "./components/dashboard/User";
 import { authenticate } from "./services/auth";
 import HomePage from "./components/HomePage";
@@ -49,10 +47,7 @@ function App() {
         <SignUp authenticated={authenticated} setAuthenticated={setAuthenticated} />
       </Route>
       
-      <ProtectedRoute path="/users" exact={true} authenticated={authenticated}>
-        <UsersList/>
-      </ProtectedRoute>
-      <Switch>
+    
       <ProtectedRoute path="/dashboard" exact={true} authenticated={authenticated}>
         <Dashboard/>
       </ProtectedRoute>
@@ -65,10 +60,7 @@ function App() {
       <ProtectedRoute path="/database" exact={true} authenticated={authenticated}>
         <User />
       </ProtectedRoute>
-      </Switch>
-      <ProtectedRoute path="/groceries/new" exact={true} authenticated={authenticated}>
-        <Checkout />
-      </ProtectedRoute>
+     
   
       <Route path="/" exact={true}  >
         <HomePage setAuthenticated={setAuthenticated} authenticated={authenticated}/>
