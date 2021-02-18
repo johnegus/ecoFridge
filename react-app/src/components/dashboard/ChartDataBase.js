@@ -24,6 +24,7 @@ export default function ChartDataBase({types}) {
     sortedTypes.map((type) => {
         stockChartXValuesFunction.push(type.type)
         stockChartYValuesFunction.push(type.days_to_expiry)
+        return type;
     })
   }
   setstockChartXValues(stockChartXValuesFunction)

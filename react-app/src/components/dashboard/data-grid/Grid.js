@@ -28,7 +28,7 @@ export const GridMaker = ({types})=> {
     }
     mapHistoryToRows();
 })()
-}, [])
+}, [types])
 
     const columns = [
         { field: 'id', headerName: 'ID'},

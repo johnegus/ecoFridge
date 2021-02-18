@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { BrowserRouter, Route, Switch } from "react-router-dom";
+import { BrowserRouter, Route } from "react-router-dom";
 import SignInSide from "./components/sign-in-side/SignInSide";
 import SignUp from "./components/sign-up/SignUp";
 import NavBar from "./components/NavBar";
