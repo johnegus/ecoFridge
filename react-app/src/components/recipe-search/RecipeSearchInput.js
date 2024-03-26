@@ -95,7 +95,7 @@ const RecipeSearchInput = () => {
           :
           ''}
 
-        {recipes.length === 0 ?
+        {!recipes ?
           <>
             <br></br>
             <h2>
@@ -103,10 +103,7 @@ const RecipeSearchInput = () => {
             </h2>
             <h3>- The API has exceeded the 5 fetch per minute maximum.</h3>
             <h3>- There are no recipes for your particular query.</h3>
-          </> : ''
-        }
-
-        <div className="recipes">
+          </> : <div className="recipes">
           {recipes.map(recipe => (
             <Recipe
               key={recipe.recipe.label}
@@ -118,6 +115,9 @@ const RecipeSearchInput = () => {
               url={recipe.recipe.url} />
           ))}
         </div>
+        }
+
+        
 
       </Modal>
 
