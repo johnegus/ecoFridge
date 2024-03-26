@@ -14,7 +14,7 @@ const RecipeSearch = ({ currentGrocery }) => {
 
   useEffect(() => {
     setQuery(currentGrocery);
-  }, [query]);
+  }, [query, currentGrocery]);
 
   useEffect(() => {
     const getRecipes = async () => {
@@ -46,7 +46,7 @@ const RecipeSearch = ({ currentGrocery }) => {
   return (
     <div className="App">
       <h2>Recipe Search for: {currentGrocery}</h2>
-      {recipes.length === 0 ?
+      {!recipes ?
         <>
           <br></br>
           <h2>
@@ -54,9 +54,7 @@ const RecipeSearch = ({ currentGrocery }) => {
           </h2>
           <h3>- The API has exceeded the 5 fetch per minute maximum.</h3>
           <h3>- There are no recipes for your particular query.</h3>
-        </> : ''
-      }
-      <div className="recipes">
+        </> : <div className="recipes">
         {recipes.map(recipe => (
           <Recipe
             key={recipe.recipe.label}
@@ -68,6 +66,8 @@ const RecipeSearch = ({ currentGrocery }) => {
             url={recipe.recipe.url} />
         ))}
       </div>
+      }
+      
     </div>
   );
 };

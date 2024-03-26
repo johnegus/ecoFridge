@@ -10,7 +10,7 @@ This is the backend for the Flask React project.
    git clone https://github.com/appacademy-starters/python-project-starter.git
    ```
 
-2. Install dependencies
+2. Install dependencies (prefix python -m if it doesnt work)
 
       ```bash
       pipenv install --dev -r dev-requirements.txt && pipenv install -r requirements.txt
